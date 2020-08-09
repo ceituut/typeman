@@ -35,6 +35,7 @@ public class Pointer : MonoBehaviour
     void Update()
     {
         GetLastInputChar();
+        // check if player is typing or not
         if (this.lastInputChar != '\0')
             CheckChar();
     }
