@@ -9,16 +9,17 @@ public class Pointer : MonoBehaviour
     // Fields
     private char neededChar;
     private char lastInputChar;
-    private Platform targetPlatform;
+    [SerializeField] private GameObject targetPlatform;
     private InputField playerInputField;
-    private TextChain targetTextChain;
+    [SerializeField] private GameObject targetText;
     private string textString;
     private int pointerLocation;
+    private int mistakes;
+    private int backspaceMistakes;
+    private List<bool> wasCorrectList;
     private bool pointerActiveness;
 
     // Properties
-    public TextChain TargetTextChain { get => targetTextChain; set => targetTextChain = value; }
-    public Platform TargetPlatform { get => targetPlatform; set => targetPlatform = value; }
     public int PointerLocation { get => pointerLocation; set => pointerLocation = value; }
     public bool PointerActiveness { get => pointerActiveness; set => pointerActiveness = value; }
 
@@ -26,6 +27,9 @@ public class Pointer : MonoBehaviour
     void Start()
     {
         GetNeededChar();
+        wasCorrectList = new List<bool>();
+        mistakes = 0;
+        backspaceMistakes = 0;
         pointerLocation = 0;
         lastInputChar = '\0';
         ActivatePlayerInput();
@@ -52,11 +56,15 @@ public class Pointer : MonoBehaviour
         if (this.lastInputChar == this.neededChar)
         {
             // Warrior function according to target platform
+            Debug.Log("correct");////////////////////
+            wasCorrectList.Insert(pointerLocation,true);
             pointerLocation ++;
             GetNeededChar();
         }
         else
         {
+            wasCorrectList.Insert(pointerLocation,false);
+            this.mistakes ++;
             // warrior becomes vulnerable to enemy high damage
             // backspace check ? pointerLocation-- 
             // enter check ?
@@ -75,6 +83,22 @@ public class Pointer : MonoBehaviour
     }
     void GetNeededChar()
     {
-        this.neededChar = this.TargetTextChain.ToString()[pointerLocation];
+        this.neededChar = this.targetText.GetComponent<Text>().text.ToString()[pointerLocation];
+    }
+    void OnbackspacePressed()
+    {
+        bool currentCharWasCorrect;
+        if (Input.GetKey(KeyCode.Backspace))
+        {
+            if (wasCorrectList.Count>0)
+            {
+                currentCharWasCorrect = wasCorrectList[pointerLocation];
+                if (currentCharWasCorrect)
+                    this.backspaceMistakes ++;
+                else
+                    wasCorrectList.RemoveAt(wasCorrectList.Count-1);
+            pointerLocation --;
+            }   
+        }
     }
 }
