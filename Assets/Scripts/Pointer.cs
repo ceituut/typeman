@@ -1,12 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pointer : MonoBehaviour
 {
     // Fields
-    private TextChain targetTextChain;
+    private char neededChar;
+    private char lastInputChar;
     private Platform targetPlatform;
+    private InputField playerInputField;
+    private TextChain targetTextChain;
+    private string textString;
     private int pointerLocation;
     private bool pointerActiveness;
 
@@ -19,28 +25,55 @@ public class Pointer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetNeededChar();
+        pointerLocation = 0;
+        lastInputChar = '\0';
+        ActivatePlayerInput();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        GetLastInputChar();
+        if (this.lastInputChar != '\0')
+            CheckChar();
     }
 
+    void ActivatePlayerInput()
+    {
+        playerInputField = gameObject.GetComponent<InputField>();
+        playerInputField.textComponent = gameObject.GetComponent<Text>();
+        playerInputField.ActivateInputField();
+        playerInputField.Select();
+    }
     public void CheckChar()
     {
-
+        if (this.lastInputChar == this.neededChar)
+        {
+            // Warrior function according to target platform
+            pointerLocation ++;
+            GetNeededChar();
+        }
+        else
+        {
+            // warrior becomes vulnerable to enemy high damage
+            // backspace check ? pointerLocation-- 
+            // enter check ?
+        }
     }
-
-    public void NextChar()
+    void GetLastInputChar()
     {
-
+        string playerInputString = playerInputField.textComponent.text.ToString();
+        if (playerInputString.Length != 0)
+        {
+            this.lastInputChar = playerInputString[playerInputString.Length - 1];
+            playerInputField.textComponent.text.Remove(0);
+        }
+        else
+            this.lastInputChar = '\0';
     }
-
-    public void PreviousChar()
+    void GetNeededChar()
     {
-
+        this.neededChar = this.TargetTextChain.ToString()[pointerLocation];
     }
-
 }
