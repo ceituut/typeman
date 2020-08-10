@@ -358,8 +358,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: This is some text. This is some text. This is some text. This is some text.
-    This is some text.
+  m_Text: Mahdi Naderi - Mohammad Ostadi - Amir Goodarzi
 --- !u!222 &447696441
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -777,6 +776,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPlatform: {fileID: 689164503}
   targetText: {fileID: 447696438}
+  mistakes: 0
+  backspaceMistakes: 0
 --- !u!114 &1045946540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,8 +806,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_RichText: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 

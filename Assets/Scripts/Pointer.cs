@@ -12,36 +12,41 @@ public class Pointer : MonoBehaviour
     [SerializeField] private GameObject targetPlatform;
     private InputField playerInputField;
     [SerializeField] private GameObject targetText;
-    private string textString;
+    private string neededString;
     private int pointerLocation;
-    private int mistakes;
-    private int backspaceMistakes;
-    private List<bool> wasCorrectList;
+    [SerializeField] private int mistakes;
+    [SerializeField] private int backspaceMistakes;
+    private List<bool> isTypedCorrectList;
     private bool pointerActiveness;
 
     // Properties
-    public int PointerLocation { get => pointerLocation; set => pointerLocation = value; }
+    public int PointerLocation
+    {
+        get {return pointerLocation;}
+        set {            
+                if (value >= 0)
+                    pointerLocation = value;
+            }
+    }
     public bool PointerActiveness { get => pointerActiveness; set => pointerActiveness = value; }
 
     // Start is called before the first frame update
     void Start()
     {
-        GetNeededChar();
-        wasCorrectList = new List<bool>();
+        PointerLocation = 0;
         mistakes = 0;
         backspaceMistakes = 0;
-        pointerLocation = 0;
         lastInputChar = '\0';
+        isTypedCorrectList = new List<bool>();
+        neededString = targetText.GetComponent<Text>().text.ToString();
+        GetNeededChar();
         ActivatePlayerInput();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetLastInputChar();
-        // check if player is typing or not
-        if (this.lastInputChar != '\0')
-            CheckChar();
+
     }
 
     void ActivatePlayerInput()
@@ -50,55 +55,57 @@ public class Pointer : MonoBehaviour
         playerInputField.textComponent = gameObject.GetComponent<Text>();
         playerInputField.ActivateInputField();
         playerInputField.Select();
+        // Adds listner to the playerInutField and invokes CheckChar() when the value changes
+        playerInputField.onValueChanged.AddListener(delegate {GetLastInputChar(); CheckChar(); GetNeededChar(); });
     }
     public void CheckChar()
     {
-        if (this.lastInputChar == this.neededChar)
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            // Warrior function according to target platform
-            Debug.Log("correct");////////////////////
-            wasCorrectList.Insert(pointerLocation,true);
-            pointerLocation ++;
-            GetNeededChar();
+            CheckBackspaceMistakes();
+            PointerLocation --;
         }
         else
         {
-            wasCorrectList.Insert(pointerLocation,false);
-            this.mistakes ++;
-            // warrior becomes vulnerable to enemy high damage
-            // backspace check ? pointerLocation-- 
-            // enter check ?
+            if (lastInputChar == neededChar)
+            {
+                // Warrior function according to target platform
+                isTypedCorrectList.Add(true);
+                PointerLocation ++;
+            }
+            else
+            {
+                isTypedCorrectList.Add(false);
+                // warrior becomes vulnerable to enemy high damage
+                this.mistakes ++;
+                PointerLocation ++;
+            }
         }
     }
     void GetLastInputChar()
     {
-        string playerInputString = playerInputField.textComponent.text.ToString();
+        string playerInputString = playerInputField.text.ToString();
         if (playerInputString.Length != 0)
-        {
-            this.lastInputChar = playerInputString[playerInputString.Length - 1];
-            playerInputField.textComponent.text.Remove(0);
-        }
-        else
-            this.lastInputChar = '\0';
+            lastInputChar = playerInputString[playerInputString.Length - 1];
     }
     void GetNeededChar()
     {
-        this.neededChar = this.targetText.GetComponent<Text>().text.ToString()[pointerLocation];
+        neededChar = neededString[PointerLocation];
     }
-    void OnbackspacePressed()
+    void ClearString()
     {
-        bool currentCharWasCorrect;
-        if (Input.GetKey(KeyCode.Backspace))
+        playerInputField.textComponent.text = String.Empty;
+    }
+    void CheckBackspaceMistakes()
+    {
+        bool currentCharIsCorrect;
+        int length = isTypedCorrectList.Count;
+        if (length > 0)
         {
-            if (wasCorrectList.Count>0)
-            {
-                currentCharWasCorrect = wasCorrectList[pointerLocation];
-                if (currentCharWasCorrect)
-                    this.backspaceMistakes ++;
-                else
-                    wasCorrectList.RemoveAt(wasCorrectList.Count-1);
-            pointerLocation --;
-            }   
+            currentCharIsCorrect = isTypedCorrectList[length-1];
+            if (currentCharIsCorrect)
+                this.backspaceMistakes ++;
+            isTypedCorrectList.RemoveAt(length-1);
         }
     }
 }
