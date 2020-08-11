@@ -7,15 +7,17 @@ using UnityEngine.UI;
 public class Pointer : MonoBehaviour
 {
     // Fields
-    private char neededChar;
-    private char lastInputChar;
+    private Warrior warrior;
     [SerializeField] private GameObject targetPlatform;
-    private InputField playerInputField;
     [SerializeField] private GameObject targetText;
+    private InputField playerInputField;
+    private char lastInputChar;
     private string neededString;
+    private char neededChar;
     private int pointerLocation;
     [SerializeField] private int mistakes;
     [SerializeField] private int backspaceMistakes;
+    [SerializeField] private int continuousCorrects;
     private List<bool> isTypedCorrectList;
     private bool pointerActiveness;
 
@@ -33,9 +35,11 @@ public class Pointer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        warrior = gameObject.GetComponent<Warrior>();
         PointerLocation = 0;
         mistakes = 0;
         backspaceMistakes = 0;
+        continuousCorrects = 0;
         lastInputChar = '\0';
         isTypedCorrectList = new List<bool>();
         neededString = targetText.GetComponent<Text>().text.ToString();
@@ -56,29 +60,40 @@ public class Pointer : MonoBehaviour
         playerInputField.ActivateInputField();
         playerInputField.Select();
         // Adds listner to the playerInutField and invokes CheckChar() when the value changes
-        playerInputField.onValueChanged.AddListener(delegate {GetLastInputChar(); CheckChar(); GetNeededChar(); });
+        playerInputField.onValueChanged.AddListener( delegate 
+        {
+            GetLastInputChar(); 
+            CheckChar();
+            BonusCorrectsCheck(); 
+            GetNeededChar(); 
+        });
     }
     public void CheckChar()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        if (Input.GetKey(KeyCode.Backspace))
         {
             CheckBackspaceMistakes();
             PointerLocation --;
+            // continuous corrects ??
         }
         else
         {
             if (lastInputChar == neededChar)
             {
-                // Warrior function according to target platform
                 isTypedCorrectList.Add(true);
                 PointerLocation ++;
+                continuousCorrects ++;
+                // Warrior function according to target platform
+                warrior.Attack();
             }
             else
             {
                 isTypedCorrectList.Add(false);
-                // warrior becomes vulnerable to enemy high damage
-                this.mistakes ++;
+                mistakes ++;
                 PointerLocation ++;
+                continuousCorrects = 0;
+                // warrior becomes vulnerable to enemy damage
+                warrior.Armor --;
             }
         }
     }
@@ -92,9 +107,9 @@ public class Pointer : MonoBehaviour
     {
         neededChar = neededString[PointerLocation];
     }
-    void ClearString()
+    void ClearInputString()
     {
-        playerInputField.textComponent.text = String.Empty;
+        playerInputField.text = String.Empty;
     }
     void CheckBackspaceMistakes()
     {
@@ -107,5 +122,13 @@ public class Pointer : MonoBehaviour
                 this.backspaceMistakes ++;
             isTypedCorrectList.RemoveAt(length-1);
         }
+    }
+    void BonusCorrectsCheck()
+    {
+        if (continuousCorrects >=5)
+        {
+            Debug.Log("Bonus Attack !");
+        }
+            warrior.BonusAttack(continuousCorrects);
     }
 }

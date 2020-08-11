@@ -30,27 +30,27 @@ public class Warrior : MonoBehaviour
         
     }
 
-    void Attack()
+    public void Attack()
     {
 
     }
 
-    void BonusAttack()
+    public void BonusAttack(int continuousCorrects)
     {
 
     }
 
-    void IncreaseHealth()
+    public void IncreaseHealth()
     {
 
     }
 
-    void IncreaseDamage()
+    public void IncreaseDamage()
     {
 
     }
 
-    void CreatePointer()
+    public void CreatePointer()
     {
 
     }
