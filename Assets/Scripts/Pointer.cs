@@ -73,13 +73,13 @@ public class Pointer : MonoBehaviour
         if (Input.GetKey(KeyCode.Backspace))
         {
             CheckBackspaceMistakes();
+            targetText.GetComponent<TextChain>().OneStepBack(pointerLocation); ///// performance
             PointerLocation --;
             continuousCorrects = 0;
         }
         else if (!IsTextEnd())
         {
             targetText.GetComponent<TextChain>().WasTyped(pointerLocation); ///// performance
-            RemoveChar();
             if (lastInputChar == neededChar)
             {
                 isTypedCorrectList.Add(true);
@@ -142,9 +142,5 @@ public class Pointer : MonoBehaviour
             return true;
         else
             return false;
-    }
-    void RemoveChar()
-    {
-        targetText.GetComponent<Text>().text = targetText.GetComponent<Text>().text.Remove(0,1); ///////////////
     }
 }
