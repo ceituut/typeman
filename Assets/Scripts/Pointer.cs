@@ -50,7 +50,7 @@ public class Pointer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     void ActivatePlayerInput()
@@ -74,13 +74,14 @@ public class Pointer : MonoBehaviour
         {
             CheckBackspaceMistakes();
             PointerLocation --;
-            // continuous corrects ??
+            continuousCorrects = 0;
         }
         else
         {
             if (lastInputChar == neededChar)
             {
                 isTypedCorrectList.Add(true);
+                targetText.GetComponent<TextChain>().WasCorrect(pointerLocation); ///// performance
                 PointerLocation ++;
                 continuousCorrects ++;
                 // Warrior function according to target platform
@@ -125,10 +126,7 @@ public class Pointer : MonoBehaviour
     }
     void BonusCorrectsCheck()
     {
-        if (continuousCorrects >=5)
-        {
-            Debug.Log("Bonus Attack !");
-        }
+        if (continuousCorrects >= 5)
             warrior.BonusAttack(continuousCorrects);
     }
 }
