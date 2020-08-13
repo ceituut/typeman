@@ -76,12 +76,13 @@ public class Pointer : MonoBehaviour
             PointerLocation --;
             continuousCorrects = 0;
         }
-        else
+        else if (!IsTextEnd())
         {
+            targetText.GetComponent<TextChain>().WasTyped(pointerLocation); ///// performance
+            RemoveChar();
             if (lastInputChar == neededChar)
             {
                 isTypedCorrectList.Add(true);
-                targetText.GetComponent<TextChain>().WasCorrect(pointerLocation); ///// performance
                 PointerLocation ++;
                 continuousCorrects ++;
                 // Warrior function according to target platform
@@ -97,6 +98,11 @@ public class Pointer : MonoBehaviour
                 warrior.Armor --;
             }
         }
+        else
+        {
+            pointerLocation = 0;
+            // Text is ended. new text needed.
+        }
     }
     void GetLastInputChar()
     {
@@ -106,7 +112,8 @@ public class Pointer : MonoBehaviour
     }
     void GetNeededChar()
     {
-        neededChar = neededString[PointerLocation];
+        if (!IsTextEnd()) /////////////////////////////////////////////////
+            neededChar = neededString[PointerLocation];
     }
     void ClearInputString()
     {
@@ -128,5 +135,16 @@ public class Pointer : MonoBehaviour
     {
         if (continuousCorrects >= 5)
             warrior.BonusAttack(continuousCorrects);
+    }
+    bool IsTextEnd()
+    {
+        if (pointerLocation > neededString.Length -1)
+            return true;
+        else
+            return false;
+    }
+    void RemoveChar()
+    {
+        targetText.GetComponent<Text>().text = targetText.GetComponent<Text>().text.Remove(0,1); ///////////////
     }
 }
