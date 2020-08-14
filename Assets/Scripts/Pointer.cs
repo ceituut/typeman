@@ -21,6 +21,7 @@ public class Pointer : MonoBehaviour
     private List<bool> isTypedCorrectList;
     private bool pointerActiveness;
 
+    public platformManager.StandardPlatform myPlatform;
     // Properties
     public int PointerLocation
     {

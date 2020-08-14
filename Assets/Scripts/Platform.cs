@@ -2,42 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Platform : MonoBehaviour
+public class platform : MonoBehaviour
 {
-    // Fields
-    private int platformType;
-    private int numberOfActivePointers;
-    private bool safePlatform;
+ public int numberOfActiveness,pointerLocation;
+ public List<Warrior> warriorsWithin;//all the warriors inside this platform
+ public Warrior[] allWarriorsInMyPlatform;
+ public bool IsSafePlatform;
 
-    // Properties
-    public int PlatformType { get => platformType; set => platformType = value; }
-    public int NumberOfActivePointers { get => numberOfActivePointers; set => numberOfActivePointers = value; }
-    public bool SafePlatform { get => safePlatform; set => safePlatform = value; }
+    public platformManager.StandardPlatform myPlatform;
+ private void Initializings()
+ {
+        numberOfActiveness = pointerLocation = 0;//first time we start the game
+        myPlatform = platformManager.StandardPlatform.fight;
+ }
+ private void Awake()
+ {
+     Initializings();
+ }
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnTriggerEnter(Collider _collider)
     {
+        if(_collider.gameObject.GetComponent<Warrior>()!=null)//if warrior enters a specific platform(current platform)
+        {
+        _collider.gameObject.GetComponent<Warrior>().myPlatform = myPlatform;
+        warriorsWithin.Add( _collider.gameObject.GetComponent<Warrior>());
+        bool equalFound=false;
+        foreach(Pointer p in _collider.gameObject.GetComponent<Warrior>().PointerList)
+        {
+        if(p.myPlatform==myPlatform)
+        {
+            equalFound=true;
+            break;
+        }
+        }
+        if(equalFound==false)
+        {
+            Pointer tempPointer=new Pointer();
+            tempPointer.myPlatform=myPlatform;
+            _collider.gameObject.GetComponent<Warrior>().PointerList.Add(tempPointer);
+        }
         
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+     private void OnTriggerExit(Collider _collider)
     {
-        
+        if(_collider.gameObject.GetComponent<Warrior>()!=null)//if warrior enters a specific platform(current platform)
+        {
+         warriorsWithin.Remove( _collider.gameObject.GetComponent<Warrior>());
+        }
     }
+    
+    
 
-    public void PlatformFunction()
-    {
-
-    }
-
-    public void OnPointerEnter()
-    {
-
-    }
-
-    public void OnPointerLeave()
-    {
-        
-    }
 }
