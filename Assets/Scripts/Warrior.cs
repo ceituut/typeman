@@ -6,7 +6,8 @@ public class Warrior : MonoBehaviour
 {
     // Fields
     private Profile ownerProfile;
-    private List<Pointer> pointerList;
+    public List<Pointer> pointerList;
+    public Pointer currentpointer;
     private float health;
     private float armor;
     private float damage;
@@ -22,7 +23,7 @@ public class Warrior : MonoBehaviour
   
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
     }
@@ -31,6 +32,7 @@ public class Warrior : MonoBehaviour
     void Update()
     {
         setPlatformNumber();
+        WarriorsActionBasedOnPlatformType();
     }
      private void setPlatformNumber()
  {
@@ -41,9 +43,30 @@ public class Warrior : MonoBehaviour
         platformNumber=1;
 
         myPlatform=(platformNumber==1 ? platformManager.StandardPlatform.fight : platformNumber==2 ? platformManager.StandardPlatform.health : platformManager.StandardPlatform.armor);
+        foreach(Pointer p in pointerList)
+        {
+            if(p.myPlatform==myPlatform)
+            {
+                currentpointer=p;
+            }
+        }
     }
  }
-
+    private void WarriorsActionBasedOnPlatformType()
+    {
+        switch(myPlatform)
+        {
+            case platformManager.StandardPlatform.fight :
+                Attack();
+                break;
+                case platformManager.StandardPlatform.health :
+                IncreaseHealth();
+                break;
+                case platformManager.StandardPlatform.armor :
+                increaseArmor();
+                break;
+        }
+    }
     public void Attack()
     {
 
@@ -59,13 +82,10 @@ public class Warrior : MonoBehaviour
 
     }
 
-    public void IncreaseDamage()
+    public void increaseArmor()
     {
 
     }
 
-    public void CreatePointer()
-    {
-
-    }
+   
 }

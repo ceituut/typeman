@@ -4,20 +4,28 @@ using UnityEngine;
 
 public class platform : MonoBehaviour
 {
- public int numberOfActiveness,pointerLocation;
+ public int numberOfActiveness;
  public List<Warrior> warriorsWithin;//all the warriors inside this platform
- public Warrior[] allWarriorsInMyPlatform;
  public bool IsSafePlatform;
 
     public platformManager.StandardPlatform myPlatform;
  private void Initializings()
  {
-        numberOfActiveness = pointerLocation = 0;//first time we start the game
+        numberOfActiveness  = 0;//first time we start the game
         myPlatform = platformManager.StandardPlatform.fight;
  }
  private void Awake()
  {
      Initializings();
+ }
+ private void LateUpdate()
+ {
+    CheckNumberOfActiveWarriorsWithin();
+ }
+ private void CheckNumberOfActiveWarriorsWithin()
+ {
+      numberOfActiveness=warriorsWithin.Count;
+     IsSafePlatform=(warriorsWithin.Count==0? true:false);
  }
 
 
@@ -42,6 +50,7 @@ public class platform : MonoBehaviour
             tempPointer.myPlatform=myPlatform;
             _collider.gameObject.GetComponent<Warrior>().PointerList.Add(tempPointer);
         }
+        //wtite script to set warriors pointer
         
         }
     }
