@@ -40,7 +40,7 @@ public class Warrior : MonoBehaviour
     {
         platformNumber++;
         if(platformNumber>platformManager.instance.maxPlatformNumbers)
-        platformNumber=1;
+            platformNumber=1;
 
         myPlatform=(platformNumber==1 ? platformManager.StandardPlatform.fight : platformNumber==2 ? platformManager.StandardPlatform.health : platformManager.StandardPlatform.armor);
         foreach(Pointer p in pointerList)
@@ -88,5 +88,8 @@ public class Warrior : MonoBehaviour
 
     }
 
-   
+    public void CreatePointer()
+    {
+        
+    }
 }
