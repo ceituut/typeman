@@ -18,7 +18,7 @@ public class platform : MonoBehaviour
  {
      Initializings();
  }
- private void LateUpdate()
+ private void Update()
  {
     CheckNumberOfActiveWarriorsWithin();
  }

@@ -405,9 +405,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 409003295}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23cf5ce25b9379d448d800849c4e9692, type: 3}
+  m_Script: {fileID: 11500000, guid: e19883526efcf084cb6f1e2c05cb402d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxPlatformNumbers: 3
 --- !u!4 &409003297
 Transform:
   m_ObjectHideFlags: 0
@@ -1235,6 +1236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bfffb34560f8240b7f76bc12a8ba52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointerList: []
+  currentpointer: {fileID: 0}
   platformNumber: 1
   myPlatform: 0
 --- !u!224 &1045946536

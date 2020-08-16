@@ -48,6 +48,7 @@ public class Warrior : MonoBehaviour
             if(p.myPlatform==myPlatform)
             {
                 currentpointer=p;
+                break;
             }
         }
     }
