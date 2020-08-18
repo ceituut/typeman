@@ -25,7 +25,7 @@ public class platform : MonoBehaviour
  private void CheckNumberOfActiveWarriorsWithin()
  {
       numberOfActiveness=warriorsWithin.Count;
-     IsSafePlatform=(warriorsWithin.Count==0? true:false);
+     IsSafePlatform=(numberOfActiveness==0? true:false);
  }
 
 
