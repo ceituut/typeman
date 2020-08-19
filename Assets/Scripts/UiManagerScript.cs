@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class UiManagerScript : MonoBehaviour
 {
   /* Desctiptoins: DONT DISABLE ANY UI BEFORE GAME STARTS, ENABLE ALL THE UIS IN THE SCENE AND PUT THEM ALL IN THE UIs ARRAY IN GAME MANAGER SCRIPT THEN SET THE
-'ActiveUIWhenStart' VARIABLE OF THE START UI ON TRUE AND SET ALL THE OTHERS ON FALSE.*/
+'ActiveUIWhenStart' VARIABLE OF THE STARTING UI ON TRUE AND SET ALL THE OTHERS ON FALSE.*/
   public GameObject[] UIs;//initiate in unity editor
   private GameObject currentActiveUI;
   private void Start()
@@ -14,6 +14,7 @@ public class UiManagerScript : MonoBehaviour
     InitialActiveUiCheck();
     FindActiveUI();
   }
+ 
   private void InitialActiveUiCheck()
   {
     int NumberOfActiveUIs=0;
@@ -25,7 +26,7 @@ public class UiManagerScript : MonoBehaviour
 
       }
     }
-          Debug.Log(NumberOfActiveUIs==0 ? "please set an active UI!" :  NumberOfActiveUIs>1 ?"more than one UI is Active!":"number of Active UIs are correct!");
+          Debug.Log(NumberOfActiveUIs==0 ? "please set an active UI!" :  NumberOfActiveUIs>1 ?"more than one UI is Active! NOT CORRECT!":"number of Active UIs are correct!");
 
   }
   private void FindActiveUI()
@@ -66,12 +67,15 @@ public class UiManagerScript : MonoBehaviour
     }
      public void OpenMainMenu()
     {
-      FindActiveUI();
-      currentActiveUI.SetActive(false);
+     
       foreach(GameObject g in UIs)
       {
         if(g.GetComponent<myUiTypeScript>().myStandardUI==StandardUI.mainMenu)
-        {
+        {          
+
+           FindActiveUI();
+           g.GetComponent<myUiTypeScript>().previousUI=currentActiveUI;
+          currentActiveUI.SetActive(false);
           g.SetActive(true);
           break;
         }
@@ -80,12 +84,14 @@ public class UiManagerScript : MonoBehaviour
     }
      public void OpenBattleMenu()
     {
-       FindActiveUI();
-      currentActiveUI.SetActive(false);
+       
       foreach(GameObject g in UIs)
       {
         if(g.GetComponent<myUiTypeScript>().myStandardUI==StandardUI.battleMenu)
         {
+           FindActiveUI();
+           g.GetComponent<myUiTypeScript>().previousUI=currentActiveUI;
+          currentActiveUI.SetActive(false);
           g.SetActive(true);
           break;
         }
@@ -94,12 +100,14 @@ public class UiManagerScript : MonoBehaviour
     }
      public void OpenOptionsMenu()
     {
-       FindActiveUI();
-      currentActiveUI.SetActive(false);
+      
       foreach(GameObject g in UIs)
       {
         if(g.GetComponent<myUiTypeScript>().myStandardUI==StandardUI.options)
         {
+           FindActiveUI();
+           g.GetComponent<myUiTypeScript>().previousUI=currentActiveUI;
+          currentActiveUI.SetActive(false);
           g.SetActive(true);
           break;
         }
@@ -108,12 +116,14 @@ public class UiManagerScript : MonoBehaviour
     }
      public void OpenStylesMenu()
     {
-       FindActiveUI();
-      currentActiveUI.SetActive(false);
+      
       foreach(GameObject g in UIs)
       {
         if(g.GetComponent<myUiTypeScript>().myStandardUI==StandardUI.styleMenu)
         {
+           FindActiveUI();
+           g.GetComponent<myUiTypeScript>().previousUI=currentActiveUI;
+          currentActiveUI.SetActive(false);
           g.SetActive(true);
           break;
         }
@@ -122,12 +132,14 @@ public class UiManagerScript : MonoBehaviour
     }
       public void OpenCreditsMenu()
     {
-       FindActiveUI();
-      currentActiveUI.SetActive(false);
+      
       foreach(GameObject g in UIs)
       {
         if(g.GetComponent<myUiTypeScript>().myStandardUI==StandardUI.credits)
         {
+           FindActiveUI();
+           g.GetComponent<myUiTypeScript>().previousUI=currentActiveUI;
+          currentActiveUI.SetActive(false);
           g.SetActive(true);
           break;
         }
@@ -136,12 +148,14 @@ public class UiManagerScript : MonoBehaviour
     }
       public void OpenExitMenu()
     {
-       FindActiveUI();
-      currentActiveUI.SetActive(false);
+     
       foreach(GameObject g in UIs)
       {
         if(g.GetComponent<myUiTypeScript>().myStandardUI==StandardUI.exit)
         {
+           FindActiveUI();
+           g.GetComponent<myUiTypeScript>().previousUI=currentActiveUI;
+          currentActiveUI.SetActive(false);
           g.SetActive(true);
           break;
         }
@@ -150,12 +164,14 @@ public class UiManagerScript : MonoBehaviour
     }
       public void OpenDuelMatchMenu()
     {
-       FindActiveUI();
-      currentActiveUI.SetActive(false);
+       
       foreach(GameObject g in UIs)
       {
         if(g.GetComponent<myUiTypeScript>().myStandardUI==StandardUI.duelMatch)
         {
+           FindActiveUI();
+           g.GetComponent<myUiTypeScript>().previousUI=currentActiveUI;
+          currentActiveUI.SetActive(false);
           g.SetActive(true);
           break;
         }
@@ -164,12 +180,14 @@ public class UiManagerScript : MonoBehaviour
     }
       public void OpenDeathMatchMenu()
     {
-       FindActiveUI();
-      currentActiveUI.SetActive(false);
+      
       foreach(GameObject g in UIs)
       {
         if(g.GetComponent<myUiTypeScript>().myStandardUI==StandardUI.deathMatch)
         {
+           FindActiveUI();
+           g.GetComponent<myUiTypeScript>().previousUI=currentActiveUI;
+          currentActiveUI.SetActive(false);
           g.SetActive(true);
           break;
         }
@@ -178,12 +196,14 @@ public class UiManagerScript : MonoBehaviour
     }
       public void OpenTeamDeathMatchMenu()
     {
-       FindActiveUI();
-      currentActiveUI.SetActive(false);
+      
       foreach(GameObject g in UIs)
       {
         if(g.GetComponent<myUiTypeScript>().myStandardUI==StandardUI.teamDeathMatch)
         {
+           FindActiveUI();
+           g.GetComponent<myUiTypeScript>().previousUI=currentActiveUI;
+          currentActiveUI.SetActive(false);
           g.SetActive(true);
           break;
         }
@@ -192,12 +212,14 @@ public class UiManagerScript : MonoBehaviour
     }
       public void OpenBattleGroundMenu()
     {
-       FindActiveUI();
-      currentActiveUI.SetActive(false);
+     
       foreach(GameObject g in UIs)
       {
         if(g.GetComponent<myUiTypeScript>().myStandardUI==StandardUI.battleGround)
         {
+           FindActiveUI();
+           g.GetComponent<myUiTypeScript>().previousUI=currentActiveUI;
+          currentActiveUI.SetActive(false);
           g.SetActive(true);
           break;
         }
@@ -206,12 +228,14 @@ public class UiManagerScript : MonoBehaviour
     }
       public void OpenQuickMenu()
     {
-       FindActiveUI();
-      currentActiveUI.SetActive(false);
+     
       foreach(GameObject g in UIs)
       {
         if(g.GetComponent<myUiTypeScript>().myStandardUI==StandardUI.quickMenu)
         {
+           FindActiveUI();
+           g.GetComponent<myUiTypeScript>().previousUI=currentActiveUI;
+          currentActiveUI.SetActive(false);
           g.SetActive(true);
           break;
         }
@@ -219,12 +243,14 @@ public class UiManagerScript : MonoBehaviour
     }
       public void OpenAreYouSureMenuMenu()
     {
-       FindActiveUI();
-      currentActiveUI.SetActive(false);
+      
       foreach(GameObject g in UIs)
       {
         if(g.GetComponent<myUiTypeScript>().myStandardUI==StandardUI.areYouSureMenu)
         {
+           FindActiveUI();
+           g.GetComponent<myUiTypeScript>().previousUI=currentActiveUI;
+          currentActiveUI.SetActive(false);
           g.SetActive(true);
           break;
         }
@@ -233,12 +259,14 @@ public class UiManagerScript : MonoBehaviour
     }
       public void OpenChooseTeamMenu()
     {
-       FindActiveUI();
-      currentActiveUI.SetActive(false);
+       
       foreach(GameObject g in UIs)
       {
         if(g.GetComponent<myUiTypeScript>().myStandardUI==StandardUI.chooseTeamMenu)
         {
+           FindActiveUI();
+           g.GetComponent<myUiTypeScript>().previousUI=currentActiveUI;
+          currentActiveUI.SetActive(false);
           g.SetActive(true);
           break;
         }
@@ -247,17 +275,57 @@ public class UiManagerScript : MonoBehaviour
     }
       public void OpenbattleGroundScene()
     {
-       FindActiveUI();
-      currentActiveUI.SetActive(false);
+      
       foreach(GameObject g in UIs)
       {
         if(g.GetComponent<myUiTypeScript>().myStandardUI==StandardUI.battleGroundScene)
         {
+           FindActiveUI();
+           g.GetComponent<myUiTypeScript>().previousUI=currentActiveUI;
+          currentActiveUI.SetActive(false);
           g.SetActive(true);
           break;
         }
       }
 
+    }
+    public void ExitYesButtonAction()
+    {
+      
+           FindActiveUI();
+           if(currentActiveUI.GetComponent<myUiTypeScript>().previousUI.GetComponent<myUiTypeScript>().previousUI!=null)
+           {
+           currentActiveUI.GetComponent<myUiTypeScript>().previousUI.GetComponent<myUiTypeScript>().previousUI.SetActive(true);
+         //  GameObject _previousUI=currentActiveUI;
+           currentActiveUI.SetActive(false);
+         //  FindActiveUI();
+          // currentActiveUI.GetComponent<myUiTypeScript>().previousUI=_previousUI;
+           }
+           else
+           Application.Quit();
+
+        
+      
+
+    }
+    public void ExitNoButtonAction()
+    {
+           FindActiveUI();
+           currentActiveUI.GetComponent<myUiTypeScript>().previousUI.SetActive(true);
+          // GameObject _previousUI=currentActiveUI;
+           currentActiveUI.SetActive(false);
+          // FindActiveUI();
+           //currentActiveUI.GetComponent<myUiTypeScript>().previousUI=_previousUI;
+
+    }
+    public void OnBackButtonAction()
+    {
+           FindActiveUI();
+           currentActiveUI.GetComponent<myUiTypeScript>().previousUI.SetActive(true);
+         //  GameObject _previousUI=currentActiveUI;
+           currentActiveUI.SetActive(false);
+         //  FindActiveUI();
+          // currentActiveUI.GetComponent<myUiTypeScript>().previousUI=_previousUI;
     }
 
     

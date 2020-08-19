@@ -6,19 +6,19 @@ using UnityEngine.UI;
 public class TextChain : MonoBehaviour
 {
     // Fields 
-    private Text textComponent;
+    private TextMesh textMeshComponent;
     private string textString;
     [SerializeField] private GameObject typedSection;
-    private List<Text> typedTextList;
+    private List<TextMesh> typedTextList;
     private List<char> charList;
 
     // Start is called before the first frame update
     void Start()
     {
-        textComponent = gameObject.GetComponent<Text>();
-        textString = textComponent.text.ToString();
-        Text []textChilds = typedSection.GetComponentsInChildren<Text>();
-        typedTextList = new List<Text>(textChilds);
+        textMeshComponent = gameObject.GetComponent<TextMesh>();
+        textString = textMeshComponent.text.ToString();
+        TextMesh []textChilds = typedSection.GetComponentsInChildren<TextMesh>();
+        typedTextList = new List<TextMesh>(textChilds);
         InitializeCharList();
     }
 
@@ -79,12 +79,12 @@ public class TextChain : MonoBehaviour
     }
     void RemoveLastTypedChar()
     {
-        textComponent.text = textComponent.text.Remove(0,1);
+        textMeshComponent.text = textMeshComponent.text.Remove(0,1);
     }
     void AddPreviousChar(int pointerLocation)
     {
         char previousChar = textString[pointerLocation-1];
-        textComponent.text = textComponent.text.Insert(0,previousChar.ToString());
+        textMeshComponent.text = textMeshComponent.text.Insert(0,previousChar.ToString());
     }
     public void WasCorrect(int pointerLocation)
     {
