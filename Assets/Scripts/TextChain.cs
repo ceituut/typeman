@@ -6,19 +6,19 @@ using UnityEngine.UI;
 public class TextChain : MonoBehaviour
 {
     // Fields 
-    private TextMesh textMeshComponent;
+    private Text textMeshComponent;
     private string textString;
     [SerializeField] private GameObject typedSection;
-    private List<TextMesh> typedTextList;
+    private List<Text> typedTextList;
     private List<char> charList;
 
     // Start is called before the first frame update
     void Start()
     {
-        textMeshComponent = gameObject.GetComponent<TextMesh>();
+        textMeshComponent = gameObject.GetComponent<Text>();
         textString = textMeshComponent.text.ToString();
-        TextMesh []textChilds = typedSection.GetComponentsInChildren<TextMesh>();
-        typedTextList = new List<TextMesh>(textChilds);
+        Text []textChilds = typedSection.GetComponentsInChildren<Text>();
+        typedTextList = new List<Text>(textChilds);
         InitializeCharList();
     }
 

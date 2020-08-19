@@ -10,7 +10,7 @@ public class Pointer : MonoBehaviour
     private Warrior warrior;
     [SerializeField] private GameObject targetPlatform;
     [SerializeField] private GameObject targetText;
-    private TMPro.TMP_InputField playerInputField;
+    private InputField playerInputField;
     private char lastInputChar;
     private string neededString;
     private char neededChar;
@@ -43,7 +43,7 @@ public class Pointer : MonoBehaviour
         continuousCorrects = 0;
         lastInputChar = '\0';
         isTypedCorrectList = new List<bool>();
-        neededString = targetText.GetComponent<TextMesh>().text.ToString();
+        neededString = targetText.GetComponent<Text>().text.ToString();
         GetNeededChar();
         ActivatePlayerInput();
     }
@@ -56,8 +56,8 @@ public class Pointer : MonoBehaviour
 
     void ActivatePlayerInput()
     {
-        playerInputField = gameObject.GetComponent<TMPro.TMP_InputField>();
-        playerInputField.textComponent = gameObject.GetComponent<TMPro.TextMeshPro>();
+        playerInputField = gameObject.GetComponent<InputField>();
+        playerInputField.textComponent = gameObject.GetComponent<Text>();
         playerInputField.ActivateInputField();
         playerInputField.Select();
         // Adds listner to the playerInutField and invokes CheckChar() when the value changes
