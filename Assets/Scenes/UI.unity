@@ -1700,6 +1700,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BattleMenuUI
       objectReference: {fileID: 0}
+    - target: {fileID: 9199916999357337841, guid: 2486e2d1ad175d147bc72498250819af,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9199916999357337846, guid: 2486e2d1ad175d147bc72498250819af,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1839,20 +1844,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1244233026}
     m_Modifications:
-    - target: {fileID: 380740933255579072, guid: a6ff34a32f3de20409873042abccc086,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1434959115}
     - target: {fileID: 746003580916896359, guid: a6ff34a32f3de20409873042abccc086,
         type: 3}
       propertyPath: m_Name
       value: QuickMenuUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 746003580916896359, guid: a6ff34a32f3de20409873042abccc086,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4487658018125234085, guid: a6ff34a32f3de20409873042abccc086,
         type: 3}

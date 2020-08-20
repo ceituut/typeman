@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class UiManagerScript : MonoBehaviour
+public class UiManagerScript : singleton<UiManagerScript>
 {
   /* Desctiptoins: DONT DISABLE ANY UI BEFORE GAME STARTS, ENABLE ALL THE UIS IN THE SCENE AND PUT THEM ALL IN THE UIs ARRAY IN GAME MANAGER SCRIPT THEN SET THE
 'ActiveUIWhenStart' VARIABLE OF THE STARTING UI ON TRUE AND SET ALL THE OTHERS ON FALSE.*/
