@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 public class TextChain : MonoBehaviour
 {
-    // Fields 
-    private Text textMeshComponent;
+    // Fields
+    private TextMesh textMeshComponent;
     private string textString;
     [SerializeField] private GameObject typedSection;
-    private List<Text> typedTextList;
+    private List<TextMesh> typedTextList;
     private List<char> charList;
 
     // Start is called before the first frame update
     void Start()
     {
-        textMeshComponent = gameObject.GetComponent<Text>();
+        textMeshComponent = gameObject.GetComponent<TextMesh>();
         textString = textMeshComponent.text.ToString();
-        Text []textChilds = typedSection.GetComponentsInChildren<Text>();
-        typedTextList = new List<Text>(textChilds);
+        TextMesh []textChilds = typedSection.GetComponentsInChildren<TextMesh>();
+        typedTextList = new List<TextMesh>(textChilds);
         InitializeCharList();
     }
 
