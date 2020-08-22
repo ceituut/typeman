@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class Pointer : MonoBehaviour
 {
     // Fields
-    private Warrior warrior;
+    [SerializeField] private Warrior warrior;
     [SerializeField] private GameObject targetPlatform;
     [SerializeField] private GameObject targetText;
-    private TMPro.TMP_InputField playerInputField;
+    private CustomInputField playerInputField;
     private char lastInputChar;
     private string neededString;
     private char neededChar;
@@ -51,12 +51,12 @@ public class Pointer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     void ActivatePlayerInput()
     {
-        playerInputField = gameObject.GetComponent<TMPro.TMP_InputField>();
+        playerInputField = gameObject.GetComponent<CustomInputField>();
         playerInputField.textComponent = gameObject.GetComponent<TMPro.TextMeshPro>();
         playerInputField.ActivateInputField();
         playerInputField.Select();

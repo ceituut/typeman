@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TextChain : MonoBehaviour
 {
-    // Fields 
+    // Fields
     private TextMesh textMeshComponent;
     private string textString;
     [SerializeField] private GameObject typedSection;
