@@ -25,9 +25,9 @@ public class Warrior : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
+        Armor = 1;
+        damage = 10;
     }
-
     // Update is called once per frame
     void Update()
     {
