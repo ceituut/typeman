@@ -10,7 +10,7 @@ public class Pointer : MonoBehaviour
     [SerializeField] private Warrior warrior;
     [SerializeField] private GameObject targetPlatform;
     [SerializeField] private GameObject targetText;
-    private CustomInputField playerInputField;
+    private TMPro.TMP_InputField playerInputField;
     private char lastInputChar;
     private string neededString;
     private char neededChar;
@@ -20,8 +20,8 @@ public class Pointer : MonoBehaviour
     [SerializeField] private int continuousCorrects;
     private List<bool> isTypedCorrectList;
     private bool pointerActiveness;
-
     public platformManager.StandardPlatform myPlatform;
+
     // Properties
     public int PointerLocation
     {
@@ -36,49 +36,72 @@ public class Pointer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        warrior = gameObject.GetComponent<Warrior>();
-        PointerLocation = 0;
-        mistakes = 0;
-        backspaceMistakes = 0;
-        continuousCorrects = 0;
-        lastInputChar = '\0';
-        isTypedCorrectList = new List<bool>();
-        neededString = targetText.GetComponent<TextMesh>().text.ToString();
+        warrior = gameObject.GetComponentInParent<Warrior>();
+        InitializeStatus();
+        InitializeNeededString();
         GetNeededChar();
-        ActivatePlayerInput();
+        InitializeInputField();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        KeepActiveInputField();
     }
 
-    void ActivatePlayerInput()
+    void InitializeStatus() 
     {
-        playerInputField = gameObject.GetComponent<CustomInputField>();
+        mistakes = 0;
+        backspaceMistakes = 0;
+        continuousCorrects = 0;
+        isTypedCorrectList = new List<bool>();
+    }
+    void InitializeNeededString()
+    {
+        PointerLocation = 0;
+        lastInputChar = '\0';//////////////////////////////////
+        neededString = targetText.GetComponent<TextMesh>().text.ToString();
+    }
+    void InitializeInputField()
+    {
+        playerInputField = gameObject.GetComponent<TMPro.TMP_InputField>();
         playerInputField.textComponent = gameObject.GetComponent<TMPro.TextMeshPro>();
-        playerInputField.ActivateInputField();
-        playerInputField.Select();
+        ActivateInputField();
         // Adds listner to the playerInutField and invokes CheckChar() when the value changes
-        playerInputField.onValueChanged.AddListener( delegate 
+        playerInputField.onValueChanged.AddListener( delegate
         {
-            GetLastInputChar(); 
+            GetLastInputChar();
             CheckChar();
             BonusCorrectsCheck(); 
-            GetNeededChar(); 
+            GetNeededChar();
         });
+    }
+    void ActivateInputField()
+    {
+        playerInputField.ActivateInputField();
+        playerInputField.Select();
+    }
+    void KeepActiveInputField()
+    {
+        if(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1) 
+        || Input.GetKey(KeyCode.Mouse2) || Input.GetKey(KeyCode.Mouse3) 
+        || Input.GetKey(KeyCode.Mouse4) || Input.GetKey(KeyCode.Mouse5)
+        || Input.GetKey(KeyCode.Mouse6))
+            ActivateInputField();
     }
     public void CheckChar()
     {
         if (Input.GetKey(KeyCode.Backspace))
         {
-            CheckBackspaceMistakes();
-            targetText.GetComponent<TextChain>().OneStepBack(pointerLocation); ///// performance
-            PointerLocation --;
+            if (isTypedCorrectList.Count != 0)
+            {
+                CheckBackspaceMistakes();
+                targetText.GetComponent<TextChain>().OneStepBack(pointerLocation); ///// performance
+                PointerLocation --;
+            }
             continuousCorrects = 0;
         }
-        else if (!IsTextEnd())
+        else ///if (!IsTextEnd())
         {
             targetText.GetComponent<TextChain>().WasTyped(pointerLocation); ///// performance
             if (lastInputChar == neededChar)
@@ -99,11 +122,11 @@ public class Pointer : MonoBehaviour
                 warrior.Armor --;
             }
         }
-        else
-        {
-            pointerLocation = 0;
-            // Text is ended. new text needed.
-        }
+        // else
+        // {
+        //     pointerLocation = 0;
+        //     // Text is ended. new text needed.
+        // }
     }
     public void GetLastInputChar()
     {
@@ -113,8 +136,8 @@ public class Pointer : MonoBehaviour
     }
     public void GetNeededChar()
     {
-        if (!IsTextEnd()) /////////////////////////////////////////////////
-            neededChar = neededString[PointerLocation];
+        // if (!IsTextEnd()) /////////////////////////////////////////////////
+        neededChar = neededString[PointerLocation];
     }
     void ClearInputString()
     {
@@ -139,7 +162,7 @@ public class Pointer : MonoBehaviour
     }
     bool IsTextEnd()
     {
-        if (pointerLocation > neededString.Length -1)
+        if (pointerLocation > (neededString.Length -1))
             return true;
         else
             return false;
