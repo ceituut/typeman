@@ -1197,7 +1197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86ddcdf4b6edcd408652ed7722f59ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfActiveness: 0
   IsSafePlatform: 0
   platformType: 1
   textChild: {fileID: 5510204337023615907}

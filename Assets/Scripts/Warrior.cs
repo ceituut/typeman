@@ -44,7 +44,7 @@ public class Warrior : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
             ChangePlatform();
     }
-    void Operation(platformManager.StandardPlatform currentPlatform)
+    public void PerformOperation(platformManager.StandardPlatform currentPlatform)
     {
         switch(currentPlatform)
         {

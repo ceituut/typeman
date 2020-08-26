@@ -10,16 +10,12 @@ public class Pointer : MonoBehaviour
     [SerializeField] private Warrior warrior;
     private GameObject targetPlatform;
     private GameObject targetText;
+    private Report currentReport;
     private TMPro.TMP_InputField playerInputField;
-    private char lastInputChar;
     [SerializeField] private string neededString;
     [SerializeField] private char neededChar;
+    private char lastInputChar;
     [SerializeField] private int pointerLocation;
-    [SerializeField] private int mistakes;
-    [SerializeField] private int backspaceMistakes;
-    [SerializeField] private int continuousCorrects;
-    private List<bool> isTypedCorrectList;
-    private bool pointerActiveness;
 
     // Properties
     public int PointerLocation
@@ -30,13 +26,13 @@ public class Pointer : MonoBehaviour
                     pointerLocation = value;
             }
     }
-    public bool PointerActiveness { get => pointerActiveness; set => pointerActiveness = value; }
     public GameObject TargetPlatform { get => targetPlatform; set => targetPlatform = value; }
 
     // Start is called before the first frame update
     void Start()
     {
         warrior = gameObject.GetComponentInParent<Warrior>();
+        currentReport = new Report();
     }
 
     // Update is called once per frame
@@ -47,16 +43,9 @@ public class Pointer : MonoBehaviour
     public void InitializePointer(GameObject newPlatform)
     {
         warrior.PointerList.Add(this);
-        InitializeStatus();
+        currentReport = new Report();
         InitializeNeededString(newPlatform);
         InitializeInputField();
-    }
-    void InitializeStatus() 
-    {
-        mistakes = 0;
-        backspaceMistakes = 0;
-        continuousCorrects = 0;
-        isTypedCorrectList = new List<bool>();
     }
     void InitializeNeededString(GameObject targetPlatform)
     {
@@ -98,13 +87,13 @@ public class Pointer : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Backspace))
         {
-            if (isTypedCorrectList.Count != 0)
+            if (currentReport.CanBackespace())
             {
-                CheckBackspaceMistakes();
+                currentReport.CheckBackspaceMistakes();
                 targetText.GetComponent<TextChain>().OneStepBack(pointerLocation); ///// performance
                 PointerLocation --;
             }
-            continuousCorrects = 0;
+            currentReport.ContinuousCorrects = 0;
         }
         else ///if (!IsTextEnd())
             CheckChar();
@@ -118,26 +107,23 @@ public class Pointer : MonoBehaviour
     {
         targetText.GetComponent<TextChain>().WasTyped(pointerLocation); ///// performance
         if (lastInputChar == neededChar)
-            AddCorrect();
+            PerformCorrectAction();
         else
-            AddMistake();
+            PerformMistakeAction();
     }
-    void AddCorrect()
+    void PerformCorrectAction()
     {
-        isTypedCorrectList.Add(true);
+        currentReport.AddCorrect();
         PointerLocation ++;
-        continuousCorrects ++;
         // Warrior function according to target platform
-        warrior.Attack();
+        // warrior.PerformOperation(TargetPlatform.GetComponent<Platform>().platformType);
     }
-    void AddMistake()
+    void PerformMistakeAction()
     {
-        isTypedCorrectList.Add(false);
-        mistakes ++;
+        currentReport.AddMistake();
         PointerLocation ++;
-        continuousCorrects = 0;
         // warrior becomes vulnerable to enemy damage
-        warrior.Armor --;
+        // warrior.Armor --;
     }
     public void GetLastInputChar()
     {
@@ -154,22 +140,10 @@ public class Pointer : MonoBehaviour
     {
         playerInputField.text = String.Empty;
     }
-    void CheckBackspaceMistakes()
-    {
-        bool currentCharIsCorrect;
-        int length = isTypedCorrectList.Count;
-        if (length > 0)
-        {
-            currentCharIsCorrect = isTypedCorrectList[length-1];
-            if (currentCharIsCorrect)
-                this.backspaceMistakes ++;
-            isTypedCorrectList.RemoveAt(length-1);
-        }
-    }
     public void BonusCorrectsCheck()
     {
-        if (continuousCorrects >= 5)
-            warrior.BonusAttack(continuousCorrects);
+        if (currentReport.ContinuousCorrects >= 5)
+            warrior.BonusAttack(currentReport.ContinuousCorrects);
     }
     bool IsTextEnd()
     {
