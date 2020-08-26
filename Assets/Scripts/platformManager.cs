@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class platformManager : singleton<platformManager>
 {
-    public int maxPlatformNumbers=3;
-    public enum StandardPlatform
+    public enum StandardPlatform {fight,health,armor};
+
+    public List<GameObject> platformList;
+    private void Start() 
     {
-        fight,//red
-        health,//green
-        armor//black
-    };
-
-
+        AddAllPlatforms();
+    }
+    void AddAllPlatforms()
+    {
+        platformList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Platform"));
+    }
 }

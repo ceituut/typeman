@@ -20,7 +20,6 @@ public class Pointer : MonoBehaviour
     [SerializeField] private int continuousCorrects;
     private List<bool> isTypedCorrectList;
     private bool pointerActiveness;
-    public platformManager.StandardPlatform myPlatform;
 
     // Properties
     public int PointerLocation
@@ -32,15 +31,12 @@ public class Pointer : MonoBehaviour
             }
     }
     public bool PointerActiveness { get => pointerActiveness; set => pointerActiveness = value; }
+    public GameObject TargetPlatform { get => targetPlatform; set => targetPlatform = value; }
 
     // Start is called before the first frame update
     void Start()
     {
-        warrior = gameObject.GetComponentInParent<Warrior>();
-        InitializeStatus();
-        InitializeNeededString();
-        GetNeededChar();
-        InitializeInputField();
+        InitializePointer();
     }
 
     // Update is called once per frame
@@ -48,7 +44,13 @@ public class Pointer : MonoBehaviour
     {
         KeepActiveInputField();
     }
-
+    public void InitializePointer()
+    {
+        warrior = gameObject.GetComponentInParent<Warrior>();
+        InitializeStatus();
+        InitializeNeededString();
+        InitializeInputField();
+    }
     void InitializeStatus() 
     {
         mistakes = 0;
@@ -59,7 +61,7 @@ public class Pointer : MonoBehaviour
     void InitializeNeededString()
     {
         PointerLocation = 0;
-        lastInputChar = '\0';//////////////////////////////////
+        targetText = targetPlatform.GetComponent<Platform>().textChild;
         neededString = targetText.GetComponent<TextMesh>().text.ToString();
     }
     void InitializeInputField()
@@ -67,13 +69,13 @@ public class Pointer : MonoBehaviour
         playerInputField = gameObject.GetComponent<TMPro.TMP_InputField>();
         playerInputField.textComponent = gameObject.GetComponent<TMPro.TextMeshPro>();
         ActivateInputField();
-        // Adds listner to the playerInutField and invokes CheckChar() when the value changes
+        // Adds listner to the playerInutField and invokes CheckInput() when the value changes
         playerInputField.onValueChanged.AddListener( delegate
         {
             GetLastInputChar();
-            CheckChar();
-            BonusCorrectsCheck(); 
             GetNeededChar();
+            CheckInput();
+            BonusCorrectsCheck(); 
         });
     }
     void ActivateInputField()
@@ -89,7 +91,7 @@ public class Pointer : MonoBehaviour
         || Input.GetKey(KeyCode.Mouse6))
             ActivateInputField();
     }
-    public void CheckChar()
+    public void CheckInput()
     {
         if (Input.GetKey(KeyCode.Backspace))
         {
@@ -102,31 +104,37 @@ public class Pointer : MonoBehaviour
             continuousCorrects = 0;
         }
         else ///if (!IsTextEnd())
-        {
-            targetText.GetComponent<TextChain>().WasTyped(pointerLocation); ///// performance
-            if (lastInputChar == neededChar)
-            {
-                isTypedCorrectList.Add(true);
-                PointerLocation ++;
-                continuousCorrects ++;
-                // Warrior function according to target platform
-                warrior.Attack();
-            }
-            else
-            {
-                isTypedCorrectList.Add(false);
-                mistakes ++;
-                PointerLocation ++;
-                continuousCorrects = 0;
-                // warrior becomes vulnerable to enemy damage
-                warrior.Armor --;
-            }
-        }
+            CheckChar();
         // else
         // {
         //     pointerLocation = 0;
         //     // Text is ended. new text needed.
         // }
+    }
+    void CheckChar()
+    {
+        targetText.GetComponent<TextChain>().WasTyped(pointerLocation); ///// performance
+        if (lastInputChar == neededChar)
+            AddCorrect();
+        else
+            AddMistake();
+    }
+    void AddCorrect()
+    {
+        isTypedCorrectList.Add(true);
+        PointerLocation ++;
+        continuousCorrects ++;
+        // Warrior function according to target platform
+        warrior.Attack();
+    }
+    void AddMistake()
+    {
+        isTypedCorrectList.Add(false);
+        mistakes ++;
+        PointerLocation ++;
+        continuousCorrects = 0;
+        // warrior becomes vulnerable to enemy damage
+        warrior.Armor --;
     }
     public void GetLastInputChar()
     {

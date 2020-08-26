@@ -7,7 +7,6 @@ public class KeyBoardManagerScript : singleton<KeyBoardManagerScript>
     public bool IsKeyBoardSectionEnabled;
     public GameObject keybard;
     
-   
     public bool IsKeyBoardSystemReady()
     {
         if(IsKeyBoardSectionEnabled && (keybard==null ? false : true))

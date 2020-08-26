@@ -27,7 +27,6 @@ public class TextChain : MonoBehaviour
     {
         
     }
-
     void InitializeCharList()
     {
         charList = new List<char>();
@@ -46,7 +45,6 @@ public class TextChain : MonoBehaviour
                 charList[index] = charList[index+1];
         }
     }
-
     void ShiftRighCharList(int pointerLocation)
     {
         int length = charList.Count;
@@ -89,12 +87,10 @@ public class TextChain : MonoBehaviour
     public void WasCorrect(int pointerLocation)
     {
     }
-
     public void GoForward(int pointerLocation)
     {
 
     }
-
     public void GoBackward(int pointerLocation)
     {
         
