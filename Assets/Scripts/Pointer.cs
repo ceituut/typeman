@@ -28,15 +28,13 @@ public class Pointer : MonoBehaviour
     }
     public GameObject TargetPlatform { get => targetPlatform; set => targetPlatform = value; }
 
-    // Start is called before the first frame update
-    void Start()
+    // Methods
+    private void Start()
     {
         warrior = gameObject.GetComponentInParent<Warrior>();
         currentReport = new Report();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         KeepActiveInputField();
     }
@@ -47,13 +45,13 @@ public class Pointer : MonoBehaviour
         InitializeNeededString(newPlatform);
         InitializeInputField();
     }
-    void InitializeNeededString(GameObject targetPlatform)
+    private void InitializeNeededString(GameObject targetPlatform)
     {
         PointerLocation = 0;
         targetText = targetPlatform.GetComponent<Platform>().textChild;
         neededString = targetText.GetComponent<TextMesh>().text.ToString();
     }
-    void InitializeInputField()
+    private void InitializeInputField()
     {
         playerInputField = gameObject.GetComponent<TMPro.TMP_InputField>();
         playerInputField.textComponent = gameObject.GetComponent<TMPro.TextMeshPro>();
@@ -61,21 +59,15 @@ public class Pointer : MonoBehaviour
         // Removes previous lisntners
         if(warrior.PointerList.Count != 0)
             playerInputField.onValueChanged.RemoveAllListeners();
-        // Adds listner to the playerInutField and invokes CheckInput() when the value changes
-        playerInputField.onValueChanged.AddListener( delegate
-        {
-            GetLastInputChar();
-            GetNeededChar();
-            CheckInput();
-            BonusCorrectsCheck(); 
-        });
+        // Adds listner to the playerInutField and invokes CheckOperation() when the value changes
+        playerInputField.onValueChanged.AddListener( delegate { CheckOperation(); });
     }
-    void ActivateInputField()
+    private void ActivateInputField()
     {
         playerInputField.ActivateInputField();
         playerInputField.Select();
     }
-    void KeepActiveInputField()
+    private void KeepActiveInputField()
     {
         if(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1) 
         || Input.GetKey(KeyCode.Mouse2) || Input.GetKey(KeyCode.Mouse3) 
@@ -83,73 +75,76 @@ public class Pointer : MonoBehaviour
         || Input.GetKey(KeyCode.Mouse6))
             ActivateInputField();
     }
-    public void CheckInput()
+    private void CheckOperation()
+    {
+        if (!IsTextEnd())
+        {
+            GetLastInputChar();
+            GetNeededChar();
+            CheckInput();
+            BonusCorrectsCheck(); 
+        }
+        else
+            pointerLocation = 0; // Text is ended
+    }
+    private void CheckInput()
     {
         if (Input.GetKey(KeyCode.Backspace))
         {
             if (currentReport.CanBackespace())
             {
                 currentReport.CheckBackspaceMistakes();
-                targetText.GetComponent<TextChain>().OneStepBack(pointerLocation); ///// performance
+                targetText.GetComponent<TextChain>().OneStepBack(pointerLocation);
                 PointerLocation --;
             }
             currentReport.ContinuousCorrects = 0;
         }
-        else ///if (!IsTextEnd())
+        else
             CheckChar();
-        // else
-        // {
-        //     pointerLocation = 0;
-        //     // Text is ended. new text needed.
-        // }
     }
-    void CheckChar()
+    private void CheckChar()
     {
-        targetText.GetComponent<TextChain>().WasTyped(pointerLocation); ///// performance
+        targetText.GetComponent<TextChain>().WasTyped(pointerLocation);
         if (lastInputChar == neededChar)
             PerformCorrectAction();
         else
             PerformMistakeAction();
     }
-    void PerformCorrectAction()
+    private void PerformCorrectAction()
     {
         currentReport.AddCorrect();
         PointerLocation ++;
         // Warrior function according to target platform
         // warrior.PerformOperation(TargetPlatform.GetComponent<Platform>().platformType);
     }
-    void PerformMistakeAction()
+    private void PerformMistakeAction()
     {
         currentReport.AddMistake();
         PointerLocation ++;
         // warrior becomes vulnerable to enemy damage
         // warrior.Armor --;
     }
-    public void GetLastInputChar()
+    private void GetLastInputChar()
     {
         string playerInputString = playerInputField.text.ToString();
         if (playerInputString.Length != 0)
             lastInputChar = playerInputString[playerInputString.Length - 1];
     }
-    public void GetNeededChar()
+    private void GetNeededChar()
     {
-        // if (!IsTextEnd()) /////////////////////////////////////////////////
         neededChar = neededString[PointerLocation];
     }
-    void ClearInputString()
+    private void ClearInputString()
     {
         playerInputField.text = String.Empty;
     }
-    public void BonusCorrectsCheck()
+    private void BonusCorrectsCheck()
     {
         if (currentReport.ContinuousCorrects >= 5)
             warrior.BonusAttack(currentReport.ContinuousCorrects);
     }
-    bool IsTextEnd()
+    private bool IsTextEnd()
     {
-        if (pointerLocation > (neededString.Length -1))
-            return true;
-        else
-            return false;
+        return (pointerLocation > (neededString.Length -1));
     }
 }
