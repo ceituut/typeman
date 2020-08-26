@@ -382,8 +382,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warrior: {fileID: 0}
-  targetPlatform: {fileID: 0}
-  targetText: {fileID: 0}
+  neededString: 
+  neededChar: 0
+  pointerLocation: 0
   mistakes: 0
   backspaceMistakes: 0
   continuousCorrects: 0

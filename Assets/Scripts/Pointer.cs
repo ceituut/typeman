@@ -8,13 +8,13 @@ public class Pointer : MonoBehaviour
 {
     // Fields
     [SerializeField] private Warrior warrior;
-    [SerializeField] private GameObject targetPlatform;
-    [SerializeField] private GameObject targetText;
+    private GameObject targetPlatform;
+    private GameObject targetText;
     private TMPro.TMP_InputField playerInputField;
     private char lastInputChar;
-    private string neededString;
-    private char neededChar;
-    private int pointerLocation;
+    [SerializeField] private string neededString;
+    [SerializeField] private char neededChar;
+    [SerializeField] private int pointerLocation;
     [SerializeField] private int mistakes;
     [SerializeField] private int backspaceMistakes;
     [SerializeField] private int continuousCorrects;
@@ -36,7 +36,7 @@ public class Pointer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitializePointer();
+        warrior = gameObject.GetComponentInParent<Warrior>();
     }
 
     // Update is called once per frame
@@ -44,11 +44,11 @@ public class Pointer : MonoBehaviour
     {
         KeepActiveInputField();
     }
-    public void InitializePointer()
+    public void InitializePointer(GameObject newPlatform)
     {
-        warrior = gameObject.GetComponentInParent<Warrior>();
+        warrior.PointerList.Add(this);
         InitializeStatus();
-        InitializeNeededString();
+        InitializeNeededString(newPlatform);
         InitializeInputField();
     }
     void InitializeStatus() 
@@ -58,7 +58,7 @@ public class Pointer : MonoBehaviour
         continuousCorrects = 0;
         isTypedCorrectList = new List<bool>();
     }
-    void InitializeNeededString()
+    void InitializeNeededString(GameObject targetPlatform)
     {
         PointerLocation = 0;
         targetText = targetPlatform.GetComponent<Platform>().textChild;
@@ -69,6 +69,9 @@ public class Pointer : MonoBehaviour
         playerInputField = gameObject.GetComponent<TMPro.TMP_InputField>();
         playerInputField.textComponent = gameObject.GetComponent<TMPro.TextMeshPro>();
         ActivateInputField();
+        // Removes previous lisntners
+        if(warrior.PointerList.Count != 0)
+            playerInputField.onValueChanged.RemoveAllListeners();
         // Adds listner to the playerInutField and invokes CheckInput() when the value changes
         playerInputField.onValueChanged.AddListener( delegate
         {

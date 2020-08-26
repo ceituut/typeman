@@ -11,23 +11,23 @@ public class Warrior : MonoBehaviour
     private float health;
     private float armor;
     private float damage;
-    private int platformNumber = 0;
+    private int platformLocation = 0;
 
     // Properties
     public Profile OwnerProfile { get => ownerProfile; set => ownerProfile = value; }
     public float Health { get => health; set => health = value; }
     public float Armor { get => armor; set => armor = value; }
     public float Damage { get => damage; set => damage = value; }
-    public int PlatformNumber 
+    public int PlatformLocation 
     {
-        get {return platformNumber;}
+        get {return platformLocation;}
         set 
         {
             int numberOfPlatforms = platformManager.instance.platformList.Count;
             if (value < numberOfPlatforms)
-                platformNumber = value;
+                platformLocation = value;
             else
-                platformNumber = value % numberOfPlatforms;
+                platformLocation = value % numberOfPlatforms;
         }
     }
 
@@ -44,17 +44,6 @@ public class Warrior : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
             ChangePlatform();
     }
-    private void ChangePlatform()
-    {
-        GameObject nextPlatform;
-        platformNumber ++;
-        nextPlatform = platformManager.instance.platformList[platformNumber];
-        ChangeWarriorPosition(nextPlatform);
-    }
-    void ChangeWarriorPosition(GameObject targetPlatform)
-    {
-
-    }
     void Operation(platformManager.StandardPlatform currentPlatform)
     {
         switch(currentPlatform)
@@ -69,6 +58,17 @@ public class Warrior : MonoBehaviour
                 increaseArmor();
                 break;
         }
+    }
+    private void ChangePlatform()
+    {
+        GameObject nextPlatform;
+        platformLocation ++;
+        nextPlatform = platformManager.instance.platformList[platformLocation];
+        ChangeWarriorPosition(nextPlatform);
+    }
+    void ChangeWarriorPosition(GameObject targetPlatform)
+    {
+
     }
     public void Attack()
     {

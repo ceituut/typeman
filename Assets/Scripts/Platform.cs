@@ -27,12 +27,8 @@ public class Platform : MonoBehaviour
     private void OnTriggerEnter(Collider _collider)
     {
         Warrior enteredWarrior = _collider.gameObject.GetComponent<Warrior>();
-        Debug.Log("justCalled");
-        if (enteredWarrior == null)
-            Debug.Log("not Entered");
         if (enteredWarrior == null)
             return;
-        Debug.Log("Enterd");
 
         bool needsNewPointer = true;
         Pointer pointerOfWarrior = _collider.gameObject.GetComponentInChildren<Pointer>();
@@ -42,26 +38,24 @@ public class Platform : MonoBehaviour
         {
             if (thisPointer.TargetPlatform == this.gameObject)
                 {
-                    pointerOfWarrior = thisPointer; ////////// deep copy need/////////////
-                    pointerOfWarrior.TargetPlatform = this.gameObject;   
+                    pointerOfWarrior = thisPointer;
+                    // pointerOfWarrior = thisPointer; ////////// deep copy need/////////////
+                    // pointerOfWarrior.TargetPlatform = this.gameObject;   
                     needsNewPointer = false;
                     break;
                 }
         }
         if(needsNewPointer)
         {
-            pointerOfWarrior.InitializePointer();
-            pointerOfWarrior.TargetPlatform = this.gameObject;
-            enteredWarrior.PointerList.Add(pointerOfWarrior);
+            pointerOfWarrior.InitializePointer(this.gameObject);
         }
     }
     private void OnTriggerExit(Collider _collider)
     {
         Warrior exitedWarrior = _collider.gameObject.GetComponent<Warrior>();
         if(exitedWarrior != null)
-        {
-            CheckNumberOfActiveWarriorsWithin();
-            warriorsWithin.Remove(exitedWarrior);
-        }
+            return;
+        CheckNumberOfActiveWarriorsWithin();
+        warriorsWithin.Remove(exitedWarrior);
     }
 }
