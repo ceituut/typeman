@@ -3,48 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UiKeyboardScript : MonoBehaviour
-{
-    public KeyCode mykey;//initiate in the unity editor
-
-    public char [] charactersList;//initiate in unity Editor
-    public int characterLanguageIndex;
-    public string myString;//dont initiate
-    private void Initializings()
-    {
-        myString=setCharEqualWithKey(mykey);
-    }
-    private void Awake()
-    {
-        Initializings();
-    }
+{    public keyScript English,Farsi,keyCurrentLanguage;
+public GameObject RelatedFinger;
+    private KeyBoardManagerScript.keyboardLanguage Language;
+   
+    
+    
    private void Update()
    {
+              KeyboardLanguageSet();
        PressRelatedBtn();
-       KeyboardLanguageSet();
    }
    private void KeyboardLanguageSet()
    {
-       switch(KeyBoardManagerScript.instance.MykeybardLanguage)
-       {
-           case  KeyBoardManagerScript.keyboardLanguage.EnglishCapslockOff :
-                characterLanguageIndex=0;
-                break;
-                 case  KeyBoardManagerScript.keyboardLanguage.EnglishCapslockOn :
-                characterLanguageIndex=1;
-                break;
-                 case  KeyBoardManagerScript.keyboardLanguage.farsi :
-                characterLanguageIndex=2;
-                break;
-       }
+      
+        Language=KeyBoardManagerScript.instance.MykeybardLanguage;
+        switch (Language)
+        {
+            case KeyBoardManagerScript.keyboardLanguage.English :
+            keyCurrentLanguage=English;
+            break;
+             case KeyBoardManagerScript.keyboardLanguage.farsi :
+            keyCurrentLanguage=Farsi;
+            break;
+
+        }
    }
    private void PressRelatedBtn()
    {
+      
        if(KeyBoardManagerScript.instance.IsKeyBoardSectionEnabled)
-       {
-          if(mykey==currentBtnKeyCode())
+       { 
+           
+          if(keyCurrentLanguage!=null && keyCurrentLanguage.MyKeyCode ==currentBtnKeyCode())
           {
-              Debug.Log(charactersList[characterLanguageIndex]);///////
-              //run animation on correct key(code here)
+             
+                 if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+                 {
+                     Debug.Log(keyCurrentLanguage.CapslockOnletter);
+                 }
+                 else
+                 {
+                    Debug.Log(keyCurrentLanguage.CapslockOffLetter); 
+                 }
+                // GetComponent<Animation>().play(); used to highLight the key(code here)
+                if(RelatedFinger!=null && RelatedFinger.GetComponent<FingerScript>()!=null)
+                {
+                  //  RelatedFinger.GetComponent<Animation>().Play(); use to hight light related finger(code here)
+                }
+
+             
+              
           }
           
        }

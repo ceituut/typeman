@@ -7,16 +7,24 @@ public class KeyBoardManagerScript : singleton<KeyBoardManagerScript>
     public bool IsKeyBoardSectionEnabled;
     public GameObject keybard;
     public Event GameEvent;
-    private int keyboardLanguageIndex=1;
     public enum keyboardLanguage
     {
-        EnglishCapslockOn,
-        EnglishCapslockOff,
+        
+        English,
         farsi,
 
     }
-    public int maxLanguages=3;
-    public keyboardLanguage MykeybardLanguage=keyboardLanguage.EnglishCapslockOff;
+    public keyboardLanguage MykeybardLanguage=keyboardLanguage.English;//we change language with this
+    private void Initializings()
+    {
+        changeToEnglish();
+        GameEvent=Event.current;
+    }
+    protected override void Awake()
+    {
+        base.Awake();
+        Initializings();
+    }
     private void Update()
     {
        checkForCapslockOnOrOff();
@@ -30,7 +38,7 @@ public class KeyBoardManagerScript : singleton<KeyBoardManagerScript>
     }
     public bool IsKeyBoardSystemReady()
     {
-        if(IsKeyBoardSectionEnabled && (keybard==null ? false : true) && (keybard.GetComponent<HandManagerScript>()!=null))
+        if(IsKeyBoardSectionEnabled && (keybard==null ? false : true) && (keybard.GetComponent<keyboardScript>()!=null))
           Debug.Log("Keyboard System Run.");
           else
           {
@@ -46,27 +54,15 @@ public class KeyBoardManagerScript : singleton<KeyBoardManagerScript>
           }
         return (IsKeyBoardSectionEnabled && (keybard==null ? false : true));
     }
-    public void changeKeyboardLanguage()
+    public void changeToEnglish()
     {
-        keyboardLanguageIndex++;
-        if(keyboardLanguageIndex>maxLanguages)
-        keyboardLanguageIndex=1;
-        switch(keyboardLanguageIndex)
-        {
-            case 1 :
-             MykeybardLanguage=keyboardLanguage.EnglishCapslockOff;
-            break;
-
-             case 2 :
-              MykeybardLanguage=keyboardLanguage.EnglishCapslockOn ;
-            break;
-             case 3 :
-              MykeybardLanguage=keyboardLanguage.farsi;
-            break;
-
-
-
-        }
+        MykeybardLanguage=keyboardLanguage.English;
     }
+    public void changeToFarsi()
+    {
+        MykeybardLanguage=keyboardLanguage.farsi;
+    }
+
+    
 
 }
