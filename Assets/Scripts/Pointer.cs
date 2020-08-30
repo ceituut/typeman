@@ -8,19 +8,14 @@ public class Pointer : MonoBehaviour
 {
     // Fields
     [SerializeField] private Warrior warrior;
-    [SerializeField] private GameObject targetPlatform;
-    [SerializeField] private GameObject targetText;
+    private GameObject targetPlatform;
+    private GameObject targetText;
+    private Report currentReport;
     private TMPro.TMP_InputField playerInputField;
+    [SerializeField] private string neededString;
+    [SerializeField] private char neededChar;
     private char lastInputChar;
-    private string neededString;
-    private char neededChar;
-    private int pointerLocation;
-    [SerializeField] private int mistakes;
-    [SerializeField] private int backspaceMistakes;
-    [SerializeField] private int continuousCorrects;
-    private List<bool> isTypedCorrectList;
-    private bool pointerActiveness;
-    public platformManager.StandardPlatform myPlatform;
+    [SerializeField] private int pointerLocation;
 
     // Properties
     public int PointerLocation
@@ -31,57 +26,48 @@ public class Pointer : MonoBehaviour
                     pointerLocation = value;
             }
     }
-    public bool PointerActiveness { get => pointerActiveness; set => pointerActiveness = value; }
+    public GameObject TargetPlatform { get => targetPlatform; set => targetPlatform = value; }
 
-    // Start is called before the first frame update
-    void Start()
+    // Methods
+    private void Start()
     {
         warrior = gameObject.GetComponentInParent<Warrior>();
-        InitializeStatus();
-        InitializeNeededString();
-        GetNeededChar();
-        InitializeInputField();
+        currentReport = new Report();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         KeepActiveInputField();
     }
-
-    void InitializeStatus() 
+    public void InitializePointer(GameObject newPlatform)
     {
-        mistakes = 0;
-        backspaceMistakes = 0;
-        continuousCorrects = 0;
-        isTypedCorrectList = new List<bool>();
+        warrior.PointerList.Add(this);
+        currentReport = new Report();
+        InitializeNeededString(newPlatform);
+        InitializeInputField();
     }
-    void InitializeNeededString()
+    private void InitializeNeededString(GameObject targetPlatform)
     {
         PointerLocation = 0;
-        lastInputChar = '\0';//////////////////////////////////
+        targetText = targetPlatform.GetComponent<Platform>().textChild;
         neededString = targetText.GetComponent<TextMesh>().text.ToString();
     }
-    void InitializeInputField()
+    private void InitializeInputField()
     {
         playerInputField = gameObject.GetComponent<TMPro.TMP_InputField>();
         playerInputField.textComponent = gameObject.GetComponent<TMPro.TextMeshPro>();
         ActivateInputField();
-        // Adds listner to the playerInutField and invokes CheckChar() when the value changes
-        playerInputField.onValueChanged.AddListener( delegate
-        {
-            GetLastInputChar();
-            CheckChar();
-            BonusCorrectsCheck(); 
-            GetNeededChar();
-        });
+        // Removes previous lisntners
+        if(warrior.PointerList.Count != 0)
+            playerInputField.onValueChanged.RemoveAllListeners();
+        // Adds listner to the playerInutField and invokes CheckOperation() when the value changes
+        playerInputField.onValueChanged.AddListener( delegate { CheckOperation(); });
     }
-    void ActivateInputField()
+    private void ActivateInputField()
     {
         playerInputField.ActivateInputField();
         playerInputField.Select();
     }
-    void KeepActiveInputField()
+    private void KeepActiveInputField()
     {
         if(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1) 
         || Input.GetKey(KeyCode.Mouse2) || Input.GetKey(KeyCode.Mouse3) 
@@ -89,82 +75,76 @@ public class Pointer : MonoBehaviour
         || Input.GetKey(KeyCode.Mouse6))
             ActivateInputField();
     }
-    public void CheckChar()
+    private void CheckOperation()
+    {
+        if (!IsTextEnd())
+        {
+            GetLastInputChar();
+            GetNeededChar();
+            CheckInput();
+            BonusCorrectsCheck(); 
+        }
+        else
+            pointerLocation = 0; // Text is ended
+    }
+    private void CheckInput()
     {
         if (Input.GetKey(KeyCode.Backspace))
         {
-            if (isTypedCorrectList.Count != 0)
+            if (currentReport.CanBackespace())
             {
-                CheckBackspaceMistakes();
-                targetText.GetComponent<TextChain>().OneStepBack(pointerLocation); ///// performance
+                currentReport.CheckBackspaceMistakes();
+                targetText.GetComponent<TextChain>().OneStepBack(pointerLocation);
                 PointerLocation --;
             }
-            continuousCorrects = 0;
+            currentReport.ContinuousCorrects = 0;
         }
-        else ///if (!IsTextEnd())
-        {
-            targetText.GetComponent<TextChain>().WasTyped(pointerLocation); ///// performance
-            if (lastInputChar == neededChar)
-            {
-                isTypedCorrectList.Add(true);
-                PointerLocation ++;
-                continuousCorrects ++;
-                // Warrior function according to target platform
-                warrior.Attack();
-            }
-            else
-            {
-                isTypedCorrectList.Add(false);
-                mistakes ++;
-                PointerLocation ++;
-                continuousCorrects = 0;
-                // warrior becomes vulnerable to enemy damage
-                warrior.Armor --;
-            }
-        }
-        // else
-        // {
-        //     pointerLocation = 0;
-        //     // Text is ended. new text needed.
-        // }
+        else
+            CheckChar();
     }
-    public void GetLastInputChar()
+    private void CheckChar()
+    {
+        targetText.GetComponent<TextChain>().WasTyped(pointerLocation);
+        if (lastInputChar == neededChar)
+            PerformCorrectAction();
+        else
+            PerformMistakeAction();
+    }
+    private void PerformCorrectAction()
+    {
+        currentReport.AddCorrect();
+        PointerLocation ++;
+        // Warrior function according to target platform
+        // warrior.PerformOperation(TargetPlatform.GetComponent<Platform>().platformType);
+    }
+    private void PerformMistakeAction()
+    {
+        currentReport.AddMistake();
+        PointerLocation ++;
+        // warrior becomes vulnerable to enemy damage
+        // warrior.Armor --;
+    }
+    private void GetLastInputChar()
     {
         string playerInputString = playerInputField.text.ToString();
         if (playerInputString.Length != 0)
             lastInputChar = playerInputString[playerInputString.Length - 1];
     }
-    public void GetNeededChar()
+    private void GetNeededChar()
     {
-        // if (!IsTextEnd()) /////////////////////////////////////////////////
         neededChar = neededString[PointerLocation];
     }
-    void ClearInputString()
+    private void ClearInputString()
     {
         playerInputField.text = String.Empty;
     }
-    void CheckBackspaceMistakes()
+    private void BonusCorrectsCheck()
     {
-        bool currentCharIsCorrect;
-        int length = isTypedCorrectList.Count;
-        if (length > 0)
-        {
-            currentCharIsCorrect = isTypedCorrectList[length-1];
-            if (currentCharIsCorrect)
-                this.backspaceMistakes ++;
-            isTypedCorrectList.RemoveAt(length-1);
-        }
+        if (currentReport.ContinuousCorrects >= 5)
+            warrior.BonusAttack(currentReport.ContinuousCorrects);
     }
-    public void BonusCorrectsCheck()
+    private bool IsTextEnd()
     {
-        if (continuousCorrects >= 5)
-            warrior.BonusAttack(continuousCorrects);
-    }
-    bool IsTextEnd()
-    {
-        if (pointerLocation > (neededString.Length -1))
-            return true;
-        else
-            return false;
+        return (pointerLocation > (neededString.Length -1));
     }
 }

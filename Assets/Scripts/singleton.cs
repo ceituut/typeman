@@ -12,5 +12,4 @@ public class singleton<T> : MonoBehaviour where T : MonoBehaviour
         else
             Destroy(gameObject);
     }
-
 }
