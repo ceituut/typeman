@@ -10,7 +10,7 @@ public class Pointer : MonoBehaviour
     [SerializeField] private Warrior warrior;
     private GameObject targetPlatform;
     private GameObject targetText;
-    private Report currentReport;
+    private Report reportObject;
     private TMPro.TMP_InputField playerInputField;
     [SerializeField] private string neededString;
     [SerializeField] private char neededChar;
@@ -32,7 +32,7 @@ public class Pointer : MonoBehaviour
     private void Start()
     {
         warrior = gameObject.GetComponentInParent<Warrior>();
-        currentReport = new Report();
+        reportObject = new Report();
     }
     private void Update()
     {
@@ -41,7 +41,7 @@ public class Pointer : MonoBehaviour
     public void InitializePointer(GameObject newPlatform)
     {
         warrior.PointerList.Add(this);
-        currentReport = new Report();
+        reportObject = new Report();
         InitializeNeededString(newPlatform);
         InitializeInputField();
     }
@@ -91,36 +91,35 @@ public class Pointer : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Backspace))
         {
-            if (currentReport.CanBackespace())
+            if (reportObject.CanBackespace())
             {
-                currentReport.CheckBackspaceMistakes();
-                targetText.GetComponent<TextChain>().OneStepBack(pointerLocation);
+                reportObject.CheckBackspaceMistakes();
+                targetText.GetComponent<TextChain>().OneStepBack(pointerLocation , reportObject);
                 PointerLocation --;
             }
-            currentReport.ContinuousCorrects = 0;
+            reportObject.ContinuousCorrects = 0;
         }
         else
             CheckChar();
     }
     private void CheckChar()
     {
-        targetText.GetComponent<TextChain>().WasTyped(pointerLocation);
         if (lastInputChar == neededChar)
             PerformCorrectAction();
         else
             PerformMistakeAction();
+        targetText.GetComponent<TextChain>().WasTyped(pointerLocation , reportObject);
+        PointerLocation ++;
     }
     private void PerformCorrectAction()
     {
-        currentReport.AddCorrect();
-        PointerLocation ++;
+        reportObject.AddCorrect();
         // Warrior function according to target platform
         // warrior.PerformOperation(TargetPlatform.GetComponent<Platform>().platformType);
     }
     private void PerformMistakeAction()
     {
-        currentReport.AddMistake();
-        PointerLocation ++;
+        reportObject.AddMistake();
         // warrior becomes vulnerable to enemy damage
         // warrior.Armor --;
     }
@@ -140,8 +139,8 @@ public class Pointer : MonoBehaviour
     }
     private void BonusCorrectsCheck()
     {
-        if (currentReport.ContinuousCorrects >= 5)
-            warrior.BonusAttack(currentReport.ContinuousCorrects);
+        if (reportObject.ContinuousCorrects >= 5)
+            warrior.BonusAttack(reportObject.ContinuousCorrects);
     }
     private bool IsTextEnd()
     {

@@ -11,6 +11,7 @@ public class Report
 
     // Properties
     public int ContinuousCorrects { get => continuousCorrects; set => continuousCorrects = value; }
+    public List<bool> IsTypedCorrectList { get => isTypedCorrectList; set => isTypedCorrectList = value; }
 
     public Report()
     {
