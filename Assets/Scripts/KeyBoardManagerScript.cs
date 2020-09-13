@@ -12,6 +12,10 @@ public class KeyBoardManagerScript : singleton<KeyBoardManagerScript>
     public keyboardLanguage MykeybardLanguage=keyboardLanguage.English;//we change language with this
 
 
+
+
+    [SerializeField] private List<List<Key>> keyboardRows;
+
     //////////////////////////
     // public static event Action<Keyboard> OnKeyboardChanged;
     // public List<Keyboard> keyboardList;
@@ -57,6 +61,45 @@ public class KeyBoardManagerScript : singleton<KeyBoardManagerScript>
     //         ChangeLanguage();
     //     }
     // }
+
+
+
+    private void InitializeDefaultKeyboard()
+    {
+        keyboardRows = new List<List<Key>>();
+        InitializeRow(new List<Key>() , 14);
+        InitializeRow(new List<Key>() , 14);
+        InitializeRow(new List<Key>() , 14);
+        InitializeRow(new List<Key>() , 12);
+        InitializeRow(new List<Key>() , 8);
+    }
+    private void InitializeRow(List<Key> thisRow , int numberOfKeys)
+    {
+        Key newKey;
+        int startKeyIndex = GetStartIndexOfRow();
+        keyboardRows.Add(thisRow);
+        for (int index = startKeyIndex; index < numberOfKeys ; index++)
+        {
+            newKey = new Key();
+            newKey.KeyPrimaryValue = primaryKeyList[index];
+            newKey.KeySecondaryValue = secondaryKeyList[index];
+            // newKey.TextComponent.text = primaryKeyList[index]; /////////////////
+            thisRow.Add(newKey);
+        }
+    }
+    private int GetStartIndexOfRow()
+    {
+        int startKeyIndex = 0;
+        if (keyboardRows.Count == 0)
+            return startKeyIndex;
+        int lastKeyIndex;
+        for (int index = 0; index < keyboardRows.Count ; index++)
+        {
+            lastKeyIndex = keyboardRows[index].Count - 1;
+            startKeyIndex += lastKeyIndex;
+        }
+        return startKeyIndex;
+    }
 
 
     ///////////////////////////////////
