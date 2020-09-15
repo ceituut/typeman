@@ -18,7 +18,7 @@ public static class KeyboardDef
 
 
 
-public abstract class Keyboard : ScriptableObject
+public abstract class KeyboardLayout : ScriptableObject
 {
     // Fields
     // Keyboard (without/with Shift key) string values 
@@ -35,10 +35,10 @@ public abstract class Keyboard : ScriptableObject
     // Methods
     public abstract void InitializeDefualt();
     public abstract void InitializeRowLimits();
-    public abstract void MakeIt105Key();
-    public abstract void MakeIt107Key();
-    public abstract void MakeEnterHigh();
-    public abstract void MakeEnterBig();
+    // public abstract void MakeIt105Key();
+    // public abstract void MakeIt107Key();
+    // public abstract void MakeEnterHigh();
+    // public abstract void MakeEnterBig();
 }
 
 
@@ -46,7 +46,7 @@ public abstract class Keyboard : ScriptableObject
 
 [CreateAssetMenu(fileName="Keyboard-En-WinDesktop-104key-enterflat",
 menuName="TypeMan/Keyboard/WindowsDesktop")]
-public class WindowsDesktop : Keyboard
+public class WindowsDesktop : KeyboardLayout
 {
     private void Awake() {
         InitializeDefualt();
@@ -80,61 +80,62 @@ public class WindowsDesktop : Keyboard
         int row4Limit = primaryKeyList.IndexOf("Ctrl") + 1 - row3Limit;
         limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
     }
-    public override void MakeIt105Key()
-    {
-        int insertionIndex = primaryKeyList.IndexOf("Shift");
-        string newPrimaryKey = "\\";
-        string newSecondaryKey = "|";
-        primaryKeyList.Insert(insertionIndex,newPrimaryKey);
-        secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
-        // Update row limits
-        limitedRows[4] += 1;
-    }
-    public override void MakeIt107Key()
-    {
-        MakeIt105Key();
-        int insertionIndex = primaryKeyList.IndexOf("/");
-        string newPrimaryKey = "   ";
-        string newSecondaryKey = "   ";
-        primaryKeyList.Insert(insertionIndex,newPrimaryKey);
-        secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
-        // Update row limits
-        limitedRows[4] += 1;
-    }
-    public override void MakeEnterHigh()
-    {
-        int firstIndex = primaryKeyList.IndexOf("Enter");
-        int secondIndex = primaryKeyList.IndexOf("\\");
-        // Swap primary keys
-        string tempKey = primaryKeyList[firstIndex];
-        primaryKeyList[firstIndex] = primaryKeyList[secondIndex];
-        primaryKeyList[secondIndex] = tempKey;
-        // Swap secondary keys
-        tempKey = secondaryKeyList[firstIndex];
-        secondaryKeyList[firstIndex] = secondaryKeyList[secondIndex];
-        secondaryKeyList[secondIndex] = tempKey;
-    }
-    public override void MakeEnterBig()
-    {
-        MakeEnterHigh();
-        int insertionIndex = primaryKeyList.IndexOf("=");
-        // Remove primary & secondary string of target key
-        primaryKeyList.Remove("\\");
-        secondaryKeyList.Remove("|");
-        // Insert them after = key
-        primaryKeyList.Insert(insertionIndex,"\\");
-        secondaryKeyList.Insert(insertionIndex,"|");
-        // Update row limits
-        limitedRows[0] += 1;
-        limitedRows[2] -= 1;
-    }
+    // public override void MakeIt105Key()
+    // {
+    //     int insertionIndex = primaryKeyList.IndexOf("Shift");
+    //     string newPrimaryKey = "\\";
+    //     string newSecondaryKey = "|";
+    //     primaryKeyList.Insert(insertionIndex,newPrimaryKey);
+    //     secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
+    //     // Update row limits
+    //     limitedRows[4] += 1;
+    // }
+    // public override void MakeIt107Key()
+    // {
+    //     MakeIt105Key();
+    //     int insertionIndex = primaryKeyList.IndexOf("/");
+    //     string newPrimaryKey = "   ";
+    //     string newSecondaryKey = "   ";
+    //     primaryKeyList.Insert(insertionIndex,newPrimaryKey);
+    //     secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
+    //     // Update row limits
+    //     limitedRows[4] += 1;
+    // }
+    // public override void MakeEnterHigh()
+    // {
+    //     int firstIndex = primaryKeyList.IndexOf("Enter");
+    //     int secondIndex = primaryKeyList.IndexOf("\\");
+    //     // Swap primary keys
+    //     string tempKey = primaryKeyList[firstIndex];
+    //     primaryKeyList[firstIndex] = primaryKeyList[secondIndex];
+    //     primaryKeyList[secondIndex] = tempKey;
+    //     // Swap secondary keys
+    //     tempKey = secondaryKeyList[firstIndex];
+    //     secondaryKeyList[firstIndex] = secondaryKeyList[secondIndex];
+    //     secondaryKeyList[secondIndex] = tempKey;
+    // }
+    // public override void MakeEnterBig()
+    // {
+    //     MakeEnterHigh();
+    //     int insertionIndex = primaryKeyList.IndexOf("=");
+    //     // Remove primary & secondary string of target key
+    //     primaryKeyList.Remove("\\");
+    //     secondaryKeyList.Remove("|");
+    //     // Insert them after = key
+    //     primaryKeyList.Insert(insertionIndex,"\\");
+    //     secondaryKeyList.Insert(insertionIndex,"|");
+    //     // Update row limits
+    //     limitedRows[0] += 1;
+    //     limitedRows[2] -= 1;
+    // }
+
 }
 
 
 
 
 [CreateAssetMenu(fileName="Keyboard-En-WinPortable1-104key-enterflat",
-menuName="TypeMan/Keyboard/WindowsPortable2")]
+menuName="TypeMan/Keyboard/WindowsPortable1")]
 public class WindowsPortable1 : WindowsDesktop
 {
     private void Awake() {
@@ -269,14 +270,14 @@ public class WindowsErgonomic2 : WindowsDesktop
         int row4Limit = primaryKeyList.IndexOf("Ctrl") + 1 - row3Limit;
         limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
     }
-    public override void MakeEnterHigh()
-    {
-        // Do nothing
-    }
-    public override void MakeEnterBig()
-    {
-        // Do nothing
-    }
+    // public override void MakeEnterHigh()
+    // {
+    //     // Do nothing
+    // }
+    // public override void MakeEnterBig()
+    // {
+    //     // Do nothing
+    // }
 }
 
 
@@ -284,7 +285,7 @@ public class WindowsErgonomic2 : WindowsDesktop
 
 [CreateAssetMenu(fileName="Keyboard-En-MacDesktop-104key-enterflat",
 menuName="TypeMan/Keyboard/MacDesktop")]
-public class MacDesktop : Keyboard
+public class MacDesktop : KeyboardLayout
 {
     private void Awake()
     {
@@ -319,47 +320,48 @@ public class MacDesktop : Keyboard
         int row4Limit = primaryKeyList.IndexOf("control") + 1 - row3Limit;
         limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
     }
-    public override void MakeIt105Key()
-    {
-        int insertionIndex = primaryKeyList.IndexOf("shift");
-        string newPrimaryKey = "\\";
-        string newSecondaryKey = "|";
-        primaryKeyList.Insert(insertionIndex,newPrimaryKey);
-        secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
-    }
-    public override void MakeIt107Key()
-    {
-        MakeIt105Key();
-        int insertionIndex = primaryKeyList.IndexOf("/");
-        string newPrimaryKey = "   ";
-        string newSecondaryKey = "   ";
-        primaryKeyList.Insert(insertionIndex,newPrimaryKey);
-        secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
-    }
-    public override void MakeEnterHigh()
-    {
-        int firstIndex = primaryKeyList.IndexOf("return");
-        int secondIndex = primaryKeyList.IndexOf("\\");
-        // Swap primary keys
-        string tempKey = primaryKeyList[firstIndex];
-        primaryKeyList[firstIndex] = primaryKeyList[secondIndex];
-        primaryKeyList[secondIndex] = tempKey;
-        // Swap secondary keys
-        tempKey = secondaryKeyList[firstIndex];
-        secondaryKeyList[firstIndex] = secondaryKeyList[secondIndex];
-        secondaryKeyList[secondIndex] = tempKey;
-    }
-    public override void MakeEnterBig()
-    {
-        MakeEnterHigh();
-        int insertionIndex = primaryKeyList.IndexOf("=");
-        // Remove primary & secondary string of target key
-        primaryKeyList.Remove("\\");
-        secondaryKeyList.Remove("|");
-        // Insert them after = key
-        primaryKeyList.Insert(insertionIndex,"\\");
-        secondaryKeyList.Insert(insertionIndex,"|");
-    }
+    // public override void MakeIt105Key()
+    // {
+    //     int insertionIndex = primaryKeyList.IndexOf("shift");
+    //     string newPrimaryKey = "\\";
+    //     string newSecondaryKey = "|";
+    //     primaryKeyList.Insert(insertionIndex,newPrimaryKey);
+    //     secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
+    // }
+    // public override void MakeIt107Key()
+    // {
+    //     MakeIt105Key();
+    //     int insertionIndex = primaryKeyList.IndexOf("/");
+    //     string newPrimaryKey = "   ";
+    //     string newSecondaryKey = "   ";
+    //     primaryKeyList.Insert(insertionIndex,newPrimaryKey);
+    //     secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
+    // }
+    // public override void MakeEnterHigh()
+    // {
+    //     int firstIndex = primaryKeyList.IndexOf("return");
+    //     int secondIndex = primaryKeyList.IndexOf("\\");
+    //     // Swap primary keys
+    //     string tempKey = primaryKeyList[firstIndex];
+    //     primaryKeyList[firstIndex] = primaryKeyList[secondIndex];
+    //     primaryKeyList[secondIndex] = tempKey;
+    //     // Swap secondary keys
+    //     tempKey = secondaryKeyList[firstIndex];
+    //     secondaryKeyList[firstIndex] = secondaryKeyList[secondIndex];
+    //     secondaryKeyList[secondIndex] = tempKey;
+    // }
+    // public override void MakeEnterBig()
+    // {
+    //     MakeEnterHigh();
+    //     int insertionIndex = primaryKeyList.IndexOf("=");
+    //     // Remove primary & secondary string of target key
+    //     primaryKeyList.Remove("\\");
+    //     secondaryKeyList.Remove("|");
+    //     // Insert them after = key
+    //     primaryKeyList.Insert(insertionIndex,"\\");
+    //     secondaryKeyList.Insert(insertionIndex,"|");
+    // }
+
 }
 
 
