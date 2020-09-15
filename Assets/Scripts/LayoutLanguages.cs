@@ -11,9 +11,19 @@ menuName="TypeMan/Keyboard/LayoutLanguages")]
 public class LayoutLanguages : ScriptableObject
 {
     public List<KeyboardLayout> layoutList;
-    
+
     private void Awake() 
     {
-        layoutList = new List<KeyboardLayout>(10);   
+        layoutList = new List<KeyboardLayout>();
+        layoutList.Add(null);   
+        layoutList.Add(null);   
+        layoutList.Add(null);   
+        layoutList.Add(null);   
+        layoutList.Add(null);   
+        layoutList.Add(null);   
+        layoutList.Add(null);   
+        layoutList.Add(null);   
+        layoutList.Add(null);   
+        layoutList.Add(null);   
     }
 }

@@ -4,14 +4,7 @@ using UnityEngine;
 
 public static class KeyboardDef
 {
-    public enum languages { English , Farsi }
-    public enum keyboardTypes 
-    { 
-        WindowsDesktop , WindowsErgonomic1 , WindowsErgonomic2 , 
-        WindowsPortable1 , WindowsPortable2 , WindowsPortable3 , WindowsPocket1 ,
-        MacDesktop , MacPortable
-    };
-    public enum numberOfKeysTypes { key104 , key105 , key107 };
+    public enum  standardTypes { key104 , key105 , key107 };
     public enum enterTypes { flat , high , big };
 }
 
@@ -58,26 +51,26 @@ public class WindowsDesktop : KeyboardLayout
             "`","1","2","3","4","5","6","7","8","9","0","-","=","Backspace",
             "Tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "Caps Lock","a","s","d","f","g","h","j","k","l",";","'","Enter",
-            "Shift","z","x","c","v","b","n","m",",",".","/","Shift",
-            "Ctrl","Win","Alt","Space","AltGr","Win","Menu","Ctrl"
+            "Shift","z","x","c","v","b","n","m",",",".","/"," Shift",
+            "Ctrl","Win","Alt","Space","AltGr","Win","Menu"," Ctrl"
         };
         secondaryKeyList = new List<string>
         {
             "~","!","@","#","$","%","^","&","*","(",")","_","+","Backspace",
             "Tab","Q","W","E","R","T","Y","U","I","O","P","{","}","|",
             "Caps Lock","A","S","D","F","G","H","J","K","L",":","\"","Enter",
-            "Shift","Z","X","C","V","B","N","M","<",">","?","Shift",
-            "Ctrl","Win","Alt","Space","AltGr","Win","Menu","Ctrl"
+            "Shift","Z","X","C","V","B","N","M","<",">","?"," Shift",
+            "Ctrl","Win","Alt","Space","AltGr","Win","Menu"," Ctrl"
         };
         InitializeRowLimits();
     }
     public override void InitializeRowLimits()
     {
-        int row0Limit = primaryKeyList.IndexOf("Backspace") + 1;
-        int row1Limit = primaryKeyList.IndexOf("\\") + 1 - row0Limit;
-        int row2Limit = primaryKeyList.IndexOf("Enter") + 1 - row1Limit;
-        int row3Limit = primaryKeyList.IndexOf("Shift") + 1 - row2Limit;
-        int row4Limit = primaryKeyList.IndexOf("Ctrl") + 1 - row3Limit;
+        int row0Limit = primaryKeyList.IndexOf("Backspace");
+        int row1Limit = primaryKeyList.IndexOf("\\");
+        int row2Limit = primaryKeyList.IndexOf("Enter");
+        int row3Limit = primaryKeyList.IndexOf(" Shift");
+        int row4Limit = primaryKeyList.IndexOf(" Ctrl");
         limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
     }
     // public override void MakeIt105Key()
@@ -148,16 +141,16 @@ public class WindowsPortable1 : WindowsDesktop
             "`","1","2","3","4","5","6","7","8","9","0","-","=","Backspace",
             "Tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "Caps Lock","a","s","d","f","g","h","j","k","l",";","'","Enter",
-            "Shift","z","x","c","v","b","n","m",",",".","/","Shift",
-            "Ctrl","Fn","Win","Alt","Space","AltGr","Prnt Scr","Ctrl"
+            "Shift","z","x","c","v","b","n","m",",",".","/"," Shift",
+            "Ctrl","Fn","Win","Alt","Space","AltGr","Prnt Scr"," Ctrl"
         };
         secondaryKeyList = new List<string>
         {
             "~","!","@","#","$","%","^","&","*","(",")","_","+","Backspace",
             "Tab","Q","W","E","R","T","Y","U","I","O","P","{","}","|",
             "Caps Lock","A","S","D","F","G","H","J","K","L",":","\"","Enter",
-            "Shift","Z","X","C","V","B","N","M","<",">","?","Shift",
-            "Ctrl","Fn","Win","Alt","Space","AltGr","Prnt Scr","Ctrl"
+            "Shift","Z","X","C","V","B","N","M","<",">","?"," Shift",
+            "Ctrl","Fn","Win","Alt","Space","AltGr","Prnt Scr"," Ctrl"
         };
         InitializeRowLimits();
     }
@@ -180,16 +173,16 @@ public class WindowsPortable2 : WindowsDesktop
             "`","1","2","3","4","5","6","7","8","9","0","-","=","Backspace",
             "Tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "Caps Lock","a","s","d","f","g","h","j","k","l",";","'","Enter",
-            "Shift","z","x","c","v","b","n","m",",",".","/","Shift",
-            "Ctrl","Fn","Win","Alt","Space","AltGr","Ctrl"
+            "Shift","z","x","c","v","b","n","m",",",".","/"," Shift",
+            "Ctrl","Fn","Win","Alt","Space","AltGr"," Ctrl"
         };
         secondaryKeyList = new List<string>
         {
             "~","!","@","#","$","%","^","&","*","(",")","_","+","Backspace",
             "Tab","Q","W","E","R","T","Y","U","I","O","P","{","}","|",
             "Caps Lock","A","S","D","F","G","H","J","K","L",":","\"","Enter",
-            "Shift","Z","X","C","V","B","N","M","<",">","?","Shift",
-            "Ctrl","Fn","Win","Alt","Space","AltGr","Ctrl"
+            "Shift","Z","X","C","V","B","N","M","<",">","?"," Shift",
+            "Ctrl","Fn","Win","Alt","Space","AltGr"," Ctrl"
         };
         InitializeRowLimits();
     }
@@ -248,26 +241,26 @@ public class WindowsErgonomic2 : WindowsDesktop
             "Backspace","1","2","3","4","5","6","7","8","9","0","-","=",
             "Tab","q","w","e","r","t","y","u","i","o","p","[","]",
             "Caps Lock","`","a","s","d","f","g","h","j","k","l",";","'","\\",
-            "Shift","z","x","c","v","b","n","m",",",".","/","Shift",
-            "Ctrl","Alt","Backspace","Delete","Enter","Space","AltGr","Ctrl"
+            "Shift","z","x","c","v","b","n","m",",",".","/"," Shift",
+            "Ctrl","Alt","Backspace","Delete","Enter","Space","AltGr"," Ctrl"
         };
         secondaryKeyList = new List<string>
         {
             "Backspace","!","@","#","$","%","^","&","*","(",")","_","+",
             "Tab","Q","W","E","R","T","Y","U","I","O","P","{","}",
             "Caps Lock","`","A","S","D","F","G","H","J","K","L",":","\"","|",
-            "Shift","Z","X","C","V","B","N","M","<",">","?","Shift",
-            "Ctrl","Alt","Backspace","Delete","Enter","Space","AltGr","Ctrl"
+            "Shift","Z","X","C","V","B","N","M","<",">","?"," Shift",
+            "Ctrl","Alt","Backspace","Delete","Enter","Space","AltGr"," Ctrl"
         };
         InitializeRowLimits();
     }
     public override void InitializeRowLimits()
     {
-        int row0Limit = primaryKeyList.IndexOf("=") + 1;
-        int row1Limit = primaryKeyList.IndexOf("]") + 1 - row0Limit;
-        int row2Limit = primaryKeyList.IndexOf("\\") + 1 - row1Limit;
-        int row3Limit = primaryKeyList.IndexOf("Shift") + 1 - row2Limit;
-        int row4Limit = primaryKeyList.IndexOf("Ctrl") + 1 - row3Limit;
+        int row0Limit = primaryKeyList.IndexOf("=");
+        int row1Limit = primaryKeyList.IndexOf("]");
+        int row2Limit = primaryKeyList.IndexOf("\\");
+        int row3Limit = primaryKeyList.IndexOf(" Shift");
+        int row4Limit = primaryKeyList.IndexOf(" Ctrl");
         limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
     }
     // public override void MakeEnterHigh()
@@ -298,26 +291,26 @@ public class MacDesktop : KeyboardLayout
             "`","1","2","3","4","5","6","7","8","9","0","-","=","delete",
             "tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "caps lock","a","s","d","f","g","h","j","k","l",";","'","return",
-            "shift","z","x","c","v","b","n","m",",",".","/","shift",
-            "control","option","command","space","command","option","control"
+            "shift","z","x","c","v","b","n","m",",",".","/"," shift",
+            "control","option","command","space","command","option"," control"
         };
         secondaryKeyList = new List<string>
         {
             "~","!","@","#","$","%","^","&","*","(",")","_","+","delete",
             "tab","Q","W","E","R","T","Y","U","I","O","P","{","}","|",
             "caps lock","A","S","D","F","G","H","J","K","L",":","\"","return",
-            "shift","Z","X","C","V","B","N","M","<",">","?","shift",
-            "control","option","command","space","command","option","control"
+            "shift","Z","X","C","V","B","N","M","<",">","?"," shift",
+            "control","option","command","space","command","option"," control"
         };
         InitializeRowLimits();
     }
     public override void InitializeRowLimits()
     {
-        int row0Limit = primaryKeyList.IndexOf("delete") + 1;
-        int row1Limit = primaryKeyList.IndexOf("\\") + 1 - row0Limit;
-        int row2Limit = primaryKeyList.IndexOf("return") + 1 - row1Limit;
-        int row3Limit = primaryKeyList.IndexOf("shift") + 1 - row2Limit;
-        int row4Limit = primaryKeyList.IndexOf("control") + 1 - row3Limit;
+        int row0Limit = primaryKeyList.IndexOf("delete");
+        int row1Limit = primaryKeyList.IndexOf("\\");
+        int row2Limit = primaryKeyList.IndexOf("return");
+        int row3Limit = primaryKeyList.IndexOf(" shift");
+        int row4Limit = primaryKeyList.IndexOf(" control");
         limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
     }
     // public override void MakeIt105Key()
@@ -382,26 +375,26 @@ public class MacPortable : MacDesktop
             "`","1","2","3","4","5","6","7","8","9","0","-","=","delete",
             "tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "caps lock","a","s","d","f","g","h","j","k","l",";","'","return",
-            "shift","z","x","c","v","b","n","m",",",".","/","shift",
-            "fn","control","option","command","space","command","option"
+            "shift","z","x","c","v","b","n","m",",",".","/"," shift",
+            "fn","control","option","command","space","command"," option"
         };
         secondaryKeyList = new List<string>
         {
             "~","!","@","#","$","%","^","&","*","(",")","_","+","delete",
             "tab","Q","W","E","R","T","Y","U","I","O","P","{","}","|",
             "caps lock","A","S","D","F","G","H","J","K","L",":","\"","return",
-            "shift","Z","X","C","V","B","N","M","<",">","?","shift",
-            "fn","control","option","command","space","command","option"
+            "shift","Z","X","C","V","B","N","M","<",">","?"," shift",
+            "fn","control","option","command","space","command"," option"
         };
         InitializeRowLimits();
     }
     public override void InitializeRowLimits()
     {
-        int row0Limit = primaryKeyList.IndexOf("delete") + 1;
-        int row1Limit = primaryKeyList.IndexOf("\\") + 1 - row0Limit;
-        int row2Limit = primaryKeyList.IndexOf("return") + 1 - row1Limit;
-        int row3Limit = primaryKeyList.IndexOf("shift") + 1 - row2Limit;
-        int row4Limit = primaryKeyList.IndexOf("option") + 1 - row3Limit;
+        int row0Limit = primaryKeyList.IndexOf("delete");
+        int row1Limit = primaryKeyList.IndexOf("\\");
+        int row2Limit = primaryKeyList.IndexOf("return");
+        int row3Limit = primaryKeyList.IndexOf(" shift");
+        int row4Limit = primaryKeyList.IndexOf(" option");
         limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
     }
 }

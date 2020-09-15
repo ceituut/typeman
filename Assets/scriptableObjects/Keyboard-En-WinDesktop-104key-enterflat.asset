@@ -65,7 +65,7 @@ MonoBehaviour:
   - ','
   - .
   - /
-  - Shift
+  - ' Shift'
   - Ctrl
   - Win
   - Alt
@@ -73,7 +73,7 @@ MonoBehaviour:
   - AltGr
   - Win
   - Menu
-  - Ctrl
+  - ' Ctrl'
   secondaryKeyList:
   - ~
   - '!'
@@ -127,7 +127,7 @@ MonoBehaviour:
   - <
   - '>'
   - '?'
-  - Shift
+  - ' Shift'
   - Ctrl
   - Win
   - Alt
@@ -135,4 +135,4 @@ MonoBehaviour:
   - AltGr
   - Win
   - Menu
-  - Ctrl
+  - ' Ctrl'
