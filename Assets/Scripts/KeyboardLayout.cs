@@ -28,10 +28,6 @@ public abstract class KeyboardLayout : ScriptableObject
     // Methods
     public abstract void InitializeDefualt();
     public abstract void InitializeRowLimits();
-    // public abstract void MakeIt105Key();
-    // public abstract void MakeIt107Key();
-    // public abstract void MakeEnterHigh();
-    // public abstract void MakeEnterBig();
 }
 
 
@@ -360,8 +356,8 @@ public class MacDesktop : KeyboardLayout
 
 
 
-[CreateAssetMenu(fileName="Keyboard-En-MacDesktop-104key-enterflat",
-menuName="TypeMan/Keyboard/MacDesktop")]
+[CreateAssetMenu(fileName="Keyboard-En-MacPortable-104key-enterflat",
+menuName="TypeMan/Keyboard/MacPortable")]
 public class MacPortable : MacDesktop
 {
     private void Awake()

@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Keyboard-En-MacPortable-104key-enterflat
+  m_EditorClassIdentifier: Assembly-CSharp::MacPortable
+  primaryKeyList:
+  - '`'
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 0
+  - '-'
+  - =
+  - delete
+  - tab
+  - q
+  - w
+  - e
+  - r
+  - t
+  - y
+  - u
+  - i
+  - o
+  - p
+  - '['
+  - ']'
+  - \
+  - caps lock
+  - a
+  - s
+  - d
+  - f
+  - g
+  - h
+  - j
+  - k
+  - l
+  - ;
+  - ''''
+  - return
+  - shift
+  - z
+  - x
+  - c
+  - v
+  - b
+  - n
+  - m
+  - ','
+  - .
+  - /
+  - ' shift'
+  - fn
+  - control
+  - option
+  - command
+  - space
+  - command
+  - ' option'
+  secondaryKeyList:
+  - ~
+  - '!'
+  - '@'
+  - '#'
+  - $
+  - '%'
+  - ^
+  - '&'
+  - '*'
+  - (
+  - )
+  - _
+  - +
+  - delete
+  - tab
+  - Q
+  - W
+  - E
+  - R
+  - T
+  - Y
+  - U
+  - I
+  - O
+  - P
+  - '{'
+  - '}'
+  - '|'
+  - caps lock
+  - A
+  - S
+  - D
+  - F
+  - G
+  - H
+  - J
+  - K
+  - L
+  - ':'
+  - '"'
+  - return
+  - shift
+  - Z
+  - X
+  - C
+  - V
+  - B
+  - N
+  - M
+  - <
+  - '>'
+  - '?'
+  - ' shift'
+  - fn
+  - control
+  - option
+  - command
+  - space
+  - command
+  - ' option'
