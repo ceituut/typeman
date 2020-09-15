@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using UnityEngine;
 
 public static class KeyboardDef
 {
@@ -18,12 +18,12 @@ public static class KeyboardDef
 
 
 
-public abstract class Keyboard
+public abstract class Keyboard : ScriptableObject
 {
     // Fields
-        // Keyboard (without/with Shift key) string values 
-    protected List<string> primaryKeyList;
-    protected List<string> secondaryKeyList;
+    // Keyboard (without/with Shift key) string values 
+    [SerializeField] protected List<string> primaryKeyList;
+    [SerializeField] protected List<string> secondaryKeyList;
     // limited number of keys in each row
     protected List<int> limitedRows;
 
@@ -35,12 +35,8 @@ public abstract class Keyboard
     // Methods
     public abstract void InitializeDefualt();
     public abstract void InitializeRowLimits();
-        // Number of keys 
-    public abstract void MakeIt104Key();
     public abstract void MakeIt105Key();
     public abstract void MakeIt107Key();
-        // Enter Types
-    public abstract void MakeEnterFlat();
     public abstract void MakeEnterHigh();
     public abstract void MakeEnterBig();
 }
@@ -48,15 +44,13 @@ public abstract class Keyboard
 
 
 
-public class WinDesktop : Keyboard
+[CreateAssetMenu(fileName="Keyboard-En-WinDesktop-104key-enterflat",
+menuName="TypeMan/Keyboard/WindowsDesktop")]
+public class WindowsDesktop : Keyboard
 {
-    // Constructor
-    public WinDesktop()
-    {
+    private void Awake() {
         InitializeDefualt();
     }
-
-    // Methods
     public override void InitializeDefualt()
     {
         primaryKeyList = new List<string>
@@ -86,10 +80,6 @@ public class WinDesktop : Keyboard
         int row4Limit = primaryKeyList.IndexOf("Ctrl") + 1 - row3Limit;
         limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
     }
-    public override void MakeIt104Key()
-    {
-        InitializeDefualt();
-    }
     public override void MakeIt105Key()
     {
         int insertionIndex = primaryKeyList.IndexOf("Shift");
@@ -110,10 +100,6 @@ public class WinDesktop : Keyboard
         secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
         // Update row limits
         limitedRows[4] += 1;
-    }
-    public override void MakeEnterFlat()
-    {
-        InitializeDefualt();
     }
     public override void MakeEnterHigh()
     {
@@ -147,10 +133,11 @@ public class WinDesktop : Keyboard
 
 
 
-public class WindPortable1 : WinDesktop
+[CreateAssetMenu(fileName="Keyboard-En-WinPortable1-104key-enterflat",
+menuName="TypeMan/Keyboard/WindowsPortable2")]
+public class WindowsPortable1 : WindowsDesktop
 {
-    public WindPortable1()
-    {
+    private void Awake() {
         InitializeDefualt();
     }
     public override void InitializeDefualt()
@@ -178,10 +165,11 @@ public class WindPortable1 : WinDesktop
 
 
 
-public class WindPortable2 : WinDesktop
+[CreateAssetMenu(fileName="Keyboard-En-WinPortable2-104key-enterflat",
+menuName="TypeMan/Keyboard/WindowsPortable2")]
+public class WindowsPortable2 : WindowsDesktop
 {
-    public WindPortable2()
-    {
+    private void Awake() {
         InitializeDefualt();
     }
     public override void InitializeDefualt()
@@ -209,43 +197,47 @@ public class WindPortable2 : WinDesktop
 
 
 
-public class WindPortable3 : WindPortable1
+[CreateAssetMenu(fileName="Keyboard-En-WinPortable3-104key-enterflat",
+menuName="TypeMan/Keyboard/WindowsPortable3")]
+public class WindowsPortable3 : WindowsPortable1
 {
-    public WindPortable3()
-    {
-        base.InitializeDefualt();
+    private void Awake() {
+        InitializeDefualt();
     }
 }
 
 
 
 
-public class WindPocket1 : WindPortable1
+[CreateAssetMenu(fileName="Keyboard-En-WinPocket1-104key-enterflat",
+menuName="TypeMan/Keyboard/WinPocket1")]
+public class WindowsPocket1 : WindowsPortable1
 {
-    public WindPocket1()
-    {
-        base.InitializeDefualt();
+    private void Awake() {
+        InitializeDefualt();
     }
 }
 
 
 
 
-public class WinErgonomic1 : WinDesktop
+[CreateAssetMenu(fileName="Keyboard-En-WinErgonomic1-104key-enterflat",
+menuName="TypeMan/Keyboard/WinErgonomic1")]
+public class WindowsErgonomic1 : WindowsDesktop
 {
-    public WinErgonomic1()
-    {
-        base.InitializeDefualt();
+    private void Awake() {
+        InitializeDefualt();
     }
 }
 
 
 
 
-public class WinErgonomic2 : WinDesktop
+[CreateAssetMenu(fileName="Keyboard-En-WinErgonomic2-104key-enterflat",
+menuName="TypeMan/Keyboard/WinErgonomic2")]
+public class WindowsErgonomic2 : WindowsDesktop
 {
-    public WinErgonomic2()
-    {
+    private void Awake() {
         InitializeDefualt();
     }
     public override void InitializeDefualt()
@@ -277,10 +269,6 @@ public class WinErgonomic2 : WinDesktop
         int row4Limit = primaryKeyList.IndexOf("Ctrl") + 1 - row3Limit;
         limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
     }
-    public override void MakeEnterFlat()
-    {
-        // Do nothing
-    }
     public override void MakeEnterHigh()
     {
         // Do nothing
@@ -294,10 +282,11 @@ public class WinErgonomic2 : WinDesktop
 
 
 
+[CreateAssetMenu(fileName="Keyboard-En-MacDesktop-104key-enterflat",
+menuName="TypeMan/Keyboard/MacDesktop")]
 public class MacDesktop : Keyboard
 {
-    // Constructor
-    public MacDesktop()
+    private void Awake()
     {
         InitializeDefualt();
     }
@@ -330,10 +319,6 @@ public class MacDesktop : Keyboard
         int row4Limit = primaryKeyList.IndexOf("control") + 1 - row3Limit;
         limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
     }
-    public override void MakeIt104Key()
-    {
-        InitializeDefualt();
-    }
     public override void MakeIt105Key()
     {
         int insertionIndex = primaryKeyList.IndexOf("shift");
@@ -350,10 +335,6 @@ public class MacDesktop : Keyboard
         string newSecondaryKey = "   ";
         primaryKeyList.Insert(insertionIndex,newPrimaryKey);
         secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
-    }
-    public override void MakeEnterFlat()
-    {
-        InitializeDefualt();
     }
     public override void MakeEnterHigh()
     {
@@ -384,9 +365,11 @@ public class MacDesktop : Keyboard
 
 
 
+[CreateAssetMenu(fileName="Keyboard-En-MacDesktop-104key-enterflat",
+menuName="TypeMan/Keyboard/MacDesktop")]
 public class MacPortable : MacDesktop
 {
-    public MacPortable()
+    private void Awake()
     {
         InitializeDefualt();
     }
