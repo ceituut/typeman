@@ -33,7 +33,7 @@ public abstract class KeyboardLayout : ScriptableObject
 
 
 
-[CreateAssetMenu(fileName="Keyboard-En-WinDesktop-104key-enterflat",
+[CreateAssetMenu(fileName="En-WinDesktop-104key-enterflat",
 menuName="TypeMan/Keyboard/WindowsDesktop")]
 public class WindowsDesktop : KeyboardLayout
 {
@@ -123,7 +123,7 @@ public class WindowsDesktop : KeyboardLayout
 
 
 
-[CreateAssetMenu(fileName="Keyboard-En-WinPortable1-104key-enterflat",
+[CreateAssetMenu(fileName="En-WinPortable1-104key-enterflat",
 menuName="TypeMan/Keyboard/WindowsPortable1")]
 public class WindowsPortable1 : WindowsDesktop
 {
@@ -155,7 +155,7 @@ public class WindowsPortable1 : WindowsDesktop
 
 
 
-[CreateAssetMenu(fileName="Keyboard-En-WinPortable2-104key-enterflat",
+[CreateAssetMenu(fileName="En-WinPortable2-104key-enterflat",
 menuName="TypeMan/Keyboard/WindowsPortable2")]
 public class WindowsPortable2 : WindowsDesktop
 {
@@ -187,7 +187,7 @@ public class WindowsPortable2 : WindowsDesktop
 
 
 
-[CreateAssetMenu(fileName="Keyboard-En-WinPortable3-104key-enterflat",
+[CreateAssetMenu(fileName="En-WinPortable3-104key-enterflat",
 menuName="TypeMan/Keyboard/WindowsPortable3")]
 public class WindowsPortable3 : WindowsPortable1
 {
@@ -199,7 +199,7 @@ public class WindowsPortable3 : WindowsPortable1
 
 
 
-[CreateAssetMenu(fileName="Keyboard-En-WinPocket1-104key-enterflat",
+[CreateAssetMenu(fileName="En-WinPocket1-104key-enterflat",
 menuName="TypeMan/Keyboard/WinPocket1")]
 public class WindowsPocket1 : WindowsPortable1
 {
@@ -211,7 +211,7 @@ public class WindowsPocket1 : WindowsPortable1
 
 
 
-[CreateAssetMenu(fileName="Keyboard-En-WinErgonomic1-104key-enterflat",
+[CreateAssetMenu(fileName="En-WinErgonomic1-104key-enterflat",
 menuName="TypeMan/Keyboard/WinErgonomic1")]
 public class WindowsErgonomic1 : WindowsDesktop
 {
@@ -223,7 +223,7 @@ public class WindowsErgonomic1 : WindowsDesktop
 
 
 
-[CreateAssetMenu(fileName="Keyboard-En-WinErgonomic2-104key-enterflat",
+[CreateAssetMenu(fileName="En-WinErgonomic2-104key-enterflat",
 menuName="TypeMan/Keyboard/WinErgonomic2")]
 public class WindowsErgonomic2 : WindowsDesktop
 {
@@ -272,7 +272,7 @@ public class WindowsErgonomic2 : WindowsDesktop
 
 
 
-[CreateAssetMenu(fileName="Keyboard-En-MacDesktop-104key-enterflat",
+[CreateAssetMenu(fileName="En-MacDesktop-104key-enterflat",
 menuName="TypeMan/Keyboard/MacDesktop")]
 public class MacDesktop : KeyboardLayout
 {
@@ -356,7 +356,7 @@ public class MacDesktop : KeyboardLayout
 
 
 
-[CreateAssetMenu(fileName="Keyboard-En-MacPortable-104key-enterflat",
+[CreateAssetMenu(fileName="En-MacPortable-104key-enterflat",
 menuName="TypeMan/Keyboard/MacPortable")]
 public class MacPortable : MacDesktop
 {
