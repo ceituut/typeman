@@ -10,20 +10,17 @@ using UnityEngine;
 menuName="TypeMan/Keyboard/LayoutLanguages")]
 public class LayoutLanguages : ScriptableObject
 {
+    public List<SystemLanguage> languageList;
     public List<KeyboardLayout> layoutList;
 
     private void Awake() 
     {
+        languageList = new List<SystemLanguage>();
         layoutList = new List<KeyboardLayout>();
-        layoutList.Add(null);   
-        layoutList.Add(null);   
-        layoutList.Add(null);   
-        layoutList.Add(null);   
-        layoutList.Add(null);   
-        layoutList.Add(null);   
-        layoutList.Add(null);   
-        layoutList.Add(null);   
-        layoutList.Add(null);   
-        layoutList.Add(null);   
+        for (int index = 0; index < 10; index++)
+        {
+            languageList.Add(SystemLanguage.English);
+            layoutList.Add(null);
+        }
     }
 }
