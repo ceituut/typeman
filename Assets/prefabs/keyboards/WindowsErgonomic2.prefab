@@ -976,7 +976,6 @@ GameObject:
   - component: {fileID: 4910295873027355806}
   - component: {fileID: 6587280925074619446}
   - component: {fileID: -8481505491353942467}
-  - component: {fileID: -6560651907775885839}
   m_Layer: 0
   m_Name: WindowsErgonomic2
   m_TagString: Keyboard
@@ -1046,19 +1045,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layoutLanguages: {fileID: 0}
---- !u!114 &-6560651907775885839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079432664221915200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9539ab029c5f484fa4f52a06be9cf9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  languageUpdate: {fileID: 0}
 --- !u!1 &2534469186390681887
 GameObject:
   m_ObjectHideFlags: 0

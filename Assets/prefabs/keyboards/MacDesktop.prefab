@@ -7725,7 +7725,6 @@ GameObject:
   - component: {fileID: 1701876361481287243}
   - component: {fileID: 635041107169918691}
   - component: {fileID: -7667051744653081719}
-  - component: {fileID: -7334029668564403610}
   m_Layer: 0
   m_Name: MacDesktop
   m_TagString: Keyboard
@@ -7795,19 +7794,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layoutLanguages: {fileID: 0}
---- !u!114 &-7334029668564403610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5719861117768948373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9539ab029c5f484fa4f52a06be9cf9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  languageUpdate: {fileID: 0}
 --- !u!1 &5757834067212713306
 GameObject:
   m_ObjectHideFlags: 0
