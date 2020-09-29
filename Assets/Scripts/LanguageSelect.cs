@@ -41,13 +41,9 @@ public class LanguageSelect : MonoBehaviour
         KeyboardLanguage relatedLanguage = 0;
         KeyboardLanguage language = 0;
         int numberOfLanguages = Enum.GetNames(typeof(KeyboardLanguage)).Length;
-        for (int index = 0; index < numberOfLanguages; index++)
-        {
+        for (int index = 0; index < numberOfLanguages; index++ , language++)
             if ( language.ToString() == languageName )
                 relatedLanguage = language;
-            Debug.Log(language.ToString());
-            language ++;
-        }
         return relatedLanguage;
     }
     private void OnLanguageChanged()

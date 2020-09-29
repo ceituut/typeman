@@ -12,29 +12,34 @@ public class LanguageWrong : MonoBehaviour
     private Dictionary<string,bool> secondaryKeyChecker;
 
     /// convert it to a normal class not component
-    private void Awake() 
+    //////// a character typing problem : ی is not ي .
+    /////// In unity editor when press ی , typed ي.
+    private void Update() 
     {
-
+        Debug.Log("g typed , is language wrong:" + IsLanguageWrong("g"));
+        Debug.Log("ی typed , is language wrong:" + IsLanguageWrong("ی"));
     }
     public void UpdateKeyCheckers(KeyboardLayout currentLayout)
     {
         primaryKeyChecker = new Dictionary<string, bool>();
         secondaryKeyChecker = new Dictionary<string, bool>();
-        bool isThisKeyExists = false;
+        bool isThisKeyExists;
         foreach ( string keyString in currentLayout.GetPrimaryKeyList)
         {
+            isThisKeyExists = false;
             primaryKeyChecker.TryGetValue( keyString , out isThisKeyExists);
             if ( !isThisKeyExists )
                 primaryKeyChecker.Add( keyString , true);
         }
         foreach ( string keyString in currentLayout.GetSecondaryKeyList)
         {
+            isThisKeyExists = false;
             secondaryKeyChecker.TryGetValue( keyString , out isThisKeyExists);
             if ( !isThisKeyExists )
                 secondaryKeyChecker.Add( keyString , true);
         }
     }
-    public bool isLanguageWrong2(string lastInputChar)
+    public bool IsLanguageWrong(string lastInputChar)
     {
         bool keyFound = false;
         bool isLanguageWrong = false;
