@@ -6344,9 +6344,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7114618512195540000}
   - component: {fileID: 9075433686204062856}
+  - component: {fileID: -8232913996924252361}
+  - component: {fileID: 8527785379593368757}
   m_Layer: 0
   m_Name: WindowsPocket1
-  m_TagString: Untagged
+  m_TagString: Keyboard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6400,6 +6402,32 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &-8232913996924252361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4198325990101055742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ba03ad535ca8f46a07c2e7f79ffe43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layoutLanguages: {fileID: 0}
+--- !u!114 &8527785379593368757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4198325990101055742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9539ab029c5f484fa4f52a06be9cf9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  languageUpdate: {fileID: 0}
 --- !u!1 &4209210102399715183
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,30 +8,61 @@ using static KeyboardDef;
 
 public class LanguageWrong : MonoBehaviour
 {
-    [SerializeField] private LanguageUpdate languageUpdate;
+    private Dictionary<string,bool> primaryKeyChecker;
+    private Dictionary<string,bool> secondaryKeyChecker;
+
+    /// convert it to a normal class not component
     private void Awake() 
     {
-        // Get Keyboard in the scene and it's languageUpdate component
+
     }
-    public bool IsLanguageWrong(String lastInputChar)
+    public void UpdateKeyCheckers(KeyboardLayout currentLayout)
+    {
+        primaryKeyChecker = new Dictionary<string, bool>();
+        secondaryKeyChecker = new Dictionary<string, bool>();
+        bool isThisKeyExists = false;
+        foreach ( string keyString in currentLayout.GetPrimaryKeyList)
+        {
+            primaryKeyChecker.TryGetValue( keyString , out isThisKeyExists);
+            if ( !isThisKeyExists )
+                primaryKeyChecker.Add( keyString , true);
+        }
+        foreach ( string keyString in currentLayout.GetSecondaryKeyList)
+        {
+            secondaryKeyChecker.TryGetValue( keyString , out isThisKeyExists);
+            if ( !isThisKeyExists )
+                secondaryKeyChecker.Add( keyString , true);
+        }
+    }
+    public bool isLanguageWrong2(string lastInputChar)
     {
         bool keyFound = false;
         bool isLanguageWrong = false;
-        KeyboardLayout currentLayout = languageUpdate.GetCurrentLayout;
-        foreach (String keyString in currentLayout.GetPrimaryKeyList)
-            if ( keyString == lastInputChar )
-            {
-                keyFound = true;
-                break;
-            }
+        primaryKeyChecker.TryGetValue(lastInputChar, out keyFound);
         if ( !keyFound )
-            foreach (String keyString in currentLayout.GetSecondaryKeyList)
-                if ( keyString == lastInputChar )
-                {
-                    keyFound = true;
-                    break;
-                }
+            secondaryKeyChecker.TryGetValue(lastInputChar, out keyFound);
         isLanguageWrong = !keyFound;
         return isLanguageWrong;
     }
+    // public bool IsLanguageWrong(string lastInputChar)
+    // {
+    //     bool keyFound = false;
+    //     bool isLanguageWrong = false;
+    //     KeyboardLayout currentLayout = languageUpdate.GetCurrentLayout;
+    //     foreach (String keyString in currentLayout.GetPrimaryKeyList)
+    //         if ( keyString == lastInputChar )
+    //         {
+    //             keyFound = true;
+    //             break;
+    //         }
+    //     if ( !keyFound )
+    //         foreach (String keyString in currentLayout.GetSecondaryKeyList)
+    //             if ( keyString == lastInputChar )
+    //             {
+    //                 keyFound = true;
+    //                 break;
+    //             }
+    //     isLanguageWrong = !keyFound;
+    //     return isLanguageWrong;
+    // }
 }

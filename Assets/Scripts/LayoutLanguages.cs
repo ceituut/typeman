@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static KeyboardDef;
@@ -19,8 +20,8 @@ public class LayoutLanguages : ScriptableObject
         languageList = new List<KeyboardLanguage>();
         layoutList = new List<KeyboardLayout>();
         KeyboardLanguage language = 0;
-        // int length = KeyboardLanguage /// how to get nombe of items in enum ?
-        for (int index = 0; index < 12; index++)
+        int numberOfLanguages = Enum.GetNames(typeof(KeyboardLanguage)).Length;
+        for (int index = 0; index < numberOfLanguages; index++)
         {
             languageList.Add(language);
             layoutList.Add(null);

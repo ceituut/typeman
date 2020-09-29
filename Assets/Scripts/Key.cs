@@ -5,12 +5,8 @@ using UnityEngine.UI;
 
 public class Key : MonoBehaviour
 {
-    public GameObject RelatedFinger; //////////
-    // private KeyBoardManagerScript.keyboardLanguage Language; //////////
-   
-
-   //////////////////////
-    [SerializeField] private Text textComponent; // Initialize it with a script in Run in Edit mode
+    public GameObject RelatedFinger; 
+    [SerializeField] private Text textComponent;
     [SerializeField] private string keyPrimaryValue; 
     [SerializeField] private string keySecondaryValue;
 
@@ -20,37 +16,8 @@ public class Key : MonoBehaviour
 
     private void Awake() 
     {
-        // Subscribes to keyboard changing
-        // KeyBoardManagerScript.OnKeyboardChanged += ChangeKeyValues;    
+        textComponent = gameObject.GetComponentInChildren<Text>();   
     } 
-    // private void ChangeKeyValues(Keyboard keyboard)
-    // {
-    //     keyPrimaryValue = KeyBoardManagerScript.instance.CurrentKeyboard.PrimaryKeyList[keyLocation];
-    //     keySecondaryValue = KeyBoardManagerScript.instance.CurrentKeyboard.SecondaryKeyList[keyLocation];
-    //     ChangeKeyText();
-    // }
-    private void ChangeKeyText()
-    {
-        
-    }
-
-//    private void KeyboardLanguageSet()
-//    {
-      
-//         Language=KeyBoardManagerScript.instance.MykeybardLanguage;
-//         switch (Language)
-//         {
-//             case KeyBoardManagerScript.keyboardLanguage.English :
-//             keyCurrentLanguage=English;
-//             break;
-//              case KeyBoardManagerScript.keyboardLanguage.farsi :
-//             keyCurrentLanguage=Farsi;
-//             break;
-
-//         }
-//    }
-
-
 //    private void PressRelatedBtn()
 //    {
       
@@ -79,25 +46,5 @@ public class Key : MonoBehaviour
 //           }
           
 //        }
-//    }
-
-
-//    private KeyCode currentBtnKeyCode()
-//    {
-//        var e=System.Enum.GetNames(typeof(KeyCode)).Length;
-//         for(int i = 0; i < e; i++)
-//              {
-//                  if(Input.GetKeyDown((KeyCode)i))
-//                  {
-//                      return (KeyCode)i;
-//                  }
-//              }
-//              return KeyCode.None;
-//    }
-//    private string setCharEqualWithKey(KeyCode _KeyCode)
-//    {
-       
-//        return _KeyCode.ToString();
-            
 //    }
 }

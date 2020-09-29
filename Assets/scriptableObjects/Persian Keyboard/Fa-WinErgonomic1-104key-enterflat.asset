@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fa-WinErgonomic1-104key-enterflat
   m_EditorClassIdentifier: Assembly-CSharp::WindowsErgonomic1
   primaryKeyList:
-  - "\xF7"
+  - '`'
   - 1
   - 2
   - 3
@@ -28,41 +28,41 @@ MonoBehaviour:
   - =
   - Backspace
   - Tab
-  - "\u0636"
-  - "\u0635"
-  - "\u062B"
-  - "\u0642"
-  - "\u0641"
-  - "\u063A"
-  - "\u0639"
-  - "\u0647"
-  - "\u062E"
-  - "\u062D"
-  - "\u062C"
-  - "\u0686"
-  - "\u067E"
+  - q
+  - w
+  - e
+  - r
+  - t
+  - y
+  - u
+  - i
+  - o
+  - p
+  - '['
+  - ']'
+  - \
   - Caps Lock
-  - "\u0634"
-  - "\u0633"
-  - "\u064A"
-  - "\u0628"
-  - "\u0644"
-  - "\u0627"
-  - "\u062A"
-  - "\u0646"
-  - "\u0645"
-  - "\u06A9"
-  - "\u06AF"
+  - a
+  - s
+  - d
+  - f
+  - g
+  - h
+  - j
+  - k
+  - l
+  - ;
+  - ''''
   - Enter
   - Shift
-  - "\u0638"
-  - "\u0637"
-  - "\u0632"
-  - "\u0631"
-  - "\u0630"
-  - "\u062F"
-  - "\u0626"
-  - "\u0648"
+  - z
+  - x
+  - c
+  - v
+  - b
+  - n
+  - m
+  - ','
   - .
   - /
   - ' Shift'
@@ -75,7 +75,7 @@ MonoBehaviour:
   - Menu
   - ' Ctrl'
   secondaryKeyList:
-  - "\xD7"
+  - ~
   - '!'
   - '@'
   - '#'
@@ -90,43 +90,43 @@ MonoBehaviour:
   - +
   - Backspace
   - Tab
-  - "\u064B"
-  - "\u064C"
-  - "\u064D"
-  - "\u0631\u064A\u0627\u0644"
-  - "\u060C"
-  - "\u061B"
-  - ','
-  - ']'
-  - '['
-  - \
-  - '}'
+  - Q
+  - W
+  - E
+  - R
+  - T
+  - Y
+  - U
+  - I
+  - O
+  - P
   - '{'
+  - '}'
   - '|'
   - Caps Lock
-  - "\u064E"
-  - "\u064F"
-  - "\u0650"
-  - "\u0651"
-  - '?'
-  - "\u0622"
-  - "\u0640"
-  - "\xAB"
-  - "\xBB"
+  - A
+  - S
+  - D
+  - F
+  - G
+  - H
+  - J
+  - K
+  - L
   - ':'
   - '"'
   - Enter
   - Shift
-  - "\u0629"
-  - "\u064A"
-  - "\u0698"
-  - "\u0624"
-  - "\u0625"
-  - "\u0623"
-  - "\u0621"
+  - Z
+  - X
+  - C
+  - V
+  - B
+  - N
+  - M
   - <
   - '>'
-  - "\u061F"
+  - '?'
   - ' Shift'
   - Ctrl
   - Win

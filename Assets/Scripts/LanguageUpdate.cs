@@ -11,14 +11,15 @@ public class LanguageUpdate : MonoBehaviour
     [SerializeField] private LayoutLanguages layoutLanguages;
     private Dictionary<KeyboardLanguage,KeyboardLayout> layoutDic;
     private KeyboardLayout currentLayout;
+    private LanguageWrong languageWrongComponent;
     private List<Key> keyList;
 
-    public KeyboardLayout GetCurrentLayout { get => currentLayout; }
-
-    private void Awake() 
+    private void Start() 
     {
         keyList = new List<Key>( gameObject.GetComponentsInChildren<Key>() );
+        languageWrongComponent = gameObject.GetComponent<LanguageWrong>();
         InitializeLayoutDic();
+        UpdateKeyboardLanguage(KeyboardLanguage.English);
     }
     private void InitializeLayoutDic()
     {
@@ -30,6 +31,7 @@ public class LanguageUpdate : MonoBehaviour
     public void UpdateKeyboardLanguage(KeyboardLanguage language)
     {
         layoutDic.TryGetValue(language,out currentLayout);
+        languageWrongComponent.UpdateKeyCheckers(currentLayout);
         for (int index = 0; index < keyList.Count ; index++)
         {
             keyList[index].KeyPrimaryValue = currentLayout.GetPrimaryKeyList[index];

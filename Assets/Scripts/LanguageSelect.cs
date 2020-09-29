@@ -8,7 +8,6 @@ using static KeyboardDef;
 
 public class LanguageSelect : MonoBehaviour
 {
-    [SerializeField] private LayoutLanguages layoutLanguages;
     [SerializeField] private LanguageUpdate languageUpdate;
     private KeyboardLanguage currentLanguage;
     private Dropdown dropdownComponent;
@@ -16,29 +15,45 @@ public class LanguageSelect : MonoBehaviour
     private void Awake() 
     {
         InitializeDropdown();
+        FindKeyboard();
+    }
+    private void FindKeyboard()
+    {
+        GameObject Keyboard = GameObject.FindGameObjectWithTag("Keyboard");
+        languageUpdate = Keyboard.GetComponent<LanguageUpdate>();
     }
     private void InitializeDropdown()
     {
         dropdownComponent = gameObject.GetComponent<Dropdown>();
-        string langugeName;
-        foreach ( KeyboardLanguage language in layoutLanguages.languageList)
+        string languageName;
+        KeyboardLanguage language = 0;
+        int numberOfLanguages = Enum.GetNames(typeof(KeyboardLanguage)).Length;
+        for (int index = 0; index < numberOfLanguages; index++)
         {
-            langugeName = language.ToString();
-            dropdownComponent.options.Add(new Dropdown.OptionData(langugeName));
+            languageName = language.ToString();
+            dropdownComponent.options.Add(new Dropdown.OptionData(languageName));
+            language ++;
         }
         dropdownComponent.onValueChanged.AddListener( delegate { OnLanguageChanged(); } );
     }
-    private KeyboardLanguage GetLanguageOfOption(string langugaeName)
+    private KeyboardLanguage GetLanguageOfOption(string languageName)
     {
-        KeyboardLanguage relatedLanguage = KeyboardLanguage.English;
-        foreach ( KeyboardLanguage language in layoutLanguages.languageList )
-            if ( language.ToString() == langugaeName )
+        KeyboardLanguage relatedLanguage = 0;
+        KeyboardLanguage language = 0;
+        int numberOfLanguages = Enum.GetNames(typeof(KeyboardLanguage)).Length;
+        for (int index = 0; index < numberOfLanguages; index++)
+        {
+            if ( language.ToString() == languageName )
                 relatedLanguage = language;
+            Debug.Log(language.ToString());
+            language ++;
+        }
         return relatedLanguage;
     }
     private void OnLanguageChanged()
     {
-        currentLanguage = GetLanguageOfOption(dropdownComponent.value.ToString()); /////////////// ???
+        Dropdown.OptionData currentOption = dropdownComponent.options[dropdownComponent.value];
+        currentLanguage = GetLanguageOfOption(currentOption.text);
         languageUpdate.UpdateKeyboardLanguage(currentLanguage);
     }
 }
