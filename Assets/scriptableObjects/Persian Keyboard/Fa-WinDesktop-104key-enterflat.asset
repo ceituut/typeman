@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fa-WinDesktop-104key-enterflat
   m_EditorClassIdentifier: Assembly-CSharp::WindowsDesktop
   primaryKeyList:
-  - '`'
+  - "\xF7"
   - 1
   - 2
   - 3
@@ -75,7 +75,7 @@ MonoBehaviour:
   - Menu
   - ' Ctrl'
   secondaryKeyList:
-  - ~
+  - "\xD7"
   - '!'
   - '@'
   - '#'

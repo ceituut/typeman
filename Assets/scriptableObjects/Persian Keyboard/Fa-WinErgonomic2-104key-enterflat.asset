@@ -40,7 +40,7 @@ MonoBehaviour:
   - "\u062C"
   - "\u0686"
   - Caps Lock
-  - '`'
+  - "\xF7"
   - "\u0634"
   - "\u0633"
   - "\u064A"
@@ -101,7 +101,7 @@ MonoBehaviour:
   - '}'
   - '{'
   - Caps Lock
-  - '`'
+  - "\xD7"
   - "\u064E"
   - "\u064F"
   - "\u0650"

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fa-MacDesktop-104key-enterflat
   m_EditorClassIdentifier: Assembly-CSharp::MacDesktop
   primaryKeyList:
-  - '`'
+  - "\xF7"
   - 1
   - 2
   - 3
@@ -74,7 +74,7 @@ MonoBehaviour:
   - option
   - ' control'
   secondaryKeyList:
-  - ~
+  - "\xD7"
   - '!'
   - '@'
   - '#'

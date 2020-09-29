@@ -11567,7 +11567,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3457520504566420946}
   - component: {fileID: 3509937544124194170}
-  - component: {fileID: -5520029907636890923}
   m_Layer: 0
   m_Name: WindowsDesktop
   m_TagString: Untagged
@@ -11624,19 +11623,6 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
---- !u!114 &-5520029907636890923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8576213226018683148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d085b5ebcc8bd14fab0d0055bf5dcaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layoutLanguages: {fileID: 11400000, guid: edd269492e9ccc84b917dbd062f09ad7, type: 2}
 --- !u!1 &8635377986735115091
 GameObject:
   m_ObjectHideFlags: 0

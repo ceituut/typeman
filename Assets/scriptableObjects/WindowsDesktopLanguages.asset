@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5dd872446556f4bbeccd5a8f09fdaa, type: 3}
   m_Name: WindowsDesktopLanguages
   m_EditorClassIdentifier: 
-  languageList: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
+  languageList: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b000000
   layoutList:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

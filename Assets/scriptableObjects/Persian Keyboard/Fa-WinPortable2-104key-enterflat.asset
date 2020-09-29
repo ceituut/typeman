@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fa-WinPortable2-104key-enterflat
   m_EditorClassIdentifier: Assembly-CSharp::WindowsPortable2
   primaryKeyList:
-  - '`'
+  - "\xF7"
   - 1
   - 2
   - 3
@@ -74,7 +74,7 @@ MonoBehaviour:
   - AltGr
   - ' Ctrl'
   secondaryKeyList:
-  - ~
+  - "\xD7"
   - '!'
   - '@'
   - '#'

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static KeyboardDef;
 
 
 // First , Create all Keyboards in other languages for specific KeyboardLayout
@@ -10,17 +11,20 @@ using UnityEngine;
 menuName="TypeMan/Keyboard/LayoutLanguages")]
 public class LayoutLanguages : ScriptableObject
 {
-    public List<SystemLanguage> languageList;
+    public List<KeyboardLanguage> languageList;
     public List<KeyboardLayout> layoutList;
 
     private void Awake() 
     {
-        languageList = new List<SystemLanguage>();
+        languageList = new List<KeyboardLanguage>();
         layoutList = new List<KeyboardLayout>();
-        for (int index = 0; index < 10; index++)
+        KeyboardLanguage language = 0;
+        // int length = KeyboardLanguage /// how to get nombe of items in enum ?
+        for (int index = 0; index < 12; index++)
         {
-            languageList.Add(SystemLanguage.English);
+            languageList.Add(language);
             layoutList.Add(null);
+            language ++;
         }
     }
 }

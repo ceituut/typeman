@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fa-WinPocket1-104key-enterflat
   m_EditorClassIdentifier: Assembly-CSharp::WindowsPocket1
   primaryKeyList:
-  - '`'
+  - "\xF7"
   - 1
   - 2
   - 3
@@ -75,7 +75,7 @@ MonoBehaviour:
   - Prnt Scr
   - ' Ctrl'
   secondaryKeyList:
-  - ~
+  - "\xD7"
   - '!'
   - '@'
   - '#'

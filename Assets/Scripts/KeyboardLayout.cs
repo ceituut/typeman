@@ -2,15 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class KeyboardDef
-{
-    public enum  standardTypes { key104 , key105 , key107 };
-    public enum enterTypes { flat , high , big };
-}
-
-
-
-
 public abstract class KeyboardLayout : ScriptableObject
 {
     // Fields
