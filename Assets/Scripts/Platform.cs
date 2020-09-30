@@ -39,10 +39,10 @@ public class Platform : MonoBehaviour
         if (enteredWarrior == null)
             return;
 
-        bool needsNewPointer = true;
-        Pointer pointerOfWarrior = _collider.gameObject.GetComponentInChildren<Pointer>();
         warriorsWithin.Add(enteredWarrior);
         numberOfActiveness ++;
+        bool needsNewPointer = true;
+        Pointer pointerOfWarrior = _collider.gameObject.GetComponentInChildren<Pointer>();
         foreach(Pointer thisPointer in enteredWarrior.PointerList)
             if (thisPointer.TargetPlatform == this.gameObject)
                 {
@@ -52,12 +52,15 @@ public class Platform : MonoBehaviour
                 }
         if(needsNewPointer)
             pointerOfWarrior.InitializePointer(this.gameObject);
+        pointerOfWarrior.AllowType();
     }
     private void OnTriggerExit(Collider _collider)
     {
         Warrior exitedWarrior = _collider.gameObject.GetComponent<Warrior>();
-        if(exitedWarrior != null)
+        if(exitedWarrior == null)
             return;
+        Pointer pointerOfWarrior = _collider.gameObject.GetComponentInChildren<Pointer>();
+        pointerOfWarrior.DontAllowType();
         numberOfActiveness --;
         warriorsWithin.Remove(exitedWarrior);
     }

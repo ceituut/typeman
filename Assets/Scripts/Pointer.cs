@@ -55,12 +55,11 @@ public class Pointer : MonoBehaviour
     {
         playerInputField = gameObject.GetComponent<TMPro.TMP_InputField>();
         playerInputField.textComponent = gameObject.GetComponent<TMPro.TextMeshPro>();
+        playerInputField.characterLimit = 5;
         ActivateInputField();
         // Removes previous lisntners
         if(warrior.PointerList.Count != 0)
             playerInputField.onValueChanged.RemoveAllListeners();
-        // Adds listner to the playerInutField and invokes CheckOperation() when the value changes
-        playerInputField.onValueChanged.AddListener( delegate { CheckOperation(); });
     }
     private void ActivateInputField()
     {
@@ -83,6 +82,7 @@ public class Pointer : MonoBehaviour
             GetNeededChar();
             CheckInput();
             BonusCorrectsCheck(); 
+            ClearInputString(); 
         }
         else
             pointerLocation = 0; // Text is ended
@@ -135,7 +135,18 @@ public class Pointer : MonoBehaviour
     }
     private void ClearInputString()
     {
+        playerInputField.onValueChanged.RemoveAllListeners();
         playerInputField.text = String.Empty;
+        playerInputField.onValueChanged.AddListener( delegate { CheckOperation(); });
+    }
+    public void AllowType()
+    {
+        // Adds listner to the playerInutField and invokes CheckOperation() when the value changes
+        playerInputField.onValueChanged.AddListener( delegate { CheckOperation(); });
+    }
+    public void DontAllowType()
+    {
+        playerInputField.onValueChanged.RemoveAllListeners();
     }
     private void BonusCorrectsCheck()
     {

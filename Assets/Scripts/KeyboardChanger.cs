@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 public class KeyboardChanger : MonoBehaviour
 {
+    
     public void MakeIt104Key()
     {
-
     }
     public void MakeIt105Key()
     {
@@ -17,7 +17,6 @@ public class KeyboardChanger : MonoBehaviour
     }
     public void MakeIt107Key()
     {
-
     }
 
     public void MakeEnterFlat()

@@ -297,7 +297,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1259142006}
+  - {fileID: 3457520505583561457}
   - {fileID: 1610245983}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -477,12 +477,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 231483442}
     m_Modifications:
-    - target: {fileID: -9137467635582087666, guid: bc5926026f3898c409fc9ab75eaa8840,
-        type: 3}
-      propertyPath: layoutLanguages
-      value: 
-      objectReference: {fileID: 11400000, guid: edd269492e9ccc84b917dbd062f09ad7,
-        type: 2}
     - target: {fileID: 141878816698698683, guid: bc5926026f3898c409fc9ab75eaa8840,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1915,12 +1909,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc5926026f3898c409fc9ab75eaa8840, type: 3}
---- !u!224 &1259142006 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3457520504566420946, guid: bc5926026f3898c409fc9ab75eaa8840,
-    type: 3}
-  m_PrefabInstance: {fileID: 1151368995}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1587378059
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,3 +2800,9 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080223719}
   m_CullTransparentMesh: 0
+--- !u!224 &3457520505583561457 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3457520504566420946, guid: bc5926026f3898c409fc9ab75eaa8840,
+    type: 3}
+  m_PrefabInstance: {fileID: 1151368995}
+  m_PrefabAsset: {fileID: 0}
