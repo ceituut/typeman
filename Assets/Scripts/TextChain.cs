@@ -7,28 +7,24 @@ public class TextChain : MonoBehaviour
 {
     // Fields
     private TextMesh textMeshComponent;
-    private string textString;
+    private string initialTextString;
     [SerializeField] private GameObject typedSection;
     private List<TextMesh> typedTextList;
     private List<char> charList;
     private List<bool> IsTypedCorrectList;
 
+    // Properties
     public List<TextMesh> TypedTextList { get => typedTextList; set => typedTextList = value; }
+    public string InitialTextString { get => initialTextString; set => initialTextString = value; }
 
-    // Start is called before the first frame update
-    void Start()
+    // Methods
+    void Awake()
     {
         textMeshComponent = gameObject.GetComponent<TextMesh>();
-        textString = textMeshComponent.text.ToString();
+        initialTextString = textMeshComponent.text.ToString();
         TextMesh []textChilds = typedSection.GetComponentsInChildren<TextMesh>();
         typedTextList = new List<TextMesh>(textChilds);
         InitializeCharList();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     void InitializeCharList()
     {
@@ -40,15 +36,14 @@ public class TextChain : MonoBehaviour
             IsTypedCorrectList.Add(false);////
         }
     }
-    void ShiftLeftCharList(int pointerLocation , Report pointerReport)///// rename
+    void ShiftLeftCharList(int pointerLocation , Progress pointerProgress)///// rename
     {
         for (int index=0; index < charList.Count ; index++)
         {
             if( index == charList.Count-1 )
             {
-                charList[index] = textString[pointerLocation];
-                IsTypedCorrectList[index] = pointerReport.IsTypedCorrectList[pointerLocation];
-                // IsTypedCorrectList[index] = IsTypedCorrectList[pointerLocation];
+                charList[index] = initialTextString[pointerLocation];
+                IsTypedCorrectList[index] = pointerProgress.IsTypedCorrectList[pointerLocation];
             }
             else
             {
@@ -57,7 +52,7 @@ public class TextChain : MonoBehaviour
             }
         }
     }
-    void ShiftRighCharList(int pointerLocation , Report pointerReport)
+    void ShiftRighCharList(int pointerLocation , Progress pointerProgress)
     {
         int length = charList.Count;
         int offset = pointerLocation - charList.Count - 1 ;
@@ -66,8 +61,8 @@ public class TextChain : MonoBehaviour
             if( index == 0 )
                 if (pointerLocation > charList.Count)
                 {
-                    charList[index] = textString[offset];
-                    IsTypedCorrectList[index] = pointerReport.IsTypedCorrectList[offset];/////////////////////////////
+                    charList[index] = initialTextString[offset];
+                    IsTypedCorrectList[index] = pointerProgress.IsTypedCorrectList[offset];/////////////////////////////
                 }
                 else
                 {
@@ -82,9 +77,9 @@ public class TextChain : MonoBehaviour
             }
         }
     }
-    public void WasTyped(int pointerLocation , Report pointerReport)
+    public void WasTyped(int pointerLocation , Progress pointerProgress)
     {
-        ShiftLeftCharList(pointerLocation , pointerReport);
+        ShiftLeftCharList(pointerLocation , pointerProgress);
 
         for (int index=0; index < typedTextList.Count ; index++)
             typedTextList[index].text = charList[index].ToString();
@@ -92,21 +87,21 @@ public class TextChain : MonoBehaviour
 
 
         int lastIndex = typedTextList.Count -1;
-        if (pointerReport.IsTypedCorrectList[pointerReport.IsTypedCorrectList.Count-1])
+        if (pointerProgress.IsTypedCorrectList[pointerProgress.IsTypedCorrectList.Count-1])
             IsTypedCorrectList[lastIndex] = true;
         else
             IsTypedCorrectList[lastIndex] = false;
 
 
-        StyleTypedChar(pointerLocation , pointerReport);//////////
+        StyleTypedChar(pointerLocation , pointerProgress);//////////
     }
-    public void OneStepBack(int pointerLocation , Report pointerReport)
+    public void OneStepBack(int pointerLocation , Progress pointerProgress)
     {
-        ShiftRighCharList(pointerLocation , pointerReport);
+        ShiftRighCharList(pointerLocation , pointerProgress);
         for (int index=0; index < typedTextList.Count ; index++)
             typedTextList[index].text = charList[index].ToString();
         AddPreviousChar(pointerLocation);
-        StyleTypedChar(pointerLocation , pointerReport);//////////
+        StyleTypedChar(pointerLocation , pointerProgress);//////////
     }
     void RemoveLastTypedChar()
     {
@@ -114,26 +109,15 @@ public class TextChain : MonoBehaviour
     }
     void AddPreviousChar(int pointerLocation)
     {
-        char previousChar = textString[pointerLocation-1];
+        char previousChar = initialTextString[pointerLocation-1];
         textMeshComponent.text = textMeshComponent.text.Insert(0,previousChar.ToString());
     }
-    public void WasCorrect(int pointerLocation)
-    {
-    }
-    public void GoForward(int pointerLocation)
-    {
-
-    }
-    void StyleTypedChar(int pointerLocation , Report pointerReport)
+    void StyleTypedChar(int pointerLocation , Progress pointerProgress)
     {
         for (int index=0; index < typedTextList.Count ; index++)
             if(IsTypedCorrectList[index])
                 typedTextList[index].color = Color.green;
             else
                 typedTextList[index].color = Color.red;
-    }
-    public void GoBackward(int pointerLocation)
-    {
-        
     }
 }

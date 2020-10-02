@@ -7,11 +7,11 @@ public class platformManager : singleton<platformManager>
     public enum StandardPlatform {fight,health,armor};
 
     public List<GameObject> platformList;
-    private void Start() 
+    protected override void Awake() 
     {
         AddAllPlatforms();
     }
-    void AddAllPlatforms()
+    private void AddAllPlatforms()
     {
         platformList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Platform"));
     }

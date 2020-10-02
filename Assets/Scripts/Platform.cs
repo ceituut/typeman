@@ -25,6 +25,7 @@ public class Platform : MonoBehaviour
         }
     }
 
+    // Methods
     private void InitializePlatform()
     {
         numberOfActiveness  = 0;
@@ -43,16 +44,15 @@ public class Platform : MonoBehaviour
         numberOfActiveness ++;
         bool needsNewPointer = true;
         Pointer pointerOfWarrior = _collider.gameObject.GetComponentInChildren<Pointer>();
-        foreach(Pointer thisPointer in enteredWarrior.PointerList)
-            if (thisPointer.TargetPlatform == this.gameObject)
+        foreach(Progress thisProgress in enteredWarrior.ProgressList)
+            if (thisProgress.TargetPlatform == this.gameObject)
                 {
-                    pointerOfWarrior = thisPointer;
+                    pointerOfWarrior.UpdatePointer(thisProgress);
                     needsNewPointer = false;
                     break;
                 }
         if(needsNewPointer)
             pointerOfWarrior.InitializePointer(this.gameObject);
-        pointerOfWarrior.AllowType();
     }
     private void OnTriggerExit(Collider _collider)
     {
@@ -60,7 +60,7 @@ public class Platform : MonoBehaviour
         if(exitedWarrior == null)
             return;
         Pointer pointerOfWarrior = _collider.gameObject.GetComponentInChildren<Pointer>();
-        pointerOfWarrior.DontAllowType();
+        pointerOfWarrior.DontAllowCheck();
         numberOfActiveness --;
         warriorsWithin.Remove(exitedWarrior);
     }

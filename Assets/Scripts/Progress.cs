@@ -1,28 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-public class Report
+public class Progress
 {
-    // Fields 
+    // Fields
+    private UnityEngine.GameObject targetPlatform; 
+    private int pointerLocation;
     private int mistakes;
     private int backspaceMistakes;
     private int continuousCorrects;
     private List<bool> isTypedCorrectList;
 
     // Properties
+    public UnityEngine.GameObject TargetPlatform { get => targetPlatform; set => targetPlatform = value; }
+    public int PointerLocation
+    {
+        get {return pointerLocation;}
+        set {            
+                if (value >= 0)
+                    pointerLocation = value;
+            }
+    }
     public int ContinuousCorrects { get => continuousCorrects; set => continuousCorrects = value; }
     public List<bool> IsTypedCorrectList { get => isTypedCorrectList; set => isTypedCorrectList = value; }
+    public int Mistakes { get => mistakes; set => mistakes = value; }
 
-    public Report()
+    // Constructor
+    public Progress()
     {
+        pointerLocation = 0;
         mistakes = 0;
         backspaceMistakes = 0;
         continuousCorrects = 0;
         isTypedCorrectList = new List<bool>();
     }
-    public void InitializeReport() 
-    {
-    }
+
+    // Methods
     public void AddCorrect()
     {
         isTypedCorrectList.Add(true);
@@ -46,7 +59,9 @@ public class Report
         {
             currentCharIsCorrect = isTypedCorrectList[length-1];
             if (currentCharIsCorrect)
-                this.backspaceMistakes ++;
+                backspaceMistakes ++;
+            else
+                mistakes --;
             isTypedCorrectList.RemoveAt(length-1);
         }
     }

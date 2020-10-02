@@ -8,48 +8,53 @@ public class Pointer : MonoBehaviour
 {
     // Fields
     [SerializeField] private Warrior warrior;
-    private GameObject targetPlatform;
+    private Progress progressObject;
     private GameObject targetText;
-    private Report reportObject;
     private TMPro.TMP_InputField playerInputField;
     [SerializeField] private string neededString;
     [SerializeField] private char neededChar;
     private char lastInputChar;
-    [SerializeField] private int pointerLocation;
 
-    // Properties
-    public int PointerLocation
-    {
-        get {return pointerLocation;}
-        set {            
-                if (value >= 0)
-                    pointerLocation = value;
-            }
-    }
-    public GameObject TargetPlatform { get => targetPlatform; set => targetPlatform = value; }
 
     // Methods
     private void Start()
     {
         warrior = gameObject.GetComponentInParent<Warrior>();
-        reportObject = new Report();
+        InitializeInputField();
+        AllowCheck();
     }
     private void Update()
     {
         KeepActiveInputField();
     }
+    public void UpdatePointer(Progress currentProgress)
+    {
+        progressObject = currentProgress;
+        GameObject platformObject = progressObject.TargetPlatform;
+        targetText = platformObject.GetComponent<Platform>().textChild;
+        neededString = targetText.GetComponent<TextChain>().InitialTextString;
+        ResetInput();
+    }
+    private void ResetInput()
+    {
+        // Removes previous lisntners if exists
+        if(warrior.ProgressList.Count != 0)
+            playerInputField.onValueChanged.RemoveAllListeners();
+        ClearInput();
+        AllowCheck();
+    }
     public void InitializePointer(GameObject newPlatform)
     {
-        warrior.PointerList.Add(this);
-        reportObject = new Report();
+        progressObject = new Progress();
+        warrior.ProgressList.Add(progressObject);
         InitializeNeededString(newPlatform);
-        InitializeInputField();
+        ResetInput();
     }
-    private void InitializeNeededString(GameObject targetPlatform)
+    private void InitializeNeededString(GameObject thisPlatform)
     {
-        PointerLocation = 0;
-        targetText = targetPlatform.GetComponent<Platform>().textChild;
-        neededString = targetText.GetComponent<TextMesh>().text.ToString();
+        progressObject.TargetPlatform = thisPlatform; 
+        targetText = thisPlatform.GetComponent<Platform>().textChild;
+        neededString = targetText.GetComponent<TextChain>().InitialTextString;
     }
     private void InitializeInputField()
     {
@@ -57,9 +62,6 @@ public class Pointer : MonoBehaviour
         playerInputField.textComponent = gameObject.GetComponent<TMPro.TextMeshPro>();
         playerInputField.characterLimit = 5;
         ActivateInputField();
-        // Removes previous lisntners
-        if(warrior.PointerList.Count != 0)
-            playerInputField.onValueChanged.RemoveAllListeners();
     }
     private void ActivateInputField()
     {
@@ -81,23 +83,25 @@ public class Pointer : MonoBehaviour
             GetLastInputChar();
             GetNeededChar();
             CheckInput();
-            BonusCorrectsCheck(); 
-            ClearInputString(); 
+            BonusCorrectsCheck();
+            ResetInput();
         }
         else
-            pointerLocation = 0; // Text is ended
+        {
+            DontAllowCheck();
+        }
     }
     private void CheckInput()
     {
         if (Input.GetKey(KeyCode.Backspace))
         {
-            if (reportObject.CanBackespace())
+            if (progressObject.CanBackespace())
             {
-                reportObject.CheckBackspaceMistakes();
-                targetText.GetComponent<TextChain>().OneStepBack(pointerLocation , reportObject);
-                PointerLocation --;
+                progressObject.CheckBackspaceMistakes();
+                targetText.GetComponent<TextChain>().OneStepBack(progressObject.PointerLocation , progressObject);
+                progressObject.PointerLocation --;
             }
-            reportObject.ContinuousCorrects = 0;
+            progressObject.ContinuousCorrects = 0;
         }
         else
             CheckChar();
@@ -108,18 +112,18 @@ public class Pointer : MonoBehaviour
             PerformCorrectAction();
         else
             PerformMistakeAction();
-        targetText.GetComponent<TextChain>().WasTyped(pointerLocation , reportObject);
-        PointerLocation ++;
+        targetText.GetComponent<TextChain>().WasTyped(progressObject.PointerLocation , progressObject);
+        progressObject.PointerLocation ++;
     }
     private void PerformCorrectAction()
     {
-        reportObject.AddCorrect();
+        progressObject.AddCorrect();
         // Warrior function according to target platform
         // warrior.PerformOperation(TargetPlatform.GetComponent<Platform>().platformType);
     }
     private void PerformMistakeAction()
     {
-        reportObject.AddMistake();
+        progressObject.AddMistake();
         // warrior becomes vulnerable to enemy damage
         // warrior.Armor --;
     }
@@ -131,30 +135,28 @@ public class Pointer : MonoBehaviour
     }
     private void GetNeededChar()
     {
-        neededChar = neededString[PointerLocation];
+        neededChar = neededString[progressObject.PointerLocation];
     }
-    private void ClearInputString()
+    public void ClearInput()
     {
-        playerInputField.onValueChanged.RemoveAllListeners();
         playerInputField.text = String.Empty;
-        playerInputField.onValueChanged.AddListener( delegate { CheckOperation(); });
     }
-    public void AllowType()
+    public void AllowCheck()
     {
         // Adds listner to the playerInutField and invokes CheckOperation() when the value changes
         playerInputField.onValueChanged.AddListener( delegate { CheckOperation(); });
     }
-    public void DontAllowType()
+    public void DontAllowCheck()
     {
         playerInputField.onValueChanged.RemoveAllListeners();
     }
     private void BonusCorrectsCheck()
     {
-        if (reportObject.ContinuousCorrects >= 5)
-            warrior.BonusAttack(reportObject.ContinuousCorrects);
+        if (progressObject.ContinuousCorrects >= 5)
+            warrior.BonusAttack(progressObject.ContinuousCorrects);
     }
     private bool IsTextEnd()
     {
-        return (pointerLocation > (neededString.Length -1));
+        return (progressObject.PointerLocation > (neededString.Length -1));
     }
 }

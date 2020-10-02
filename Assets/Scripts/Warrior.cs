@@ -7,7 +7,7 @@ public class Warrior : MonoBehaviour
 {
     // Fields
     private Profile ownerProfile;
-    public List<Pointer> PointerList;
+    private List<Progress> progressList;
     private float health;
     private float armor;
     private float damage;
@@ -30,6 +30,7 @@ public class Warrior : MonoBehaviour
                 platformLocation = value % numberOfPlatforms;
         }
     }
+    public List<Progress> ProgressList { get => progressList; set => progressList = value; }
 
 
     // Start is called before the first frame update
@@ -37,6 +38,7 @@ public class Warrior : MonoBehaviour
     {
         Armor = 1;
         damage = 10;
+        progressList = new List<Progress>();
     }
     // Update is called once per frame
     void Update()
