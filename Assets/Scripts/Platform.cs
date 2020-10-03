@@ -9,6 +9,7 @@ public class Platform : MonoBehaviour
     public bool IsSafePlatform;
     public platformManager.StandardPlatform platformType;
     public GameObject textChild;
+    public GameObject spawnObject;
     public List<Warrior> warriorsWithin;//all the warriors inside this platform
 
     // Properties

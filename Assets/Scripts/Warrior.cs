@@ -42,7 +42,7 @@ public class Warrior : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Return))
             ChangePlatform();
     }
     public void PerformOperation(platformManager.StandardPlatform currentPlatform)
@@ -63,13 +63,16 @@ public class Warrior : MonoBehaviour
     private void ChangePlatform()
     {
         GameObject nextPlatform;
-        platformLocation ++;
-        nextPlatform = platformManager.instance.platformList[platformLocation];
+        PlatformLocation ++;
+        nextPlatform = platformManager.instance.platformList[PlatformLocation];
         ChangeWarriorPosition(nextPlatform);
     }
     void ChangeWarriorPosition(GameObject targetPlatform)
     {
-
+        GameObject spawnObject = targetPlatform.GetComponent<Platform>().spawnObject;
+        Transform spawnTransform = spawnObject.GetComponent<Transform>();
+        Vector3 spawnLocation = spawnTransform.localPosition + spawnTransform.parent.position;
+        gameObject.GetComponent<Transform>().position = spawnLocation;
     }
     public void Attack()
     {
