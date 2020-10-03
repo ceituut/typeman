@@ -13,8 +13,7 @@ public class Pointer : MonoBehaviour
     private TMPro.TMP_InputField playerInputField;
     [SerializeField] private string neededString;
     [SerializeField] private char neededChar;
-    private char lastInputChar;
-
+    [SerializeField] private char lastInputChar;
 
     // Methods
     private void Start()
@@ -87,9 +86,7 @@ public class Pointer : MonoBehaviour
             ResetInput();
         }
         else
-        {
             DontAllowCheck();
-        }
     }
     private void CheckInput()
     {
@@ -104,7 +101,10 @@ public class Pointer : MonoBehaviour
             progressObject.ContinuousCorrects = 0;
         }
         else
+        {
+            SetCharDelay();
             CheckChar();
+        }
     }
     private void CheckChar()
     {
@@ -117,13 +117,13 @@ public class Pointer : MonoBehaviour
     }
     private void PerformCorrectAction()
     {
-        progressObject.AddCorrect();
+        progressObject.MakeCorrect();
         // Warrior function according to target platform
         // warrior.PerformOperation(TargetPlatform.GetComponent<Platform>().platformType);
     }
     private void PerformMistakeAction()
     {
-        progressObject.AddMistake();
+        progressObject.MakeMistake();
         // warrior becomes vulnerable to enemy damage
         // warrior.Armor --;
     }
@@ -136,6 +136,10 @@ public class Pointer : MonoBehaviour
     private void GetNeededChar()
     {
         neededChar = neededString[progressObject.PointerLocation];
+    }
+    private void SetCharDelay()
+    {
+        progressObject.UpdateCharDelay();
     }
     public void ClearInput()
     {

@@ -384,6 +384,7 @@ MonoBehaviour:
   warrior: {fileID: 0}
   neededString: 
   neededChar: 0
+  lastInputChar: 0
 --- !u!1 &9068453515479313177
 GameObject:
   m_ObjectHideFlags: 0

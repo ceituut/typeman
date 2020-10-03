@@ -33,14 +33,13 @@ public class Warrior : MonoBehaviour
     public List<Progress> ProgressList { get => progressList; set => progressList = value; }
 
 
-    // Start is called before the first frame update
+    // Methods
     void Awake()
     {
         Armor = 1;
         damage = 10;
         progressList = new List<Progress>();
     }
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
