@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5159271958897106565}
   m_Layer: 0
-  m_Name: SpawnLocation
+  m_Name: SpawnObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1260,7 +1260,7 @@ MonoBehaviour:
   IsSafePlatform: 0
   platformType: 1
   textChild: {fileID: 5510204337023615907}
-  spawnLoacation: {fileID: 3659127252813430026}
+  spawnObject: {fileID: 3659127252813430026}
   warriorsWithin: []
 --- !u!1 &5510204336679181332
 GameObject:

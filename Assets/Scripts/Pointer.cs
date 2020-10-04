@@ -32,6 +32,7 @@ public class Pointer : MonoBehaviour
         GameObject platformObject = progressObject.TargetPlatform;
         targetText = platformObject.GetComponent<Platform>().textChild;
         neededString = targetText.GetComponent<TextChain>().InitialTextString;
+        ActivateInputField();
         ResetInput();
     }
     private void ResetInput()
@@ -47,6 +48,7 @@ public class Pointer : MonoBehaviour
         progressObject = new Progress();
         warrior.ProgressList.Add(progressObject);
         InitializeNeededString(newPlatform);
+        ActivateInputField();
         ResetInput();
     }
     private void InitializeNeededString(GameObject thisPlatform)
