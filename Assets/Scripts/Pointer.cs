@@ -120,6 +120,7 @@ public class Pointer : MonoBehaviour
     private void PerformCorrectAction()
     {
         progressObject.MakeCorrect();
+        warrior.PerformOperation(progressObject.TargetPlatform.GetComponent<Platform>().platformType);//////
         // Warrior function according to target platform
         // warrior.PerformOperation(TargetPlatform.GetComponent<Platform>().platformType);
     }

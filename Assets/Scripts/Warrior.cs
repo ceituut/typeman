@@ -8,6 +8,7 @@ public class Warrior : MonoBehaviour
     // Fields
     private Profile ownerProfile;
     private List<Progress> progressList;
+    [SerializeField] private Animator warriorAmimator;
     private float health;
     private float armor;
     private float damage;
@@ -39,6 +40,7 @@ public class Warrior : MonoBehaviour
         Armor = 1;
         damage = 10;
         progressList = new List<Progress>();
+        warriorAmimator = gameObject.GetComponentInChildren<Animator>();
     }
     void Update()
     {
@@ -76,7 +78,7 @@ public class Warrior : MonoBehaviour
     }
     public void Attack()
     {
-
+        warriorAmimator.SetTrigger("OnSimpleAttack");
     }
     public void BonusAttack(int continuousCorrects)
     {
