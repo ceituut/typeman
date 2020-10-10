@@ -81,6 +81,8 @@ public class Progress
             else
                 mistakes --;
         }
+        isTypedCorrectList.RemoveAt(length - 1);
+        // currentCharIsCorrect = isTypedCorrectList[length-1];
     }
     public void UpdateCharDelay()
     {

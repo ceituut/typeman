@@ -7,8 +7,9 @@ public class platformManager : singleton<platformManager>
     public enum StandardPlatform {fight,health,armor};
 
     public List<GameObject> platformList;
-    private void Start() 
+    protected override void Awake() 
     {
+        base.Awake();
         AddAllPlatforms();
     }
     private void AddAllPlatforms()
