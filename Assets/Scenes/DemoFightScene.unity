@@ -481,6 +481,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 838466451, guid: 3d6b81581ea99814984a3ce8300eea66, type: 3}
+      propertyPath: near clip plane
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 838466451, guid: 3d6b81581ea99814984a3ce8300eea66, type: 3}
+      propertyPath: m_RenderingPath
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 9068453514660258165, guid: 3d6b81581ea99814984a3ce8300eea66,
         type: 3}
       propertyPath: m_Mesh
