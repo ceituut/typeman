@@ -20,7 +20,6 @@ public class Pointer : MonoBehaviour
     {
         warrior = gameObject.GetComponentInParent<Warrior>();
         InitializeInputField();
-        AllowCheck();
     }
     private void Update()
     {
