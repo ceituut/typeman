@@ -10,10 +10,5 @@ public class platformManager : singleton<platformManager>
     protected override void Awake() 
     {
         base.Awake();
-        AddAllPlatforms();
-    }
-    private void AddAllPlatforms()
-    {
-        platformList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Platform"));
     }
 }
