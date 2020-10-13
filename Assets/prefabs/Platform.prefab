@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 5510204335282689472}
   - component: {fileID: 5510204335282689479}
   m_Layer: 0
-  m_Name: Text (9)
+  m_Name: TypedText (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 5510204335306495696}
   - component: {fileID: 5510204335306495703}
   m_Layer: 0
-  m_Name: Text (6)
+  m_Name: TypedText (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 5510204335602172762}
   - component: {fileID: 5510204335602172761}
   m_Layer: 0
-  m_Name: Text (3)
+  m_Name: TypedText (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 5510204336002140678}
   - component: {fileID: 5510204336002140677}
   m_Layer: 0
-  m_Name: Text (2)
+  m_Name: TypedText (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 5510204336079799155}
   - component: {fileID: 5510204336079799154}
   m_Layer: 0
-  m_Name: Text (1)
+  m_Name: TypedText (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 5510204336086624463}
   - component: {fileID: 5510204336086624462}
   m_Layer: 0
-  m_Name: Text (5)
+  m_Name: TypedText (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 5510204336251257965}
   - component: {fileID: 5510204336251257964}
   m_Layer: 0
-  m_Name: Text (4)
+  m_Name: TypedText (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,7 +817,7 @@ GameObject:
   - component: {fileID: 5510204336679181335}
   - component: {fileID: 5510204336679181334}
   m_Layer: 0
-  m_Name: Text (8)
+  m_Name: TypedText (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1017,7 +1017,7 @@ GameObject:
   - component: {fileID: 5510204337219412975}
   - component: {fileID: 5510204337219412974}
   m_Layer: 0
-  m_Name: Text (7)
+  m_Name: TypedText (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
