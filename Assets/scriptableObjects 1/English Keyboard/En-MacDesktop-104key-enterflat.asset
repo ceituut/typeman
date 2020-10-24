@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Fa-WinDesktop-104key-enterflat
-  m_EditorClassIdentifier: Assembly-CSharp::WindowsDesktop
+  m_Name: En-MacDesktop-104key-enterflat
+  m_EditorClassIdentifier: Assembly-CSharp::MacDesktop
   primaryKeyList:
   - '`'
   - 1
@@ -26,8 +26,8 @@ MonoBehaviour:
   - 0
   - '-'
   - =
-  - Backspace
-  - Tab
+  - delete
+  - tab
   - q
   - w
   - e
@@ -41,7 +41,7 @@ MonoBehaviour:
   - '['
   - ']'
   - \
-  - Caps Lock
+  - caps lock
   - a
   - s
   - d
@@ -53,8 +53,8 @@ MonoBehaviour:
   - l
   - ;
   - ''''
-  - Enter
-  - Shift
+  - return
+  - shift
   - z
   - x
   - c
@@ -65,15 +65,14 @@ MonoBehaviour:
   - ','
   - .
   - /
-  - ' Shift'
-  - Ctrl
-  - Win
-  - Alt
-  - Space
-  - AltGr
-  - Win
-  - Menu
-  - ' Ctrl'
+  - ' shift'
+  - control
+  - option
+  - command
+  - space
+  - command
+  - option
+  - ' control'
   secondaryKeyList:
   - ~
   - '!'
@@ -88,8 +87,8 @@ MonoBehaviour:
   - )
   - _
   - +
-  - Backspace
-  - Tab
+  - delete
+  - tab
   - Q
   - W
   - E
@@ -103,7 +102,7 @@ MonoBehaviour:
   - '{'
   - '}'
   - '|'
-  - Caps Lock
+  - caps lock
   - A
   - S
   - D
@@ -115,8 +114,8 @@ MonoBehaviour:
   - L
   - ':'
   - '"'
-  - Enter
-  - Shift
+  - return
+  - shift
   - Z
   - X
   - C
@@ -127,12 +126,11 @@ MonoBehaviour:
   - <
   - '>'
   - '?'
-  - ' Shift'
-  - Ctrl
-  - Win
-  - Alt
-  - Space
-  - AltGr
-  - Win
-  - Menu
-  - ' Ctrl'
+  - ' shift'
+  - control
+  - option
+  - command
+  - space
+  - command
+  - option
+  - ' control'

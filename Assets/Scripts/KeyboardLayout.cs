@@ -60,55 +60,6 @@ public class WindowsDesktop : KeyboardLayout
         int row4Limit = primaryKeyList.IndexOf(" Ctrl");
         limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
     }
-    // public override void MakeIt105Key()
-    // {
-    //     int insertionIndex = primaryKeyList.IndexOf("Shift");
-    //     string newPrimaryKey = "\\";
-    //     string newSecondaryKey = "|";
-    //     primaryKeyList.Insert(insertionIndex,newPrimaryKey);
-    //     secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
-    //     // Update row limits
-    //     limitedRows[4] += 1;
-    // }
-    // public override void MakeIt107Key()
-    // {
-    //     MakeIt105Key();
-    //     int insertionIndex = primaryKeyList.IndexOf("/");
-    //     string newPrimaryKey = "   ";
-    //     string newSecondaryKey = "   ";
-    //     primaryKeyList.Insert(insertionIndex,newPrimaryKey);
-    //     secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
-    //     // Update row limits
-    //     limitedRows[4] += 1;
-    // }
-    // public override void MakeEnterHigh()
-    // {
-    //     int firstIndex = primaryKeyList.IndexOf("Enter");
-    //     int secondIndex = primaryKeyList.IndexOf("\\");
-    //     // Swap primary keys
-    //     string tempKey = primaryKeyList[firstIndex];
-    //     primaryKeyList[firstIndex] = primaryKeyList[secondIndex];
-    //     primaryKeyList[secondIndex] = tempKey;
-    //     // Swap secondary keys
-    //     tempKey = secondaryKeyList[firstIndex];
-    //     secondaryKeyList[firstIndex] = secondaryKeyList[secondIndex];
-    //     secondaryKeyList[secondIndex] = tempKey;
-    // }
-    // public override void MakeEnterBig()
-    // {
-    //     MakeEnterHigh();
-    //     int insertionIndex = primaryKeyList.IndexOf("=");
-    //     // Remove primary & secondary string of target key
-    //     primaryKeyList.Remove("\\");
-    //     secondaryKeyList.Remove("|");
-    //     // Insert them after = key
-    //     primaryKeyList.Insert(insertionIndex,"\\");
-    //     secondaryKeyList.Insert(insertionIndex,"|");
-    //     // Update row limits
-    //     limitedRows[0] += 1;
-    //     limitedRows[2] -= 1;
-    // }
-
 }
 
 
@@ -250,14 +201,6 @@ public class WindowsErgonomic2 : WindowsDesktop
         int row4Limit = primaryKeyList.IndexOf(" Ctrl");
         limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
     }
-    // public override void MakeEnterHigh()
-    // {
-    //     // Do nothing
-    // }
-    // public override void MakeEnterBig()
-    // {
-    //     // Do nothing
-    // }
 }
 
 
@@ -300,48 +243,6 @@ public class MacDesktop : KeyboardLayout
         int row4Limit = primaryKeyList.IndexOf(" control");
         limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
     }
-    // public override void MakeIt105Key()
-    // {
-    //     int insertionIndex = primaryKeyList.IndexOf("shift");
-    //     string newPrimaryKey = "\\";
-    //     string newSecondaryKey = "|";
-    //     primaryKeyList.Insert(insertionIndex,newPrimaryKey);
-    //     secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
-    // }
-    // public override void MakeIt107Key()
-    // {
-    //     MakeIt105Key();
-    //     int insertionIndex = primaryKeyList.IndexOf("/");
-    //     string newPrimaryKey = "   ";
-    //     string newSecondaryKey = "   ";
-    //     primaryKeyList.Insert(insertionIndex,newPrimaryKey);
-    //     secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
-    // }
-    // public override void MakeEnterHigh()
-    // {
-    //     int firstIndex = primaryKeyList.IndexOf("return");
-    //     int secondIndex = primaryKeyList.IndexOf("\\");
-    //     // Swap primary keys
-    //     string tempKey = primaryKeyList[firstIndex];
-    //     primaryKeyList[firstIndex] = primaryKeyList[secondIndex];
-    //     primaryKeyList[secondIndex] = tempKey;
-    //     // Swap secondary keys
-    //     tempKey = secondaryKeyList[firstIndex];
-    //     secondaryKeyList[firstIndex] = secondaryKeyList[secondIndex];
-    //     secondaryKeyList[secondIndex] = tempKey;
-    // }
-    // public override void MakeEnterBig()
-    // {
-    //     MakeEnterHigh();
-    //     int insertionIndex = primaryKeyList.IndexOf("=");
-    //     // Remove primary & secondary string of target key
-    //     primaryKeyList.Remove("\\");
-    //     secondaryKeyList.Remove("|");
-    //     // Insert them after = key
-    //     primaryKeyList.Insert(insertionIndex,"\\");
-    //     secondaryKeyList.Insert(insertionIndex,"|");
-    // }
-
 }
 
 
