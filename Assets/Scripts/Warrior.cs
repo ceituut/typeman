@@ -6,19 +6,19 @@ using UnityEngine;
 public class Warrior : MonoBehaviour
 {
     // Fields
-    private Profile ownerProfile;
-    private List<Progress> progressList;
-    [SerializeField] private Animator warriorAmimator;
     private float health;
     private float armor;
     private float damage;
-    private int platformLocation = 0;
+    private Profile ownerProfile;
+    private int platformLocation;
+    private List<Progress> progressList;
+    [SerializeField] private Animator warriorAmimator;
 
     // Properties
-    public Profile OwnerProfile { get => ownerProfile; set => ownerProfile = value; }
     public float Health { get => health; set => health = value; }
     public float Armor { get => armor; set => armor = value; }
     public float Damage { get => damage; set => damage = value; }
+    public Profile OwnerProfile { get => ownerProfile; set => ownerProfile = value; }
     public int PlatformLocation 
     {
         get {return platformLocation;}
@@ -39,6 +39,7 @@ public class Warrior : MonoBehaviour
     {
         Armor = 1;
         damage = 10;
+        platformLocation = 0;
         progressList = new List<Progress>();
         warriorAmimator = gameObject.GetComponentInChildren<Animator>();
     }

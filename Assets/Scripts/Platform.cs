@@ -11,6 +11,7 @@ public class Platform : MonoBehaviour
     public GameObject textChild;
     public GameObject spawnObject;
     public List<Warrior> warriorsWithin;//all the warriors inside this platform
+    public PlatformCore core;
 
     // Properties
     public int NumberOfActiveness
@@ -27,13 +28,13 @@ public class Platform : MonoBehaviour
     }
 
     // Methods
-    private void InitializePlatform()
-    {
-        numberOfActiveness  = 0;
-    }
     private void Awake()
     {
         InitializePlatform();
+    }
+    private void InitializePlatform()
+    {
+        numberOfActiveness  = 0;
     }
     private void OnTriggerEnter(Collider _collider)
     {
