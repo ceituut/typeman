@@ -9,7 +9,7 @@ public class Progress
     private int mistakes;
     private int backspaceMistakes;
     private int continuousCorrects;
-    private int numberOfCorrected;
+    private int numberOfCorrected;//////////////////// has a problem
     private List<bool> isTypedCorrectList;
     private List<float> charDelayTimeList;
     private float previousTime;

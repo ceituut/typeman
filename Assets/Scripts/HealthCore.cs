@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName="FightCore",
-menuName="TypeMan/PlatformCore/FightCore")]
-public class FightCore : PlatformCore
+[CreateAssetMenu(fileName="HealthCore",
+menuName="TypeMan/PlatformCore/HealthCore")]
+public class HealthCore : PlatformCore
 {
     public override void DoCorrectOperationForWarrior(Warrior warrior)
     {
-        warrior.Attack();
+        warrior.Health ++;
     }
     public override void DoMistakeOperationForWarrior(Warrior warrior)
     {

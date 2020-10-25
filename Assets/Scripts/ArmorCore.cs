@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName="FightCore",
-menuName="TypeMan/PlatformCore/FightCore")]
-public class FightCore : PlatformCore
+[CreateAssetMenu(fileName="ArmorCore",
+menuName="TypeMan/PlatformCore/ArmorCore")]
+public class ArmorCore : PlatformCore
 {
     public override void DoCorrectOperationForWarrior(Warrior warrior)
     {
-        warrior.Attack();
+        warrior.Armor ++;
     }
     public override void DoMistakeOperationForWarrior(Warrior warrior)
     {
-        warrior.Armor --;
+        warrior.Health --;
     }
 }

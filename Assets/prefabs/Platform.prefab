@@ -896,10 +896,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsSafePlatform: 0
-  platformType: 0
   textChild: {fileID: 5510204337023615907}
   spawnObject: {fileID: 3659127252813430026}
   warriorsWithin: []
+  core: {fileID: 11400000, guid: cca1d12de7abdd84887ee18b8f4ec5e1, type: 2}
 --- !u!1 &5510204336679181332
 GameObject:
   m_ObjectHideFlags: 0

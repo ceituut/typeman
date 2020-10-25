@@ -48,23 +48,9 @@ public class Warrior : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
             ChangePlatform();
     }
-    public void PerformOperation(platformManager.StandardPlatform currentPlatform)
-    {
-        switch(currentPlatform)
-        {
-            case platformManager.StandardPlatform.fight :
-                Attack();
-                break;
-            case platformManager.StandardPlatform.health :
-                IncreaseHealth();
-                break;
-            case platformManager.StandardPlatform.armor :
-                increaseArmor();
-                break;
-        }
-    }
     private void ChangePlatform()
     {
+        warriorAmimator.SetTrigger("OnSwitch");
         GameObject nextPlatform;
         PlatformLocation ++;
         nextPlatform = platformManager.instance.platformList[PlatformLocation];
@@ -82,14 +68,6 @@ public class Warrior : MonoBehaviour
         warriorAmimator.SetTrigger("OnSimpleAttack");
     }
     public void BonusAttack(int continuousCorrects)
-    {
-
-    }
-    public void IncreaseHealth()
-    {
-
-    }
-    public void increaseArmor()
     {
 
     }

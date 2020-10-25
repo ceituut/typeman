@@ -7,11 +7,10 @@ public class Platform : MonoBehaviour
     // Fields
     private int numberOfActiveness;
     public bool IsSafePlatform;
-    public platformManager.StandardPlatform platformType;
     public GameObject textChild;
     public GameObject spawnObject;
     public List<Warrior> warriorsWithin;//all the warriors inside this platform
-    public PlatformCore core;
+    [SerializeField] private PlatformCore core;
 
     // Properties
     public int NumberOfActiveness
@@ -26,6 +25,7 @@ public class Platform : MonoBehaviour
             numberOfActiveness = value;
         }
     }
+    public PlatformCore Core { get => core; set => core = value; }
 
     // Methods
     private void Awake()

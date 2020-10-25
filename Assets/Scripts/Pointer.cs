@@ -119,15 +119,13 @@ public class Pointer : MonoBehaviour
     private void PerformCorrectAction()
     {
         progressObject.MakeCorrect();
-        warrior.PerformOperation(progressObject.TargetPlatform.GetComponent<Platform>().platformType);//////
-        // Warrior function according to target platform
-        // warrior.PerformOperation(TargetPlatform.GetComponent<Platform>().platformType);
+        // warrior.PerformOperation(progressObject.TargetPlatform.GetComponent<Platform>().platformType);//////
+        progressObject.TargetPlatform.GetComponent<Platform>().Core.DoCorrectOperationForWarrior(warrior);
     }
     private void PerformMistakeAction()
     {
         progressObject.MakeMistake();
-        // warrior becomes vulnerable to enemy damage
-        // warrior.Armor --;
+        progressObject.TargetPlatform.GetComponent<Platform>().Core.DoMistakeOperationForWarrior(warrior);
     }
     private void GetLastInputChar()
     {
