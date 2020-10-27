@@ -241,6 +241,17 @@ PrefabInstance:
       propertyPath: platformType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5510204336660303255, guid: 3ad664d4929a246469f8c34bae7d4bc0,
+        type: 3}
+      propertyPath: core.increaseAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510204336660303255, guid: 3ad664d4929a246469f8c34bae7d4bc0,
+        type: 3}
+      propertyPath: core
+      value: 
+      objectReference: {fileID: 11400000, guid: 6dac21e8fa1b2624c908efd9982e1e11,
+        type: 2}
     - target: {fileID: 5510204336660303259, guid: 3ad664d4929a246469f8c34bae7d4bc0,
         type: 3}
       propertyPath: m_Name
@@ -499,6 +510,12 @@ PrefabInstance:
       propertyPath: platformType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5510204336660303255, guid: 3ad664d4929a246469f8c34bae7d4bc0,
+        type: 3}
+      propertyPath: core
+      value: 
+      objectReference: {fileID: 11400000, guid: 139dd3c1a7e38f94dbf8697f27755336,
+        type: 2}
     - target: {fileID: 5510204336660303259, guid: 3ad664d4929a246469f8c34bae7d4bc0,
         type: 3}
       propertyPath: m_Name
@@ -658,5 +675,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9068453515479313189, guid: 3d6b81581ea99814984a3ce8300eea66,
+        type: 3}
+      propertyPath: test
+      value: 
+      objectReference: {fileID: 11400000, guid: df5742dc01fd70041978db5167b4177b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d6b81581ea99814984a3ce8300eea66, type: 3}
