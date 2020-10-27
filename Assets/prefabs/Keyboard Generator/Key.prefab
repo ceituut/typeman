@@ -86,11 +86,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2830008371952522421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cf46eb907109b343943aadf3694bf5a, type: 3}
+  m_Script: {fileID: 11500000, guid: e10b299770868aa4fa9c6229c558c7e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RelatedFinger: {fileID: 0}
-  textComponent: {fileID: 0}
+  textComponent: {fileID: 1189956451156580726}
   keyPrimaryValue: 
   keySecondaryValue: 
 --- !u!114 &2270366876731705676

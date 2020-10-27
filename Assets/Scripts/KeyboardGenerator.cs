@@ -4,10 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Just use it for creating keyboard in edit mode
-// Attach it to keyboard Object
-// It will generate all keys
-[ExecuteInEditMode]
 public class KeyboardGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject keyGameObject;
@@ -22,7 +18,7 @@ public class KeyboardGenerator : MonoBehaviour
     private void Start() 
     {
         int length = keyboard.GetPrimaryKeyList.Count;
-        rowLimits = keyboard.GetLimitedRows;
+        rowLimits = keyboard.GetEndIndexInRows;
 
         GenerateRow(row0 , 0 , rowLimits[0]);
         GenerateRow(row1 , rowLimits[0] + 1 , rowLimits[1]);
@@ -33,6 +29,7 @@ public class KeyboardGenerator : MonoBehaviour
     private void GenerateRow(GameObject thisRow , int startIndex , int endIndex)
     {
         GameObject key;
+        float keyWidth;
         for(int index = startIndex ; index <= endIndex ;  index++)
         {
             key = GameObject.Instantiate(keyGameObject) as GameObject;
@@ -42,7 +39,10 @@ public class KeyboardGenerator : MonoBehaviour
             key.GetComponent<Key>().KeyPrimaryValue = keyboard.GetPrimaryKeyList[index];
             key.GetComponent<Key>().KeySecondaryValue = keyboard.GetSecondaryKeyList[index];
             key.GetComponentInChildren<RectTransform>().localScale = Vector3.one;
-            key.GetComponentInChildren<RectTransform>().sizeDelta = new Vector2(25,20);
+
+            keyWidth = 25 * keyboard.GetKeyWidthList[index];
+
+            key.GetComponentInChildren<RectTransform>().sizeDelta = new Vector2(keyWidth,25);
         }
     }
 }

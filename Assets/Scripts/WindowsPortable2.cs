@@ -28,6 +28,6 @@ public class WindowsPortable2 : WindowsDesktop
             "Shift","Z","X","C","V","B","N","M","<",">","?"," Shift",
             "Ctrl","Fn","Win","Alt","Space","AltGr"," Ctrl"
         };
-        InitializeRowLimits();
+        InitializeEndIndexInRows();
     }
 }

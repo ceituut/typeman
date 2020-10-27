@@ -28,15 +28,15 @@ public class MacPortable : MacDesktop
             "shift","Z","X","C","V","B","N","M","<",">","?"," shift",
             "fn","control","option","command","space","command"," option"
         };
-        InitializeRowLimits();
+        InitializeEndIndexInRows();
     }
-    public override void InitializeRowLimits()
+    public override void InitializeEndIndexInRows()
     {
         int row0Limit = primaryKeyList.IndexOf("delete");
         int row1Limit = primaryKeyList.IndexOf("\\");
         int row2Limit = primaryKeyList.IndexOf("return");
         int row3Limit = primaryKeyList.IndexOf(" shift");
         int row4Limit = primaryKeyList.IndexOf(" option");
-        limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
+        endIndexInRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
     }
 }

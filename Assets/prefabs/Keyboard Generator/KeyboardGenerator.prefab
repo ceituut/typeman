@@ -131,8 +131,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7954525169328255162}
-  - component: {fileID: 2160399580695175424}
   - component: {fileID: 8154470203744139282}
+  - component: {fileID: -4069291232710536882}
   m_Layer: 0
   m_Name: KeyboardGenerator
   m_TagString: Untagged
@@ -164,27 +164,6 @@ RectTransform:
   m_AnchoredPosition: {x: 238.79, y: 0}
   m_SizeDelta: {x: 441.95297, y: 139.42075}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &2160399580695175424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3934851494441966692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7df4176c6dec8db40b2169e30abe2a64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyGameObject: {fileID: 2830008371952522421, guid: f46569c9839d23840b670b03337d6aee,
-    type: 3}
-  keyboard: {fileID: 11400000, guid: 1977d07f7e3bf8c41b47d6585f2e83e9, type: 2}
-  rowLimits: 0d0000001b00000028000000340000003c000000
-  row0: {fileID: 2603563323713711478}
-  row1: {fileID: 7093351824564080002}
-  row2: {fileID: 8194764844515371639}
-  row3: {fileID: 5319380307704859773}
-  row4: {fileID: 2313705278842643899}
 --- !u!114 &8154470203744139282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +189,27 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &-4069291232710536882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934851494441966692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27e0c65e2958ba40a92c7a62b44691d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyGameObject: {fileID: 2830008371952522421, guid: f46569c9839d23840b670b03337d6aee,
+    type: 3}
+  keyboard: {fileID: 0}
+  rowLimits: 0d0000001b00000028000000340000003c000000
+  row0: {fileID: 2603563323713711478}
+  row1: {fileID: 7093351824564080002}
+  row2: {fileID: 8194764844515371639}
+  row3: {fileID: 5319380307704859773}
+  row4: {fileID: 2313705278842643899}
 --- !u!1 &5319380307704859773
 GameObject:
   m_ObjectHideFlags: 0

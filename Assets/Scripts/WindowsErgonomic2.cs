@@ -28,15 +28,30 @@ public class WindowsErgonomic2 : WindowsDesktop
             "Shift","Z","X","C","V","B","N","M","<",">","?"," Shift",
             "Ctrl","Alt","Backspace","Delete","Enter","Space","AltGr"," Ctrl"
         };
-        InitializeRowLimits();
+        InitializeEndIndexInRows();
     }
-    public override void InitializeRowLimits()
+    public override void InitializeEndIndexInRows()
     {
         int row0Limit = primaryKeyList.IndexOf("=");
         int row1Limit = primaryKeyList.IndexOf("]");
         int row2Limit = primaryKeyList.IndexOf("\\");
         int row3Limit = primaryKeyList.IndexOf(" Shift");
         int row4Limit = primaryKeyList.IndexOf(" Ctrl");
-        limitedRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
+        endIndexInRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
+    }
+
+
+
+    public override void MakeEnterFlat()
+    {
+        // Do nothing
+    }
+    public override void MakeEnterHigh()
+    {
+        // Do nothing
+    }
+    public override void MakeEnterBig()
+    {
+        // Do nothing
     }
 }

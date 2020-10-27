@@ -28,6 +28,36 @@ public class WindowsPortable1 : WindowsDesktop
             "Shift","Z","X","C","V","B","N","M","<",">","?"," Shift",
             "Ctrl","Fn","Win","Alt","Space","AltGr","Prnt Scr"," Ctrl"
         };
-        InitializeRowLimits();
+        InitializeEndIndexInRows();
+        InitializeKeyWidthList();
+        InitializeRowWidthList();
+    }
+    public override void InitializeRowWidthList()
+    {
+        AddRowWidthMembers();
+    }
+    public override void InitializeKeyWidthList()
+    {
+        AddKeyWidthMembers();
+        SetWidthForSpecificKey("Backspace", 2.2f);
+        SetWidthForSpecificKey("Tab", 1.6f);
+        SetWidthForSpecificKey("\\", 1.6f);
+        SetWidthForSpecificKey("Caps Lock", 1.9f);
+        SetWidthForSpecificKey("Enter", 2.35f);
+        SetWidthForSpecificKey("Shift", 2f);
+        SetWidthForSpecificKey(" Shift", 3.2f);
+        SetWidthForSpecificKey("Ctrl", 1f);
+        SetWidthForSpecificKey("Win", 1f);
+        SetWidthForSpecificKey("Fn", 1f);
+        SetWidthForSpecificKey("Alt", 1f);
+        SetWidthForSpecificKey("Space", 5f);
+        SetWidthForSpecificKey("AltGr", 1f);
+        SetWidthForSpecificKey("Prnt Scr", 1f);
+        SetWidthForSpecificKey(" Ctrl", 1f);
+
+        // FixLastKeyWidthOfThisRow("Tab","\\");
+        // FixLastKeyWidthOfThisRow("Caps Lock","Enter");
+        // FixLastKeyWidthOfThisRow("Shift"," Shift");
+        // FixLastKeyWidthOfThisRow("Ctrl"," Ctrl");
     }
 }
