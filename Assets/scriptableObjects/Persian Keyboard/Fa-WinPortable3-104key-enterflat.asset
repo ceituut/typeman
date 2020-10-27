@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: En-WinPortable3-104key-enterflat
+  m_Name: Fa-WinPortable3-104key-enterflat
   m_EditorClassIdentifier: Assembly-CSharp::WindowsPortable3
   primaryKeyList:
   - '`'
@@ -136,3 +136,73 @@ MonoBehaviour:
   - AltGr
   - Prnt Scr
   - ' Ctrl'
+  endIndexInRows: 0d0000001b00000028000000340000003c000000
+  rowWidthList:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  keyWidthList:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 2.2
+  - 1.6
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1.6
+  - 1.9
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 2.35
+  - 2
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 3.2
+  - 1
+  - 1
+  - 1
+  - 1
+  - 5
+  - 1
+  - 1
+  - 1
+  keySpace: 0
