@@ -19,7 +19,7 @@ public class MacDesktop : KeyboardLayout
             "tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "caps lock","a","s","d","f","g","h","j","k","l",";","'","return",
             "shift","z","x","c","v","b","n","m",",",".","/"," shift",
-            "control","option","command","space","command","option"," control"
+            "control","option","command","space"," command"," option"," control"
         };
         secondaryKeyList = new List<string>
         {
@@ -27,39 +27,53 @@ public class MacDesktop : KeyboardLayout
             "tab","Q","W","E","R","T","Y","U","I","O","P","{","}","|",
             "caps lock","A","S","D","F","G","H","J","K","L",":","\"","return",
             "shift","Z","X","C","V","B","N","M","<",">","?"," shift",
-            "control","option","command","space","command","option"," control"
+            "control","option","command","space"," command"," option"," control"
         };
+        InitializeEndStringInRows();
         InitializeEndIndexInRows();
+        InitializeKeyWidthList();
+        CalcTypicalRowWidth();
     }
-    public override void InitializeEndIndexInRows()
+    protected override void InitializeEndStringInRows()
     {
-        int row0Limit = primaryKeyList.IndexOf("delete");
-        int row1Limit = primaryKeyList.IndexOf("\\");
-        int row2Limit = primaryKeyList.IndexOf("return");
-        int row3Limit = primaryKeyList.IndexOf(" shift");
-        int row4Limit = primaryKeyList.IndexOf(" control");
-        endIndexInRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
+        endStringInRows = new List<string>
+        {"delete","\\","return"," shift"," control"};
     }
-    public override void InitializeRowWidthList()
+    protected override void InitializeKeyWidthList()
     {
+        keySpace = 0.2f;
+        AddKeyWidthMembers();
+        SetWidthForSpecificKey("delete", 2.2f);
+        SetWidthForSpecificKey("tab", 1.6f);
+        SetWidthForSpecificKey("\\", 1.6f);
+        SetWidthForSpecificKey("caps lock", 1.8f);
+        SetWidthForSpecificKey("return", 2.45f);
+        SetWidthForSpecificKey("shift", 2.5f);
+        SetWidthForSpecificKey(" shift", 2.9f);
+        SetWidthForSpecificKey("control", 1.5f);
+        SetWidthForSpecificKey("option", 1.4f);
+        SetWidthForSpecificKey("command", 1.6f);
+        SetWidthForSpecificKey("space", 7.6f);
+        SetWidthForSpecificKey(" command", 1.6f);
+        SetWidthForSpecificKey(" option", 1.4f);
+        SetWidthForSpecificKey(" control", 1.5f);
     }
-    public override void InitializeKeyWidthList()
+    public override void AdjustRows()
     {
-    }
-
-
-
-    public override void MakeIt104Key()
-    {
-        InitializeDefualt();
+        FixLastKeyWidthOfThisRow("`" , endStringInRows[0]);
+        FixLastKeyWidthOfThisRow("tab",endStringInRows[1]);
+        FixLastKeyWidthOfThisRow("caps lock",endStringInRows[2]);
+        FixLastKeyWidthOfThisRow("shift",endStringInRows[3]);
+        FixLastKeyWidthOfThisRow("control",endStringInRows[4]);
     }
     public override void MakeIt105Key()
     {
         int insertionIndex = primaryKeyList.IndexOf("shift");
         string newPrimaryKey = "\\";
         string newSecondaryKey = "|";
-        primaryKeyList.Insert(insertionIndex,newPrimaryKey);
-        secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
+        UpdateKey(insertionIndex , primaryKeyList[insertionIndex] , secondaryKeyList[insertionIndex] , keyWidthList[insertionIndex] - 1.2f);
+        InsertNewKey(insertionIndex + 1 , newPrimaryKey , newSecondaryKey , 1f);
+        InitializeEndIndexInRows();
     }
     public override void MakeIt107Key()
     {
@@ -67,35 +81,28 @@ public class MacDesktop : KeyboardLayout
         int insertionIndex = primaryKeyList.IndexOf("/");
         string newPrimaryKey = "   ";
         string newSecondaryKey = "   ";
-        primaryKeyList.Insert(insertionIndex,newPrimaryKey);
-        secondaryKeyList.Insert(insertionIndex,newSecondaryKey);
-    }
-    public override void MakeEnterFlat()
-    {
-        InitializeDefualt();
+        UpdateKey(insertionIndex + 1 , primaryKeyList[insertionIndex + 1] , secondaryKeyList[insertionIndex + 1] , keyWidthList[insertionIndex + 1] - 1.2f);
+        InsertNewKey(insertionIndex + 1 , newPrimaryKey , newSecondaryKey , 1f);
+        InitializeEndIndexInRows();
     }
     public override void MakeEnterHigh()
     {
         int firstIndex = primaryKeyList.IndexOf("return");
         int secondIndex = primaryKeyList.IndexOf("\\");
-        // Swap primary keys
-        string tempKey = primaryKeyList[firstIndex];
-        primaryKeyList[firstIndex] = primaryKeyList[secondIndex];
-        primaryKeyList[secondIndex] = tempKey;
-        // Swap secondary keys
-        tempKey = secondaryKeyList[firstIndex];
-        secondaryKeyList[firstIndex] = secondaryKeyList[secondIndex];
-        secondaryKeyList[secondIndex] = tempKey;
+        InsertNewKey(firstIndex , "\\" , "|" , 1f);
+        UpdateKey(firstIndex + 1 , "  " , "  " , keyWidthList[firstIndex + 1]);
+        UpdateKey(secondIndex , "return" , "return" , keyWidthList[secondIndex]);
+        endStringInRows[1] = "return";
+        endStringInRows[2] = "  ";
+        InitializeEndIndexInRows();
     }
     public override void MakeEnterBig()
     {
-        MakeEnterHigh();
-        int insertionIndex = primaryKeyList.IndexOf("=");
-        // Remove primary & secondary string of target key
-        primaryKeyList.Remove("\\");
-        secondaryKeyList.Remove("|");
-        // Insert them after = key
-        primaryKeyList.Insert(insertionIndex,"\\");
-        secondaryKeyList.Insert(insertionIndex,"|");
+        int targetIndex = primaryKeyList.IndexOf("\\");
+        int insertionIndex = primaryKeyList.IndexOf("=") + 1;
+        UpdateKey(targetIndex , "  " , "  " , keyWidthList[targetIndex]);
+        InsertNewKey(insertionIndex , "\\" , "|" , 1f);
+        endStringInRows[1] = "  ";
+        InitializeEndIndexInRows();
     }
 }

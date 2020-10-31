@@ -183,8 +183,8 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 0
   m_Spacing: 5
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -204,12 +204,14 @@ MonoBehaviour:
   keyGameObject: {fileID: 2830008371952522421, guid: f46569c9839d23840b670b03337d6aee,
     type: 3}
   keyboard: {fileID: 0}
-  rowLimits: 0d0000001b00000028000000340000003c000000
-  row0: {fileID: 2603563323713711478}
-  row1: {fileID: 7093351824564080002}
-  row2: {fileID: 8194764844515371639}
-  row3: {fileID: 5319380307704859773}
-  row4: {fileID: 2313705278842643899}
+  standard: 0
+  enterType: 0
+  rows:
+  - {fileID: 2603563323713711478}
+  - {fileID: 7093351824564080002}
+  - {fileID: 8194764844515371639}
+  - {fileID: 5319380307704859773}
+  - {fileID: 2313705278842643899}
 --- !u!1 &5319380307704859773
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class MacPortable : MacDesktop
             "tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "caps lock","a","s","d","f","g","h","j","k","l",";","'","return",
             "shift","z","x","c","v","b","n","m",",",".","/"," shift",
-            "fn","control","option","command","space","command"," option"
+            "fn","control","option","command","space"," command"," option"
         };
         secondaryKeyList = new List<string>
         {
@@ -26,17 +26,42 @@ public class MacPortable : MacDesktop
             "tab","Q","W","E","R","T","Y","U","I","O","P","{","}","|",
             "caps lock","A","S","D","F","G","H","J","K","L",":","\"","return",
             "shift","Z","X","C","V","B","N","M","<",">","?"," shift",
-            "fn","control","option","command","space","command"," option"
+            "fn","control","option","command","space"," command"," option"
         };
+        InitializeEndStringInRows();
         InitializeEndIndexInRows();
+        InitializeKeyWidthList();
+        CalcTypicalRowWidth();
     }
-    public override void InitializeEndIndexInRows()
+    protected override void InitializeEndStringInRows()
     {
-        int row0Limit = primaryKeyList.IndexOf("delete");
-        int row1Limit = primaryKeyList.IndexOf("\\");
-        int row2Limit = primaryKeyList.IndexOf("return");
-        int row3Limit = primaryKeyList.IndexOf(" shift");
-        int row4Limit = primaryKeyList.IndexOf(" option");
-        endIndexInRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
+        endStringInRows = new List<string>
+        {"delete","\\","return"," shift"," option"};
+    }
+    protected override void InitializeKeyWidthList()
+    {
+        keySpace = 0.2f;
+        AddKeyWidthMembers();
+        SetWidthForSpecificKey("delete", 1.5f);
+        SetWidthForSpecificKey("tab", 1.6f);
+        SetWidthForSpecificKey("\\", 0.9f);
+        SetWidthForSpecificKey("caps lock", 2f);
+        SetWidthForSpecificKey("return", 1.8f);
+        SetWidthForSpecificKey("shift", 2.6f);
+        SetWidthForSpecificKey(" shift", 2.5f);
+        SetWidthForSpecificKey("fn", 1f);
+        SetWidthForSpecificKey("control", 1f);
+        SetWidthForSpecificKey("option", 1f);
+        SetWidthForSpecificKey("command", 1.4f);
+        SetWidthForSpecificKey("space", 5.8f);
+        SetWidthForSpecificKey(" command", 1.4f);
+        SetWidthForSpecificKey(" option", 1f);
+    }
+    public override void AdjustRows()
+    {
+        FixLastKeyWidthOfThisRow("`" , endStringInRows[0]);
+        FixLastKeyWidthOfThisRow("tab",endStringInRows[1]);
+        FixLastKeyWidthOfThisRow("caps lock",endStringInRows[2]);
+        FixLastKeyWidthOfThisRow("shift",endStringInRows[3]);
     }
 }

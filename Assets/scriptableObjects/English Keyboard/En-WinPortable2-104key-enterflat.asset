@@ -7,7 +7,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
   m_Name: En-WinPortable2-104key-enterflat
@@ -134,7 +134,3 @@ MonoBehaviour:
   - Space
   - AltGr
   - ' Ctrl'
-  endIndexInRows: 0d0000001b00000028000000340000003b000000
-  rowWidthList: []
-  keyWidthList: []
-  keySpace: 0

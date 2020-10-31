@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: ee48dcc50b30de54495fba8e0a6b215c, type: 3}
   m_Name: En-WinErgonomic2-104key-enterflat
-  m_EditorClassIdentifier: Assembly-CSharp::WindowsErgonomic2
+  m_EditorClassIdentifier: 
   primaryKeyList:
   - Backspace
   - 1
@@ -67,7 +67,7 @@ MonoBehaviour:
   - ' Shift'
   - Ctrl
   - Alt
-  - Backspace
+  - ' Backspace'
   - Delete
   - Enter
   - Space
@@ -128,13 +128,9 @@ MonoBehaviour:
   - ' Shift'
   - Ctrl
   - Alt
-  - Backspace
+  - ' Backspace'
   - Delete
   - Enter
   - Space
   - AltGr
   - ' Ctrl'
-  endIndexInRows: 0c0000001900000027000000330000003b000000
-  rowWidthList: []
-  keyWidthList: []
-  keySpace: 0

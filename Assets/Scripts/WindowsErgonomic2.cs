@@ -18,7 +18,7 @@ public class WindowsErgonomic2 : WindowsDesktop
             "Tab","q","w","e","r","t","y","u","i","o","p","[","]",
             "Caps Lock","`","a","s","d","f","g","h","j","k","l",";","'","\\",
             "Shift","z","x","c","v","b","n","m",",",".","/"," Shift",
-            "Ctrl","Alt","Backspace","Delete","Enter","Space","AltGr"," Ctrl"
+            "Ctrl","Alt"," Backspace","Delete","Enter","Space","AltGr"," Ctrl"
         };
         secondaryKeyList = new List<string>
         {
@@ -26,23 +26,38 @@ public class WindowsErgonomic2 : WindowsDesktop
             "Tab","Q","W","E","R","T","Y","U","I","O","P","{","}",
             "Caps Lock","`","A","S","D","F","G","H","J","K","L",":","\"","|",
             "Shift","Z","X","C","V","B","N","M","<",">","?"," Shift",
-            "Ctrl","Alt","Backspace","Delete","Enter","Space","AltGr"," Ctrl"
+            "Ctrl","Alt"," Backspace","Delete","Enter","Space","AltGr"," Ctrl"
         };
+        InitializeEndStringInRows();
         InitializeEndIndexInRows();
+        InitializeKeyWidthList();
+        CalcTypicalRowWidth();
     }
-    public override void InitializeEndIndexInRows()
+    protected override void InitializeEndStringInRows()
     {
-        int row0Limit = primaryKeyList.IndexOf("=");
-        int row1Limit = primaryKeyList.IndexOf("]");
-        int row2Limit = primaryKeyList.IndexOf("\\");
-        int row3Limit = primaryKeyList.IndexOf(" Shift");
-        int row4Limit = primaryKeyList.IndexOf(" Ctrl");
-        endIndexInRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
+        endStringInRows = new List<string>
+        {"=","]","\\"," Shift"," Ctrl"};
     }
-
-
-
-    public override void MakeEnterFlat()
+    protected override void InitializeKeyWidthList()
+    {
+        keySpace = 0.2f;
+        AddKeyWidthMembers();
+        SetWidthForSpecificKey("Backspace", 2.2f);
+        SetWidthForSpecificKey("Tab", 2.2f);
+        SetWidthForSpecificKey("\\", 1f);
+        SetWidthForSpecificKey("Caps Lock", 1f);
+        SetWidthForSpecificKey("Enter", 1.7f);
+        SetWidthForSpecificKey(" Backspace", 1.7f);
+        SetWidthForSpecificKey("Delete", 1.7f);
+        SetWidthForSpecificKey("Shift", 2.2f);
+        SetWidthForSpecificKey(" Shift", 2.2f);
+        SetWidthForSpecificKey("Ctrl", 2.2f);
+        SetWidthForSpecificKey("Alt", 1.6f);
+        SetWidthForSpecificKey("Space", 1.7f);
+        SetWidthForSpecificKey("AltGr", 1.6f);
+        SetWidthForSpecificKey(" Ctrl", 2.2f);
+    }
+    public override void AdjustRows()
     {
         // Do nothing
     }
@@ -54,4 +69,5 @@ public class WindowsErgonomic2 : WindowsDesktop
     {
         // Do nothing
     }
+
 }

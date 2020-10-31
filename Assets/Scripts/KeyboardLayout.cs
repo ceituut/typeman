@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public abstract class KeyboardLayout : ScriptableObject
 {
@@ -8,44 +9,58 @@ public abstract class KeyboardLayout : ScriptableObject
         // Keyboard (without/with Shift key) string values 
     [SerializeField] protected List<string> primaryKeyList;
     [SerializeField] protected List<string> secondaryKeyList;
-        // Number of keys in each row
-    [SerializeField] protected List<int> endIndexInRows;
-        // Width of each row in percent
-    [SerializeField] protected List<float> rowWidthList;
+        // String value of last key in each row
+    protected List<string> endStringInRows;
+        // Index of last key in each row
+    protected List<int> endIndexInRows;
         // Width of each key in percent
-    [SerializeField] protected List<float> keyWidthList;
+    protected List<float> keyWidthList;
         // Space between keys
-    [SerializeField] protected float keySpace;
+    protected float keySpace;
+        // Typical row width that other width of rows will be equayl to that.
+    protected float typicalRowWidth;
 
 
     // Properties
     public List<string> GetPrimaryKeyList { get => primaryKeyList;}
     public List<string> GetSecondaryKeyList { get => secondaryKeyList;}
     public List<int> GetEndIndexInRows { get => endIndexInRows;}
-    protected List<float> GetRowWidthList { get => rowWidthList;}
     public List<float> GetKeyWidthList { get => keyWidthList;}
 
 
     // Methods
     // Abstract methods
     public abstract void InitializeDefualt();
-    public abstract void InitializeEndIndexInRows();
-    public abstract void InitializeRowWidthList();
-    public abstract void InitializeKeyWidthList();
-    public abstract void MakeIt104Key();
+    protected abstract void InitializeKeyWidthList();
+    protected abstract void InitializeEndStringInRows();
+    public abstract void AdjustRows();
     public abstract void MakeIt105Key();
     public abstract void MakeIt107Key();
-    public abstract void MakeEnterFlat();
     public abstract void MakeEnterHigh();
     public abstract void MakeEnterBig();
 
 
     // Common methods
-    public void AddRowWidthMembers()
+    public void InitializeEndIndexInRows()
     {
-        rowWidthList = new List<float>();
-        for(int index = 0; index < endIndexInRows.Count; index++)
-            rowWidthList.Add(1);
+        int row0Limit = primaryKeyList.IndexOf(endStringInRows[0]);
+        int row1Limit = primaryKeyList.IndexOf(endStringInRows[1]);
+        int row2Limit = primaryKeyList.IndexOf(endStringInRows[2]);
+        int row3Limit = primaryKeyList.IndexOf(endStringInRows[3]);
+        int row4Limit = primaryKeyList.IndexOf(endStringInRows[4]);
+        endIndexInRows = new List<int>{row0Limit,row1Limit,row2Limit,row3Limit,row4Limit};
+    }
+    public void InsertNewKey(int targetIndex , string primaryKey , string secondaryKey , float width)
+    {
+        primaryKeyList.Insert(targetIndex , primaryKey);
+        secondaryKeyList.Insert(targetIndex , secondaryKey);
+        keyWidthList.Insert(targetIndex , width);
+    }
+    public void UpdateKey(int targetIndex , string primaryKey , string secondaryKey , float width)
+    {
+        primaryKeyList[targetIndex] = primaryKey;
+        secondaryKeyList[targetIndex] = secondaryKey;
+        keyWidthList[targetIndex] = width;
     }
     public void AddKeyWidthMembers()
     {
@@ -53,13 +68,13 @@ public abstract class KeyboardLayout : ScriptableObject
         for(int index = 0; index < primaryKeyList.Count; index++)
             keyWidthList.Add(1);
     }
-    public void SetWidthForRangeOfKeys(string startKey , string endKey , float targetValue)
-    {
-        int startIndex = primaryKeyList.IndexOf(startKey);
-        int endIndex = primaryKeyList.IndexOf(endKey);
-        for (int index = startIndex; index <= endIndex; index++)
-            keyWidthList[index] = targetValue;
-    }
+    // public void SetWidthForRangeOfKeys(string startKey , string endKey , float targetValue)
+    // {
+    //     int startIndex = primaryKeyList.IndexOf(startKey);
+    //     int endIndex = primaryKeyList.IndexOf(endKey);
+    //     for (int index = startIndex; index <= endIndex; index++)
+    //         keyWidthList[index] = targetValue;
+    // }
     public float GetWidthOfRangeOfKeys(string startKey , string endKey)
     {
         int startIndex = primaryKeyList.IndexOf(startKey);
@@ -78,7 +93,6 @@ public abstract class KeyboardLayout : ScriptableObject
     public void FixLastKeyWidthOfThisRow(string startKey , string endKey)
     {
         int endIndex = primaryKeyList.IndexOf(endKey);
-        float typicalRowWidth = GetTypicalRowWidth();
         float targetRowWidth = GetWidthOfRangeOfKeys(startKey , endKey);
         float offset = Mathf.Abs(typicalRowWidth - targetRowWidth);
         if (typicalRowWidth >= targetRowWidth)
@@ -86,15 +100,24 @@ public abstract class KeyboardLayout : ScriptableObject
         else
             keyWidthList[endIndex] = keyWidthList[endIndex] - offset;
     }
-    public float GetTypicalRowWidth()
+    public void CalcTypicalRowWidth()
     {
         // We use first row width as typical row width.
         // other rows width will be equal to this width.
-        float typicalRowWidth = 0;
+        typicalRowWidth = 0;
         for (int index = 0; index <= endIndexInRows[0]; index ++)
             typicalRowWidth += keyWidthList[index];
         typicalRowWidth += (( endIndexInRows[0]) * keySpace);  
-        return typicalRowWidth;
     }
 
 }
+
+// [CustomEditor(typeof(WindowsDesktop))]
+// public class KeyboardLayoutEditor : Editor {
+//     public override void OnInspectorGUI() {
+//         var script = target as WindowsDesktop;
+//         DrawDefaultInspector();
+//         for(int index =0 ; index < script.GetPrimaryKeyList.Count ; index++)
+//             script.GetKeyWidthList[index] = EditorGUILayout.FloatField(script.GetPrimaryKeyList[index],script.GetKeyWidthList[index]);
+//     }
+// }

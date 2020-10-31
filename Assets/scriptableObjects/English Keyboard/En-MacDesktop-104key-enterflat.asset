@@ -70,8 +70,8 @@ MonoBehaviour:
   - option
   - command
   - space
-  - command
-  - option
+  - ' command'
+  - ' option'
   - ' control'
   secondaryKeyList:
   - ~
@@ -131,10 +131,6 @@ MonoBehaviour:
   - option
   - command
   - space
-  - command
-  - option
+  - ' command'
+  - ' option'
   - ' control'
-  endIndexInRows: 0d0000001b00000028000000340000003b000000
-  rowWidthList: []
-  keyWidthList: []
-  keySpace: 0

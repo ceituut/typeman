@@ -8,7 +8,7 @@ using static KeyboardDef;
 
 public class LanguageSelect : MonoBehaviour
 {
-    [SerializeField] private LanguageUpdate languageUpdate;
+    private LanguageUpdate languageUpdate;
     private KeyboardLanguage currentLanguage;
     private Dropdown dropdownComponent;
 
