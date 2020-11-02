@@ -7,19 +7,19 @@ public class LanguageCheck
 {
     private Dictionary<string,bool> primaryKeyChecker;
     private Dictionary<string,bool> secondaryKeyChecker;
-    public void UpdateKeyCheckers(KeyboardLayout currentLayout)
+    public void UpdateKeyCheckers(Language currentLanguage)
     {
         primaryKeyChecker = new Dictionary<string, bool>();
         secondaryKeyChecker = new Dictionary<string, bool>();
         bool isThisKeyExists;
-        foreach ( string keyString in currentLayout.GetPrimaryKeyList)
+        foreach ( string keyString in currentLanguage.primaryKeyList)
         {
             isThisKeyExists = false;
             primaryKeyChecker.TryGetValue( keyString , out isThisKeyExists);
             if ( !isThisKeyExists )
                 primaryKeyChecker.Add( keyString , true);
         }
-        foreach ( string keyString in currentLayout.GetSecondaryKeyList)
+        foreach ( string keyString in currentLanguage.secondaryKeyList)
         {
             isThisKeyExists = false;
             secondaryKeyChecker.TryGetValue( keyString , out isThisKeyExists);

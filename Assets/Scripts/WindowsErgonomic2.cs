@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
-[CreateAssetMenu(fileName="En-WinErgonomic2-104key-enterflat",
+[CreateAssetMenu(fileName="WinErgonomic2-104key-enterflat",
 menuName="TypeMan/Keyboard/WinErgonomic2")]
 public class WindowsErgonomic2 : WindowsDesktop
 {
@@ -12,20 +15,12 @@ public class WindowsErgonomic2 : WindowsDesktop
     }
     public override void InitializeDefualt()
     {
-        primaryKeyList = new List<string>
+        defaultKeyList = new List<string>
         {
             "Backspace","1","2","3","4","5","6","7","8","9","0","-","=",
             "Tab","q","w","e","r","t","y","u","i","o","p","[","]",
             "Caps Lock","`","a","s","d","f","g","h","j","k","l",";","'","\\",
             "Shift","z","x","c","v","b","n","m",",",".","/"," Shift",
-            "Ctrl","Alt"," Backspace","Delete","Enter","Space","AltGr"," Ctrl"
-        };
-        secondaryKeyList = new List<string>
-        {
-            "Backspace","!","@","#","$","%","^","&","*","(",")","_","+",
-            "Tab","Q","W","E","R","T","Y","U","I","O","P","{","}",
-            "Caps Lock","`","A","S","D","F","G","H","J","K","L",":","\"","|",
-            "Shift","Z","X","C","V","B","N","M","<",">","?"," Shift",
             "Ctrl","Alt"," Backspace","Delete","Enter","Space","AltGr"," Ctrl"
         };
         InitializeEndStringInRows();
@@ -42,32 +37,36 @@ public class WindowsErgonomic2 : WindowsDesktop
     {
         keySpace = 0.2f;
         AddKeyWidthMembers();
-        SetWidthForSpecificKey("Backspace", 2.2f);
-        SetWidthForSpecificKey("Tab", 2.2f);
-        SetWidthForSpecificKey("\\", 1f);
-        SetWidthForSpecificKey("Caps Lock", 1f);
-        SetWidthForSpecificKey("Enter", 1.7f);
-        SetWidthForSpecificKey(" Backspace", 1.7f);
-        SetWidthForSpecificKey("Delete", 1.7f);
-        SetWidthForSpecificKey("Shift", 2.2f);
-        SetWidthForSpecificKey(" Shift", 2.2f);
-        SetWidthForSpecificKey("Ctrl", 2.2f);
-        SetWidthForSpecificKey("Alt", 1.6f);
-        SetWidthForSpecificKey("Space", 1.7f);
-        SetWidthForSpecificKey("AltGr", 1.6f);
-        SetWidthForSpecificKey(" Ctrl", 2.2f);
+        UpdateKey("Backspace", 2.2f);
+        UpdateKey("Tab", 2.2f);
+        UpdateKey("\\", 1f);
+        UpdateKey("Caps Lock", 1f);
+        UpdateKey("Enter", 1.7f);
+        UpdateKey(" Backspace", 1.7f);
+        UpdateKey("Delete", 1.7f);
+        UpdateKey("Shift", 2.2f);
+        UpdateKey(" Shift", 2.2f);
+        UpdateKey("Ctrl", 2.2f);
+        UpdateKey("Alt", 1.6f);
+        UpdateKey("Space", 1.7f);
+        UpdateKey("AltGr", 1.6f);
+        UpdateKey(" Ctrl", 2.2f);
     }
     public override void AdjustRows()
     {
         // Do nothing
     }
-    public override void MakeEnterHigh()
-    {
-        // Do nothing
-    }
-    public override void MakeEnterBig()
-    {
-        // Do nothing
-    }
-
 }
+
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(WindowsErgonomic2))]
+public class WindowsErgonomic2Editor : Editor {
+    public override void OnInspectorGUI() {
+        DrawDefaultInspector();
+        var script = target as WindowsErgonomic2;
+        for(int index =0 ; index < script.GetDefaultKeyList.Count ; index++)
+            script.GetKeyWidthList[index] = EditorGUILayout.FloatField(script.GetDefaultKeyList[index],script.GetKeyWidthList[index]);
+    }
+}
+#endif

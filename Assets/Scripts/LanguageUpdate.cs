@@ -8,9 +8,9 @@ using static KeyboardDef;
 
 public class LanguageUpdate : MonoBehaviour
 {
-    [SerializeField] private LayoutLanguages layoutLanguages;
-    private Dictionary<KeyboardLanguage,KeyboardLayout> layoutDic;
-    private KeyboardLayout currentLayout;
+    [SerializeField] private LanguageContainer LanguageContainer;
+    private Dictionary<KeyboardLanguage,Language> LanguageDic;
+    private Language currentLanguage;
     private LanguageCheck languageChecker;
     private List<Key> keyList;
 
@@ -18,25 +18,25 @@ public class LanguageUpdate : MonoBehaviour
     {
         keyList = new List<Key>( gameObject.GetComponentsInChildren<Key>() );
         languageChecker = new LanguageCheck();
-        InitializeLayoutDic();
+        InitializeLanguageDic();
         UpdateKeyboardLanguage(KeyboardLanguage.English);
     }
-    private void InitializeLayoutDic()
+    private void InitializeLanguageDic()
     {
-        int numberOfLanguages = layoutLanguages.languageList.Count;
-        layoutDic = new Dictionary<KeyboardLanguage, KeyboardLayout>();
+        int numberOfLanguages = LanguageContainer.KeyboardLanguageList.Count;
+        LanguageDic = new Dictionary<KeyboardLanguage, Language>();
         for (int index = 0; index < numberOfLanguages ; index++)
-            layoutDic.Add(layoutLanguages.languageList[index] , layoutLanguages.layoutList[index]);
+            LanguageDic.Add(LanguageContainer.KeyboardLanguageList[index] , LanguageContainer.LanguageList[index]);
     }
     public void UpdateKeyboardLanguage(KeyboardLanguage language)
     {
-        layoutDic.TryGetValue(language,out currentLayout);
-        languageChecker.UpdateKeyCheckers(currentLayout);
+        LanguageDic.TryGetValue(language,out currentLanguage);
+        languageChecker.UpdateKeyCheckers(currentLanguage);
         for (int index = 0; index < keyList.Count ; index++)
         {
-            keyList[index].KeyPrimaryValue = currentLayout.GetPrimaryKeyList[index];
-            keyList[index].KeySecondaryValue = currentLayout.GetSecondaryKeyList[index];
-            keyList[index].TextComponent.text = currentLayout.GetPrimaryKeyList[index];
+            keyList[index].KeyPrimaryValue = currentLanguage.primaryKeyList[index];
+            keyList[index].KeySecondaryValue = currentLanguage.secondaryKeyList[index];
+            keyList[index].TextComponent.text = currentLanguage.primaryKeyList[index];
         }
     }
 }

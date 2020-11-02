@@ -5,22 +5,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using static KeyboardDef;
 
+
+// Use this component only for generating keyboard.
+// Attach it to an instance of KeyboardGenerator prefab ,
+// Then Hit Run to generate keyboard.
+[ExecuteInEditMode]
 public class KeyboardGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject keyGameObject;
-
-    ////////////////// We should use a list for keyboard layouts
     [SerializeField] private KeyboardLayout keyboard;
-    [SerializeField] private StandardTypes standard;
-    [SerializeField] private EnterTypes enterType;
-
     [SerializeField] private List<GameObject> rows;
 
     private void Start() 
     {
-        FormatKeyboard();
         GenerateKeyboard();
-        // gameObject.transform.SetSiblingIndex()////////////////////////
     }
     private void GenerateKeyboard()
     {
@@ -39,10 +37,9 @@ public class KeyboardGenerator : MonoBehaviour
     private void GenerateKey(GameObject targetRow , int keyIndex)
     {
         GameObject key = GameObject.Instantiate(keyGameObject) as GameObject;
-        key.name = keyboard.GetPrimaryKeyList[keyIndex];
+        key.name = keyboard.GetDefaultKeyList[keyIndex];
         key.transform.parent = targetRow.transform;
-        key.GetComponent<Key>().KeyPrimaryValue = keyboard.GetPrimaryKeyList[keyIndex];
-        key.GetComponent<Key>().KeySecondaryValue = keyboard.GetSecondaryKeyList[keyIndex];
+        key.GetComponent<Key>().KeyPrimaryValue = keyboard.GetDefaultKeyList[keyIndex];
         StyleKey(key , keyIndex);
     }
     private void StyleKey(GameObject key , int keyIndex)
@@ -50,27 +47,6 @@ public class KeyboardGenerator : MonoBehaviour
         float keyWidth = 25 * keyboard.GetKeyWidthList[keyIndex];
         key.GetComponentInChildren<RectTransform>().localScale = Vector3.one;
         key.GetComponentInChildren<RectTransform>().sizeDelta = new Vector2(keyWidth,25);
-        key.GetComponentInChildren<Text>().text = keyboard.GetPrimaryKeyList[keyIndex];
-    }
-    // Formats shape of keyboard using standards
-    private void FormatKeyboard()
-    {
-        keyboard.InitializeDefualt();
-        bool isStandardDefault = standard == StandardTypes.the104key;
-        bool isEnterDefault = enterType == EnterTypes.flat;
-        bool noNeedForOtherFormats = isStandardDefault && isEnterDefault;
-        if (!noNeedForOtherFormats)
-            FormatToOthers();
-    }
-    private void FormatToOthers()
-    {
-        if ( standard == StandardTypes.the105key )
-            keyboard.MakeIt105Key();
-        else if (  standard == StandardTypes.the107key )
-            keyboard.MakeIt107Key();
-        if ( enterType == EnterTypes.high )
-            keyboard.MakeEnterHigh();
-        else if ( enterType == EnterTypes.big)
-            keyboard.MakeEnterBig();
+        key.GetComponentInChildren<Text>().text = keyboard.GetDefaultKeyList[keyIndex];
     }
 }

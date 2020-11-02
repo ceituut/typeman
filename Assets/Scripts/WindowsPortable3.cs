@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName="En-WinPortable3-104key-enterflat",
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+[CreateAssetMenu(fileName="WinPortable3-104key-enterflat",
 menuName="TypeMan/Keyboard/WindowsPortable3")]
 public class WindowsPortable3 : WindowsPortable1
 {
@@ -14,26 +18,39 @@ public class WindowsPortable3 : WindowsPortable1
     {
         keySpace = 0.2f;
         AddKeyWidthMembers();
-        SetWidthForSpecificKey("Backspace", 2.2f);
-        SetWidthForSpecificKey("Tab", 1.6f);
-        SetWidthForSpecificKey("\\", 1.6f);
-        SetWidthForSpecificKey("Caps Lock", 1.9f);
-        SetWidthForSpecificKey("Enter", 2.35f);
-        SetWidthForSpecificKey("Shift", 2.5f);
-        SetWidthForSpecificKey(" Shift", 1.7f);
-        SetWidthForSpecificKey("Ctrl", 1.5f);
-        SetWidthForSpecificKey("Win", 1f);
-        SetWidthForSpecificKey("Fn", 1f);
-        SetWidthForSpecificKey("Alt", 1f);
-        SetWidthForSpecificKey("Space", 5.8f);
-        SetWidthForSpecificKey("AltGr", 1f);
-        SetWidthForSpecificKey("Prnt Scr", 1f);
-        SetWidthForSpecificKey(" Ctrl", 1.8f);
+        UpdateKey("Backspace", 2.2f);
+        UpdateKey("Tab", 1.6f);
+        UpdateKey("\\", 1.6f);
+        UpdateKey("Caps Lock", 1.9f);
+        UpdateKey("Enter", 2.35f);
+        UpdateKey("Shift", 2.5f);
+        UpdateKey(" Shift", 1.7f);
+        UpdateKey("Ctrl", 1.5f);
+        UpdateKey("Win", 1f);
+        UpdateKey("Fn", 1f);
+        UpdateKey("Alt", 1f);
+        UpdateKey("Space", 5.8f);
+        UpdateKey("AltGr", 1f);
+        UpdateKey("Prnt Scr", 1f);
+        UpdateKey(" Ctrl", 1.8f);
     }
     public override void AdjustRows()
     {
-        FixLastKeyWidthOfThisRow("`" , endStringInRows[0]);
-        FixLastKeyWidthOfThisRow("Tab",endStringInRows[1]);
-        FixLastKeyWidthOfThisRow("Caps Lock",endStringInRows[2]);
+        FixLastKeyWidthOfThisRange("`" , endStringInRows[0]);
+        FixLastKeyWidthOfThisRange("Tab",endStringInRows[1]);
+        FixLastKeyWidthOfThisRange("Caps Lock",endStringInRows[2]);
     }
 }
+
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(WindowsPortable3))]
+public class WindowsPortable3Editor : Editor {
+    public override void OnInspectorGUI() {
+        DrawDefaultInspector();
+        var script = target as WindowsPortable3;
+        for(int index =0 ; index < script.GetDefaultKeyList.Count ; index++)
+            script.GetKeyWidthList[index] = EditorGUILayout.FloatField(script.GetDefaultKeyList[index],script.GetKeyWidthList[index]);
+    }
+}
+#endif

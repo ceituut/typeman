@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
-[CreateAssetMenu(fileName="En-WinDesktop-104key-enterflat",
+[CreateAssetMenu(fileName="WinDesktop-104key-enterflat",
 menuName="TypeMan/Keyboard/WindowsDesktop")]
 public class WindowsDesktop : KeyboardLayout
 {
@@ -12,7 +15,7 @@ public class WindowsDesktop : KeyboardLayout
     }
     public override void InitializeDefualt()
     {
-        primaryKeyList = new List<string>
+        defaultKeyList = new List<string>
         {
             "`","1","2","3","4","5","6","7","8","9","0","-","=","Backspace",
             "Tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
@@ -20,18 +23,11 @@ public class WindowsDesktop : KeyboardLayout
             "Shift","z","x","c","v","b","n","m",",",".","/"," Shift",
             "Ctrl","Win","Alt","Space","AltGr"," Win","Menu"," Ctrl"
         };
-        secondaryKeyList = new List<string>
-        {
-            "~","!","@","#","$","%","^","&","*","(",")","_","+","Backspace",
-            "Tab","Q","W","E","R","T","Y","U","I","O","P","{","}","|",
-            "Caps Lock","A","S","D","F","G","H","J","K","L",":","\"","Enter",
-            "Shift","Z","X","C","V","B","N","M","<",">","?"," Shift",
-            "Ctrl","Win","Alt","Space","AltGr"," Win","Menu"," Ctrl"
-        };
         InitializeEndStringInRows();
         InitializeEndIndexInRows();
         InitializeKeyWidthList();
         CalcTypicalRowWidth();
+        changer = new WindowsDesktopChanger();
     }
     protected override void InitializeEndStringInRows()
     {
@@ -42,67 +38,41 @@ public class WindowsDesktop : KeyboardLayout
     {
         keySpace = 0.2f;
         AddKeyWidthMembers();
-        SetWidthForSpecificKey("Backspace", 2.2f);
-        SetWidthForSpecificKey("Tab", 1.6f);
-        SetWidthForSpecificKey("\\", 1.6f);
-        SetWidthForSpecificKey("Caps Lock", 1.9f);
-        SetWidthForSpecificKey("Enter", 2.35f);
-        SetWidthForSpecificKey("Shift", 2.5f);
-        SetWidthForSpecificKey(" Shift", 2.9f);
-        SetWidthForSpecificKey("Ctrl", 1.5f);
-        SetWidthForSpecificKey("Win", 0.9f);
-        SetWidthForSpecificKey("Alt", 1.4f);
-        SetWidthForSpecificKey("Space", 7.5f);
-        SetWidthForSpecificKey("AltGr", 1.4f);
-        SetWidthForSpecificKey(" Win", .9f);
-        SetWidthForSpecificKey("Menu", 1f);
-        SetWidthForSpecificKey(" Ctrl", 1.5f);
+        UpdateKey("Backspace", 2.2f);
+        UpdateKey("Tab", 1.6f);
+        UpdateKey("\\", 1.6f);
+        UpdateKey("Caps Lock", 1.9f);
+        UpdateKey("Enter", 2.35f);
+        UpdateKey("Shift", 2.5f);
+        UpdateKey(" Shift", 2.9f);
+        UpdateKey("Ctrl", 1.5f);
+        UpdateKey("Win", 0.9f);
+        UpdateKey("Alt", 1.4f);
+        UpdateKey("Space", 7.5f);
+        UpdateKey("AltGr", 1.4f);
+        UpdateKey(" Win", .9f);
+        UpdateKey("Menu", 1f);
+        UpdateKey(" Ctrl", 1.5f);
     }
     public override void AdjustRows()
     {
-        FixLastKeyWidthOfThisRow("`" , endStringInRows[0]);
-        FixLastKeyWidthOfThisRow("Tab",endStringInRows[1]);
-        FixLastKeyWidthOfThisRow("Caps Lock",endStringInRows[2]);
-        FixLastKeyWidthOfThisRow("Shift",endStringInRows[3]);
-        FixLastKeyWidthOfThisRow("Ctrl",endStringInRows[4]);
-    }
-    public override void MakeIt105Key()
-    {
-        int insertionIndex = primaryKeyList.IndexOf("Shift");
-        string newPrimaryKey = "\\";
-        string newSecondaryKey = "|";
-        UpdateKey(insertionIndex , primaryKeyList[insertionIndex] , secondaryKeyList[insertionIndex] , keyWidthList[insertionIndex] - 1.2f);
-        InsertNewKey(insertionIndex + 1 , newPrimaryKey , newSecondaryKey , 1f);
-        InitializeEndIndexInRows();
-    }
-    public override void MakeIt107Key()
-    {
-        MakeIt105Key();
-        int insertionIndex = primaryKeyList.IndexOf("/");
-        string newPrimaryKey = "   ";
-        string newSecondaryKey = "   ";
-        UpdateKey(insertionIndex + 1 , primaryKeyList[insertionIndex + 1] , secondaryKeyList[insertionIndex + 1] , keyWidthList[insertionIndex + 1] - 1.2f);
-        InsertNewKey(insertionIndex + 1 , newPrimaryKey , newSecondaryKey , 1f);
-        InitializeEndIndexInRows();
-    }
-    public override void MakeEnterHigh()
-    {
-        int firstIndex = primaryKeyList.IndexOf("Enter");
-        int secondIndex = primaryKeyList.IndexOf("\\");
-        InsertNewKey(firstIndex , "\\" , "|" , 1f);
-        UpdateKey(firstIndex + 1 , "  " , "  " , keyWidthList[firstIndex + 1]);
-        UpdateKey(secondIndex , "Enter" , "Enter" , keyWidthList[secondIndex]);
-        endStringInRows[1] = "Enter";
-        endStringInRows[2] = "  ";
-        InitializeEndIndexInRows();
-    }
-    public override void MakeEnterBig()
-    {
-        int targetIndex = primaryKeyList.IndexOf("\\");
-        int insertionIndex = primaryKeyList.IndexOf("=") + 1;
-        UpdateKey(targetIndex , "  " , "  " , keyWidthList[targetIndex]);
-        InsertNewKey(insertionIndex , "\\" , "|" , 1f);
-        endStringInRows[1] = "  ";
-        InitializeEndIndexInRows();
+        FixLastKeyWidthOfThisRange("`" , endStringInRows[0]);
+        FixLastKeyWidthOfThisRange("Tab",endStringInRows[1]);
+        FixLastKeyWidthOfThisRange("Caps Lock",endStringInRows[2]);
+        FixLastKeyWidthOfThisRange("Shift",endStringInRows[3]);
+        FixLastKeyWidthOfThisRange("Ctrl",endStringInRows[4]);
     }
 }
+
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(WindowsDesktop))]
+public class WindowsDesktopEditor : Editor {
+    public override void OnInspectorGUI() {
+        DrawDefaultInspector();
+        var script = target as WindowsDesktop;
+        for(int index =0 ; index < script.GetDefaultKeyList.Count ; index++)
+            script.GetKeyWidthList[index] = EditorGUILayout.FloatField(script.GetDefaultKeyList[index],script.GetKeyWidthList[index]);
+    }
+}
+#endif

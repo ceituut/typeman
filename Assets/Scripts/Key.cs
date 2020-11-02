@@ -17,34 +17,5 @@ public class Key : MonoBehaviour
     private void Awake() 
     {
         textComponent = gameObject.GetComponentInChildren<Text>();   
-    } 
-//    private void PressRelatedBtn()
-//    {
-      
-//        if(KeyBoardManagerScript.instance.IsKeyBoardSectionEnabled)
-//        { 
-           
-//           if(keyCurrentLanguage!=null && keyCurrentLanguage.MyKeyCode ==currentBtnKeyCode())
-//           {
-             
-//                  if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-//                  {
-//                      Debug.Log(keyCurrentLanguage.CapslockOnletter);
-//                  }
-//                  else
-//                  {
-//                     Debug.Log(keyCurrentLanguage.CapslockOffLetter); 
-//                  }
-//                 // GetComponent<Animation>().play(); used to highLight the key(code here)
-//                 if(RelatedFinger!=null && RelatedFinger.GetComponent<FingerScript>()!=null)
-//                 {
-//                   //  RelatedFinger.GetComponent<Animation>().Play(); use to hight light related finger(code here)
-//                 }
-
-             
-              
-//           }
-          
-//        }
-//    }
+    }
 }

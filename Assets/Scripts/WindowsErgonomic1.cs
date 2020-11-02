@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
-[CreateAssetMenu(fileName="En-WinErgonomic1-104key-enterflat",
+[CreateAssetMenu(fileName="WinErgonomic1-104key-enterflat",
 menuName="TypeMan/Keyboard/WinErgonomic1")]
 public class WindowsErgonomic1 : WindowsDesktop
 {
@@ -12,20 +15,12 @@ public class WindowsErgonomic1 : WindowsDesktop
     }
     public override void InitializeDefualt()
     {
-        primaryKeyList = new List<string>
+        defaultKeyList = new List<string>
         {
             "`","1","2","3","4","5","6","7","8","9","0","-","=","Backspace",
             "Tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "Caps Lock","a","s","d","f","g","h","j","k","l",";","'","Enter",
             "Shift","z","x","c","v","b","n","m",",",".","/"," Shift",
-            "Ctrl","Win","Alt","Space","AltGr","Menu"," Ctrl"
-        };
-        secondaryKeyList = new List<string>
-        {
-            "~","!","@","#","$","%","^","&","*","(",")","_","+","Backspace",
-            "Tab","Q","W","E","R","T","Y","U","I","O","P","{","}","|",
-            "Caps Lock","A","S","D","F","G","H","J","K","L",":","\"","Enter",
-            "Shift","Z","X","C","V","B","N","M","<",">","?"," Shift",
             "Ctrl","Win","Alt","Space","AltGr","Menu"," Ctrl"
         };
         InitializeEndStringInRows();
@@ -37,28 +32,41 @@ public class WindowsErgonomic1 : WindowsDesktop
     {
         keySpace = 0.2f;
         AddKeyWidthMembers();
-        SetWidthForSpecificKey("t", 1.8f);
-        SetWidthForSpecificKey("g", 1.6f);
-        SetWidthForSpecificKey("7", 1.7f);
-        SetWidthForSpecificKey("h", 1.4f);
-        SetWidthForSpecificKey("n", 2.1f);
-        SetWidthForSpecificKey("Backspace", 2.2f);
-        SetWidthForSpecificKey("Tab", 1.6f);
-        SetWidthForSpecificKey("\\", 1.6f);
-        SetWidthForSpecificKey("Caps Lock", 1.9f);
-        SetWidthForSpecificKey("Enter", 2.35f);
-        SetWidthForSpecificKey("Shift", 2.5f);
-        SetWidthForSpecificKey(" Shift", 2.9f);
-        SetWidthForSpecificKey("Ctrl", 1.5f);
-        SetWidthForSpecificKey("Win", 2f);
-        SetWidthForSpecificKey("Alt", 1.7f);
-        SetWidthForSpecificKey("Space", 7.5f);
-        SetWidthForSpecificKey("AltGr", 2.1f);
-        SetWidthForSpecificKey("Menu", 2.3f);
-        SetWidthForSpecificKey(" Ctrl", 2.2f);
+        UpdateKey("t", 1.8f);
+        UpdateKey("g", 1.6f);
+        UpdateKey("7", 1.7f);
+        UpdateKey("h", 1.4f);
+        UpdateKey("n", 2.1f);
+        UpdateKey("Backspace", 2.2f);
+        UpdateKey("Tab", 1.6f);
+        UpdateKey("\\", 1.6f);
+        UpdateKey("Caps Lock", 1.9f);
+        UpdateKey("Enter", 2.35f);
+        UpdateKey("Shift", 2.5f);
+        UpdateKey(" Shift", 2.9f);
+        UpdateKey("Ctrl", 1.5f);
+        UpdateKey("Win", 2f);
+        UpdateKey("Alt", 1.7f);
+        UpdateKey("Space", 7.5f);
+        UpdateKey("AltGr", 2.1f);
+        UpdateKey("Menu", 2.3f);
+        UpdateKey(" Ctrl", 2.2f);
     }
     public override void AdjustRows()
     {
         // Do nothing
     }
 }
+
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(WindowsErgonomic1))]
+public class WindowsErgonomic1Editor : Editor {
+    public override void OnInspectorGUI() {
+        DrawDefaultInspector();
+        var script = target as WindowsErgonomic1;
+        for(int index =0 ; index < script.GetDefaultKeyList.Count ; index++)
+            script.GetKeyWidthList[index] = EditorGUILayout.FloatField(script.GetDefaultKeyList[index],script.GetKeyWidthList[index]);
+    }
+}
+#endif
