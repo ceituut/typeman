@@ -1,34 +1,50 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 
 
-public class KeyboardChanger : MonoBehaviour
+public abstract class KeyboardChanger
 {
-    
-    public void MakeIt104Key()
+    public abstract void MakeIt104Key(Key LeftHiddenKey , Key RightHiddenKey);
+    public abstract void MakeIt105Key(Key LeftHiddenKey , Key RightHiddenKey);
+    public abstract void MakeIt107Key(Key LeftHiddenKey , Key RightHiddenKey);
+    public abstract void MakeEnterFlat(Key UpperHiddenKey , Key LowerHiddenKey);
+    public abstract void MakeEnterHigh(Key UpperHiddenKey , Key LowerHiddenKey);
+    public abstract void MakeEnterBig(Key UpperHiddenKey , Key LowerHiddenKey);
+}
+public class WindowsDesktopChanger : KeyboardChanger
+{
+    public override void MakeIt104Key(Key LeftHiddenKey , Key RightHiddenKey)
     {
-    }
-    public void MakeIt105Key()
-    {
+        LeftHiddenKey.gameObject.SetActive(false);
+        RightHiddenKey.gameObject.SetActive(false);
 
+        /// and default width options from KeyboardLayout
     }
-    public void MakeIt107Key()
+    ///////////////////////////////////////////// width operations should apply
+    public override void MakeIt105Key(Key LeftHiddenKey , Key RightHiddenKey)
     {
+        LeftHiddenKey.gameObject.SetActive(true);
+        RightHiddenKey.gameObject.SetActive(false);
     }
-
-    public void MakeEnterFlat()
+    public override void MakeIt107Key(Key LeftHiddenKey , Key RightHiddenKey)
     {
-        
+        LeftHiddenKey.gameObject.SetActive(true);
+        RightHiddenKey.gameObject.SetActive(true);
     }
-    public void MakeEnterHigh()
+    public override void MakeEnterFlat(Key UpperHiddenKey , Key LowerHiddenKey)
     {
-        
+        UpperHiddenKey.gameObject.SetActive(false);
+        LowerHiddenKey.gameObject.SetActive(false);
     }
-    public void MakeEnterBig()
+    public override void MakeEnterHigh(Key UpperHiddenKey , Key LowerHiddenKey)
     {
-        
+        UpperHiddenKey.gameObject.SetActive(false);
+        LowerHiddenKey.gameObject.SetActive(true);
+    }
+    public override void MakeEnterBig(Key UpperHiddenKey , Key LowerHiddenKey)
+    {
+        UpperHiddenKey.gameObject.SetActive(true);
+        LowerHiddenKey.gameObject.SetActive(false);
     }
 }
