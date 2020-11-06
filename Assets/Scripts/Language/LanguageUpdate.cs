@@ -14,10 +14,10 @@ public class LanguageUpdate : MonoBehaviour
     private Language currentLanguage;
     private LanguageCheck languageChecker;
 
+    public Keyboard SetKeyboard {set => keyboard = value; }
 
     private void Start() 
     {
-        keyboard = gameObject.GetComponent<Keyboard>();
         languageChecker = new LanguageCheck();
         InitializeLanguageDic();
         UpdateKeyboardLanguage(KeyboardLanguage.English);
@@ -34,10 +34,12 @@ public class LanguageUpdate : MonoBehaviour
         LanguageDic.TryGetValue(language,out currentLanguage);
         languageChecker.UpdateKeyCheckers(currentLanguage);
         for (int index = 0; index < keyboard.GetKeyList.Count ; index++)
-        {
-            keyboard.GetKeyList[index].KeyPrimaryValue = currentLanguage.primaryKeyList[index];
-            keyboard.GetKeyList[index].KeySecondaryValue = currentLanguage.secondaryKeyList[index];
-            keyboard.GetKeyList[index].TextComponent.text = currentLanguage.primaryKeyList[index];
-        }
+            UpdateSingleKey(index);
+    }
+    public void UpdateSingleKey(int keyIndex)
+    {
+        keyboard.GetKeyList[keyIndex].KeyPrimaryValue = currentLanguage.primaryKeyList[keyIndex];
+        keyboard.GetKeyList[keyIndex].KeySecondaryValue = currentLanguage.secondaryKeyList[keyIndex];
+        keyboard.GetKeyList[keyIndex].TextComponent.text = currentLanguage.primaryKeyList[keyIndex];
     }
 }

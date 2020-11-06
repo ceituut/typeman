@@ -12,7 +12,7 @@ public class LanguageSelect : MonoBehaviour
     private KeyboardLanguage currentLanguage;
     private Dropdown dropdownComponent;
 
-    private void Awake() 
+    private void Start() 
     {
         InitializeDropdown();
         FindKeyboard();

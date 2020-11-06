@@ -10,17 +10,21 @@ public class Keyboard : MonoBehaviour
 {
     // Fields
     [SerializeField] private KeyboardLayout keyboardLayout;
+    private LanguageUpdate languageUpdator;
     private List<Key> keyList;
 
     // Properties
     public List<Key> GetKeyList { get => keyList;}
     public KeyboardLayout GetKeyboardLayout { get => keyboardLayout;}
+    public LanguageUpdate GetLanguageUpdator { get => languageUpdator;}
 
     // Methods
     private void Start()
     {
         keyList = new List<Key>( gameObject.GetComponentsInChildren<Key>() );
         SetReferenceIndexOfKeys();
+        languageUpdator = gameObject.GetComponent<LanguageUpdate>();
+        languageUpdator.SetKeyboard = this;
     }
     private void SetReferenceIndexOfKeys()
     {

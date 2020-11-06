@@ -44,6 +44,8 @@ public class EnterChange : MonoBehaviour
         Enter.SetHeightScale(1f);
         UpperHiddenKey.gameObject.SetActive(false);
         LowerHiddenKey.gameObject.SetActive(false);
+
+        // keyboard.GetLanguageUpdator.UpdateSingleKey(Backslash.indexInRefLayout);     
     }
     public void MakeEnterHigh()
     {

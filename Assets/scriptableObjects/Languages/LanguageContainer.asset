@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee13e181383d504e82aed257727944d, type: 3}
+  m_Name: LanguageContainer
+  m_EditorClassIdentifier: 
+  KeyboardLanguageList: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b000000
+  LanguageList:
+  - {fileID: 11400000, guid: cf6d9b87a715a104a880c28a3450f441, type: 2}
+  - {fileID: 11400000, guid: acc37da0b3d64934ca49057c8c06857e, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
