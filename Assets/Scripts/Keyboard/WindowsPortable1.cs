@@ -6,9 +6,10 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-[CreateAssetMenu(fileName="WinDesktop-104key-enterflat",
-menuName="TypeMan/Keyboard/WindowsDesktop")]
-public class WindowsDesktop : KeyboardLayout
+
+[CreateAssetMenu(fileName="WinPortable1-104key-enterflat",
+menuName="TypeMan/Keyboard/WindowsPortable1")]
+public class WindowsPortable1 : WindowsDesktop
 {
     private void Awake() {
         InitializeDefualt();
@@ -21,18 +22,13 @@ public class WindowsDesktop : KeyboardLayout
             "Tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "Caps Lock","a","s","d","f","g","h","j","k","l",";","'","Enter",
             "Shift","z","x","c","v","b","n","m",",",".","/"," Shift",
-            "Ctrl","Win","Alt","Space","AltGr"," Win","Menu"," Ctrl"
+            "Ctrl","Fn","Win","Alt","Space","AltGr","Prnt Scr"," Ctrl"
         };
         InitializeEndStringInRows();
         InitializeEndIndexInRows();
         InitializeKeyWidthList();
         CalcTypicalRowWidth();
-        changer = new WindowsDesktopChanger();
-    }
-    protected override void InitializeEndStringInRows()
-    {
-        endStringInRows = new List<string>
-        {"Backspace","\\","Enter"," Shift"," Ctrl"};
+        AdjustRows();
     }
     protected override void InitializeKeyWidthList()
     {
@@ -43,16 +39,16 @@ public class WindowsDesktop : KeyboardLayout
         UpdateKey("\\", 1.6f);
         UpdateKey("Caps Lock", 1.9f);
         UpdateKey("Enter", 2.35f);
-        UpdateKey("Shift", 2.5f);
-        UpdateKey(" Shift", 2.9f);
-        UpdateKey("Ctrl", 1.5f);
-        UpdateKey("Win", 0.9f);
-        UpdateKey("Alt", 1.4f);
-        UpdateKey("Space", 7.5f);
-        UpdateKey("AltGr", 1.4f);
-        UpdateKey(" Win", .9f);
-        UpdateKey("Menu", 1f);
-        UpdateKey(" Ctrl", 1.5f);
+        UpdateKey("Shift", 2.2f);
+        UpdateKey(" Shift", 3.2f);
+        UpdateKey("Ctrl", 1f);
+        UpdateKey("Fn", 1f);
+        UpdateKey("Win", 1f);
+        UpdateKey("Alt", 1f);
+        UpdateKey("Space", 5.8f);
+        UpdateKey("AltGr", 1f);
+        UpdateKey("Prnt Scr", 1f);
+        UpdateKey(" Ctrl", 1f);
     }
     public override void AdjustRows()
     {
@@ -60,17 +56,16 @@ public class WindowsDesktop : KeyboardLayout
         FixLastKeyWidthOfThisRange("Tab",endStringInRows[1]);
         FixLastKeyWidthOfThisRange("Caps Lock",endStringInRows[2]);
         FixLastKeyWidthOfThisRange("Shift",endStringInRows[3]);
-        FixLastKeyWidthOfThisRange("Ctrl",endStringInRows[4]);
     }
 }
 
 
 #if UNITY_EDITOR
-[CustomEditor(typeof(WindowsDesktop))]
-public class WindowsDesktopEditor : Editor {
+[CustomEditor(typeof(WindowsPortable1))]
+public class WindowsPortable1Editor : Editor {
     public override void OnInspectorGUI() {
         DrawDefaultInspector();
-        var script = target as WindowsDesktop;
+        var script = target as WindowsPortable1;
         for(int index =0 ; index < script.GetDefaultKeyList.Count ; index++)
             script.GetKeyWidthList[index] = EditorGUILayout.FloatField(script.GetDefaultKeyList[index],script.GetKeyWidthList[index]);
     }

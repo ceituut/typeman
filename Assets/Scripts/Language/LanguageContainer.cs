@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static KeyboardDef;
+using static KeyboardDefinition;
 
 
 [CreateAssetMenu(fileName="LanguageContainer",

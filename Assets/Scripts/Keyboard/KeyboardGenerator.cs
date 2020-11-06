@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static KeyboardDef;
+using static KeyboardDefinition;
 
 
 // Use this component only for generating keyboard.
@@ -22,7 +22,6 @@ public class KeyboardGenerator : MonoBehaviour
     }
     private void GenerateKeyboard()
     {
-        keyboard.AdjustRows();
         GenerateRow(rows[0] , 0 , keyboard.GetEndIndexInRows[0]);
         GenerateRow(rows[1] , keyboard.GetEndIndexInRows[0] + 1 , keyboard.GetEndIndexInRows[1]);
         GenerateRow(rows[2] , keyboard.GetEndIndexInRows[1] + 1 , keyboard.GetEndIndexInRows[2]);
@@ -36,17 +35,17 @@ public class KeyboardGenerator : MonoBehaviour
     }
     private void GenerateKey(GameObject targetRow , int keyIndex)
     {
-        GameObject key = GameObject.Instantiate(keyGameObject) as GameObject;
-        key.name = keyboard.GetDefaultKeyList[keyIndex];
-        key.transform.parent = targetRow.transform;
-        key.GetComponent<Key>().KeyPrimaryValue = keyboard.GetDefaultKeyList[keyIndex];
-        StyleKey(key , keyIndex);
+        GameObject newKey = GameObject.Instantiate(keyGameObject) as GameObject;
+        newKey.name = keyboard.GetDefaultKeyList[keyIndex];
+        newKey.transform.parent = targetRow.transform;
+        newKey.GetComponent<Key>().KeyPrimaryValue = keyboard.GetDefaultKeyList[keyIndex];
+        StyleKey(newKey , keyIndex);
     }
-    private void StyleKey(GameObject key , int keyIndex)
+    private void StyleKey(GameObject thisKey , int keyIndex)
     {
-        float keyWidth = 25 * keyboard.GetKeyWidthList[keyIndex];
-        key.GetComponentInChildren<RectTransform>().localScale = Vector3.one;
-        key.GetComponentInChildren<RectTransform>().sizeDelta = new Vector2(keyWidth,25);
-        key.GetComponentInChildren<Text>().text = keyboard.GetDefaultKeyList[keyIndex];
+        float keyWidth = Key.GetDefaultKeyWidth * keyboard.GetKeyWidthList[keyIndex];
+        thisKey.GetComponentInChildren<RectTransform>().localScale = Vector3.one;
+        thisKey.GetComponentInChildren<RectTransform>().sizeDelta = new Vector2(keyWidth,Key.GetDefaultKeyWidth);
+        thisKey.GetComponentInChildren<Text>().text = keyboard.GetDefaultKeyList[keyIndex];
     }
 }

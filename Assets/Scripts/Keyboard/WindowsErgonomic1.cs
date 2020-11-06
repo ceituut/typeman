@@ -27,6 +27,7 @@ public class WindowsErgonomic1 : WindowsDesktop
         InitializeEndIndexInRows();
         InitializeKeyWidthList();
         CalcTypicalRowWidth();
+        AdjustRows();
     }
     protected override void InitializeKeyWidthList()
     {

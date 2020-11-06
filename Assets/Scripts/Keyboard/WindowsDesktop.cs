@@ -6,10 +6,9 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-
-[CreateAssetMenu(fileName="WinPortable2-104key-enterflat",
-menuName="TypeMan/Keyboard/WindowsPortable2")]
-public class WindowsPortable2 : WindowsDesktop
+[CreateAssetMenu(fileName="WinDesktop-104key-enterflat",
+menuName="TypeMan/Keyboard/WindowsDesktop")]
+public class WindowsDesktop : KeyboardLayout
 {
     private void Awake() {
         InitializeDefualt();
@@ -22,12 +21,18 @@ public class WindowsPortable2 : WindowsDesktop
             "Tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "Caps Lock","a","s","d","f","g","h","j","k","l",";","'","Enter",
             "Shift","z","x","c","v","b","n","m",",",".","/"," Shift",
-            "Ctrl","Fn","Win","Alt","Space","AltGr"," Ctrl"
+            "Ctrl","Win","Alt","Space","AltGr"," Win","Menu"," Ctrl"
         };
         InitializeEndStringInRows();
         InitializeEndIndexInRows();
         InitializeKeyWidthList();
         CalcTypicalRowWidth();
+        AdjustRows();
+    }
+    protected override void InitializeEndStringInRows()
+    {
+        endStringInRows = new List<string>
+        {"Backspace","\\","Enter"," Shift"," Ctrl"};
     }
     protected override void InitializeKeyWidthList()
     {
@@ -40,13 +45,14 @@ public class WindowsPortable2 : WindowsDesktop
         UpdateKey("Enter", 2.35f);
         UpdateKey("Shift", 2.5f);
         UpdateKey(" Shift", 2.9f);
-        UpdateKey("Ctrl", 1.6f);
-        UpdateKey("Fn", 1f);
-        UpdateKey("Win", 1f);
-        UpdateKey("Alt", 1.3f);
-        UpdateKey("Space", 5.6f);
-        UpdateKey("AltGr", 1.1f);
-        UpdateKey(" Ctrl", 1f);
+        UpdateKey("Ctrl", 1.5f);
+        UpdateKey("Win", 0.9f);
+        UpdateKey("Alt", 1.4f);
+        UpdateKey("Space", 7.5f);
+        UpdateKey("AltGr", 1.4f);
+        UpdateKey(" Win", .9f);
+        UpdateKey("Menu", 1f);
+        UpdateKey(" Ctrl", 1.5f);
     }
     public override void AdjustRows()
     {
@@ -54,16 +60,17 @@ public class WindowsPortable2 : WindowsDesktop
         FixLastKeyWidthOfThisRange("Tab",endStringInRows[1]);
         FixLastKeyWidthOfThisRange("Caps Lock",endStringInRows[2]);
         FixLastKeyWidthOfThisRange("Shift",endStringInRows[3]);
+        FixLastKeyWidthOfThisRange("Ctrl",endStringInRows[4]);
     }
 }
 
 
 #if UNITY_EDITOR
-[CustomEditor(typeof(WindowsPortable2))]
-public class WindowsPortable2Editor : Editor {
+[CustomEditor(typeof(WindowsDesktop))]
+public class WindowsDesktopEditor : Editor {
     public override void OnInspectorGUI() {
         DrawDefaultInspector();
-        var script = target as WindowsPortable2;
+        var script = target as WindowsDesktop;
         for(int index =0 ; index < script.GetDefaultKeyList.Count ; index++)
             script.GetKeyWidthList[index] = EditorGUILayout.FloatField(script.GetDefaultKeyList[index],script.GetKeyWidthList[index]);
     }

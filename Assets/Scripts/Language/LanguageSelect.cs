@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static KeyboardDef;
+using static KeyboardDefinition;
 
 
 public class LanguageSelect : MonoBehaviour

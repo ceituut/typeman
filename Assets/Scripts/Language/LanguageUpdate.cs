@@ -3,20 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static KeyboardDef;
+using static KeyboardDefinition;
 
 
 public class LanguageUpdate : MonoBehaviour
 {
+    private Keyboard keyboard;
     [SerializeField] private LanguageContainer LanguageContainer;
     private Dictionary<KeyboardLanguage,Language> LanguageDic;
     private Language currentLanguage;
     private LanguageCheck languageChecker;
-    private List<Key> keyList;
+
 
     private void Start() 
     {
-        keyList = new List<Key>( gameObject.GetComponentsInChildren<Key>() );
+        keyboard = gameObject.GetComponent<Keyboard>();
         languageChecker = new LanguageCheck();
         InitializeLanguageDic();
         UpdateKeyboardLanguage(KeyboardLanguage.English);
@@ -32,11 +33,11 @@ public class LanguageUpdate : MonoBehaviour
     {
         LanguageDic.TryGetValue(language,out currentLanguage);
         languageChecker.UpdateKeyCheckers(currentLanguage);
-        for (int index = 0; index < keyList.Count ; index++)
+        for (int index = 0; index < keyboard.GetKeyList.Count ; index++)
         {
-            keyList[index].KeyPrimaryValue = currentLanguage.primaryKeyList[index];
-            keyList[index].KeySecondaryValue = currentLanguage.secondaryKeyList[index];
-            keyList[index].TextComponent.text = currentLanguage.primaryKeyList[index];
+            keyboard.GetKeyList[index].KeyPrimaryValue = currentLanguage.primaryKeyList[index];
+            keyboard.GetKeyList[index].KeySecondaryValue = currentLanguage.secondaryKeyList[index];
+            keyboard.GetKeyList[index].TextComponent.text = currentLanguage.primaryKeyList[index];
         }
     }
 }

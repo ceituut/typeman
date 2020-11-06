@@ -17,15 +17,12 @@ public abstract class KeyboardLayout : ScriptableObject
     protected float keySpace;
         // Typical row width that other width of rows will be equayl to that.
     protected float typicalRowWidth;
-        // An object that provides change options
-    protected KeyboardChanger changer;
 
 
     // Properties
     public List<string> GetDefaultKeyList { get => defaultKeyList;}
     public List<int> GetEndIndexInRows { get => endIndexInRows;}
     public List<float> GetKeyWidthList { get => keyWidthList;}
-    public KeyboardChanger GetChanger { get => changer; set => changer = value; }
 
 
     // Methods

@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using static KeyboardDef;
+using static KeyboardDefinition;
 
 public class LanguageCheck
 {
