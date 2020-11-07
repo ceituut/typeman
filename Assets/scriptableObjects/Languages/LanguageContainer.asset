@@ -16,13 +16,13 @@ MonoBehaviour:
   LanguageList:
   - {fileID: 11400000, guid: cf6d9b87a715a104a880c28a3450f441, type: 2}
   - {fileID: 11400000, guid: acc37da0b3d64934ca49057c8c06857e, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: cf6d9b87a715a104a880c28a3450f441, type: 2}
+  - {fileID: 11400000, guid: cf6d9b87a715a104a880c28a3450f441, type: 2}
+  - {fileID: 11400000, guid: cf6d9b87a715a104a880c28a3450f441, type: 2}
+  - {fileID: 11400000, guid: cf6d9b87a715a104a880c28a3450f441, type: 2}
+  - {fileID: 11400000, guid: cf6d9b87a715a104a880c28a3450f441, type: 2}
+  - {fileID: 11400000, guid: cf6d9b87a715a104a880c28a3450f441, type: 2}
+  - {fileID: 11400000, guid: cf6d9b87a715a104a880c28a3450f441, type: 2}
+  - {fileID: 11400000, guid: cf6d9b87a715a104a880c28a3450f441, type: 2}
+  - {fileID: 11400000, guid: cf6d9b87a715a104a880c28a3450f441, type: 2}
+  - {fileID: 11400000, guid: cf6d9b87a715a104a880c28a3450f441, type: 2}

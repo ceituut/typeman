@@ -35,4 +35,17 @@ public class Key : MonoBehaviour
     {
         rectTransform.sizeDelta = new Vector2(widthScale * defaultKeyWidth , rectTransform.sizeDelta.y);
     }
+    public void CloneKey(Key cloneKey)
+    {
+        this.textComponent.text = cloneKey.textComponent.text;
+        this.keyPrimaryValue = cloneKey.keyPrimaryValue;
+        this.keySecondaryValue = cloneKey.keySecondaryValue;
+        this.indexInRefLayout = cloneKey.indexInRefLayout;
+    }
+    public void MakeEmpty()
+    {
+        this.textComponent.text = string.Empty;
+        this.keyPrimaryValue = string.Empty;
+        this.keySecondaryValue = string.Empty;
+    }
 }

@@ -10,19 +10,24 @@ public class StandardChange : MonoBehaviour
 {
     // Fields
     private Keyboard keyboard;
+    private StandardTypes currentType;
     [SerializeField] private Key LeftHiddenKey;
     [SerializeField] private Key RightHiddenKey;
     [SerializeField] private Key LeftShift;
     [SerializeField] private Key RightShift;
 
+    // Properties
+    public StandardTypes GetCurrentType {get => currentType;}
+
     // Methods
-    private void Start()
+    private void Awake()
     {
         keyboard = gameObject.GetComponent<Keyboard>();
     }
     public void ChangeStandard(StandardTypes standard)
     {
-        switch(standard)
+        currentType = standard;
+        switch(currentType)
         {
             case StandardTypes.the104key :
                 MakeIt104Key();

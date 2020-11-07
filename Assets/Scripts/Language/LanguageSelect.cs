@@ -8,19 +8,13 @@ using static KeyboardDefinition;
 
 public class LanguageSelect : MonoBehaviour
 {
-    private LanguageUpdate languageUpdate;
+    [SerializeField] private LanguageUpdate languageUpdate;
     private KeyboardLanguage currentLanguage;
     private Dropdown dropdownComponent;
 
     private void Start() 
     {
         InitializeDropdown();
-        FindKeyboard();
-    }
-    private void FindKeyboard()
-    {
-        GameObject Keyboard = GameObject.FindGameObjectWithTag("Keyboard");
-        languageUpdate = Keyboard.GetComponent<LanguageUpdate>();
     }
     private void InitializeDropdown()
     {

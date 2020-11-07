@@ -2921,7 +2921,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1610245983
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3040,11 +3040,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610245982}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ff3dffc30babe48adf9b895aa4ecf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  languageUpdate: {fileID: 8067683422452772369}
 --- !u!1 &1674288601
 GameObject:
   m_ObjectHideFlags: 0
@@ -15231,6 +15232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyboardLayout: {fileID: 11400000, guid: 6d8ff9e9b2de1c145a458c7bb1be6140, type: 2}
+  languageUpdator: {fileID: 8067683422452772369}
 --- !u!114 &8067683422452772367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15271,11 +15273,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8067683422452772365}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5008ab3ebfb98f744a540a866f80be14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyboard: {fileID: 8067683422452772366}
   LanguageContainer: {fileID: 11400000, guid: aa4cb7346b48dee4dba4a5dd515ba4e9, type: 2}
 --- !u!114 &8067733364502656070
 MonoBehaviour:

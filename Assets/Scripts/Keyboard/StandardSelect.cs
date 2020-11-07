@@ -10,7 +10,6 @@ public class StandardSelect : MonoBehaviour
 {
     // Fields
     [SerializeField] private StandardChange standardChange;
-    private StandardTypes currentStandard;
     private Dropdown dropdownComponent;
 
     // Methods
@@ -45,7 +44,7 @@ public class StandardSelect : MonoBehaviour
     private void OnStandardTypeChanged()
     {
         Dropdown.OptionData currentOption = dropdownComponent.options[dropdownComponent.value];
-        currentStandard = GetStandardTypeOfOption(currentOption.text);
+        StandardTypes currentStandard = GetStandardTypeOfOption(currentOption.text);
         standardChange.ChangeStandard(currentStandard);
     }
 }

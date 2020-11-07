@@ -10,7 +10,7 @@ public class Keyboard : MonoBehaviour
 {
     // Fields
     [SerializeField] private KeyboardLayout keyboardLayout;
-    private LanguageUpdate languageUpdator;
+    [SerializeField] private LanguageUpdate languageUpdator;
     private List<Key> keyList;
 
     // Properties
@@ -19,12 +19,10 @@ public class Keyboard : MonoBehaviour
     public LanguageUpdate GetLanguageUpdator { get => languageUpdator;}
 
     // Methods
-    private void Start()
+    private void Awake()
     {
         keyList = new List<Key>( gameObject.GetComponentsInChildren<Key>() );
         SetReferenceIndexOfKeys();
-        languageUpdator = gameObject.GetComponent<LanguageUpdate>();
-        languageUpdator.SetKeyboard = this;
     }
     private void SetReferenceIndexOfKeys()
     {

@@ -10,7 +10,6 @@ public class EnterSelect : MonoBehaviour
 {
     // Fields
     [SerializeField] private EnterChange enterChange;
-    private EnterTypes currentEnter;
     private Dropdown dropdownComponent;
 
     // Methods
@@ -45,7 +44,7 @@ public class EnterSelect : MonoBehaviour
     private void OnEnterTypeChanged()
     {
         Dropdown.OptionData currentOption = dropdownComponent.options[dropdownComponent.value];
-        currentEnter = GetEnterTypeOfOption(currentOption.text);
+        EnterTypes currentEnter = GetEnterTypeOfOption(currentOption.text);
         enterChange.ChangeEnter(currentEnter);
     }
 }

@@ -10,20 +10,25 @@ public class EnterChange : MonoBehaviour
 {
     // Fields
     private Keyboard keyboard;
+    private EnterTypes currentType;
     [SerializeField] private Key UpperHiddenKey;
     [SerializeField] private Key LowerHiddenKey;
     [SerializeField] private Key Enter;
     [SerializeField] private Key Backslash;
     [SerializeField] private Key Backspace;
 
+    // Properties
+    public EnterTypes GetCurrentType { get => currentType;}
+
     // Methods
-    private void Start()
+    private void Awake()
     {
         keyboard = gameObject.GetComponent<Keyboard>();
     }
     public void ChangeEnter(EnterTypes enterType)
     {
-        switch(enterType)
+        currentType = enterType;
+        switch(currentType)
         {
             case EnterTypes.flat :
                 MakeEnterFlat();
@@ -36,7 +41,7 @@ public class EnterChange : MonoBehaviour
                 break;
         }
     }
-    public void MakeEnterFlat()
+    private void MakeEnterFlat()
     {
         keyboard.ChangeKeyWidthByRef(Enter , 0);
         keyboard.ChangeKeyWidthByRef(Backspace , 0);
@@ -44,31 +49,30 @@ public class EnterChange : MonoBehaviour
         Enter.SetHeightScale(1f);
         UpperHiddenKey.gameObject.SetActive(false);
         LowerHiddenKey.gameObject.SetActive(false);
-
-        // keyboard.GetLanguageUpdator.UpdateSingleKey(Backslash.indexInRefLayout);     
+        keyboard.GetLanguageUpdator.UpdateSingleKey(Backslash.indexInRefLayout);     
     }
-    public void MakeEnterHigh()
+    private void MakeEnterHigh()
     {
         keyboard.ChangeKeyWidthByRef(Enter , -1.2f);
         keyboard.ChangeKeyWidthByRef(Backspace , 0);
-        UpperHiddenKey.gameObject.SetActive(false);
-        LowerHiddenKey.gameObject.SetActive(true);
         Backslash.SetHeightScale(1f);
         Enter.SetHeightScale(1.4f);
-        Backslash.KeyPrimaryValue = "  ";
-        Backslash.KeySecondaryValue = "  ";
-        Backslash.TextComponent.text = "  ";
+        UpperHiddenKey.gameObject.SetActive(false);
+        LowerHiddenKey.gameObject.SetActive(true);
+        keyboard.GetLanguageUpdator.UpdateSingleKey(Backslash.indexInRefLayout);     
+        LowerHiddenKey.CloneKey(Backslash);
+        Backslash.MakeEmpty();
     }
-    public void MakeEnterBig()
+    private void MakeEnterBig()
     {
         keyboard.ChangeKeyWidthByRef(Enter , 0);
         keyboard.ChangeKeyWidthByRef(Backspace , -1.2f);
-        UpperHiddenKey.gameObject.SetActive(true);
-        LowerHiddenKey.gameObject.SetActive(false);
         Backslash.SetHeightScale(1.4f);
         Enter.SetHeightScale(1f);
-        Backslash.KeyPrimaryValue = "  ";
-        Backslash.KeySecondaryValue = "  ";
-        Backslash.TextComponent.text = "  ";
+        UpperHiddenKey.gameObject.SetActive(true);
+        LowerHiddenKey.gameObject.SetActive(false);
+        keyboard.GetLanguageUpdator.UpdateSingleKey(Backslash.indexInRefLayout);     
+        UpperHiddenKey.CloneKey(Backslash);
+        Backslash.MakeEmpty();
     }
 }
