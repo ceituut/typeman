@@ -9,14 +9,16 @@ using static KeyboardDefinition;
 public class Keyboard : MonoBehaviour
 {
     // Fields
-    [SerializeField] private KeyboardLayout keyboardLayout;
-    [SerializeField] private LanguageUpdate languageUpdator;
     private List<Key> keyList;
+    private Language keyboardLanguage;
+    [SerializeField] private KeyboardLayout keyboardLayout;
+    [SerializeField] private KeyboardLanguageChange KeyboardLanguageChanger;
 
     // Properties
     public List<Key> GetKeyList { get => keyList;}
+    public Language KeyboardLanguage { get => keyboardLanguage; set => keyboardLanguage = value; }
     public KeyboardLayout GetKeyboardLayout { get => keyboardLayout;}
-    public LanguageUpdate GetLanguageUpdator { get => languageUpdator;}
+    public KeyboardLanguageChange GetKeyboardLanguageChanger { get => KeyboardLanguageChanger;}
 
     // Methods
     private void Awake()

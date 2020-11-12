@@ -9,15 +9,15 @@ public class Key : MonoBehaviour
     private static float defaultKeyWidth;
     public int indexInRefLayout;
     [SerializeField] private Text textComponent;
-    [SerializeField] private string keyPrimaryValue; 
-    [SerializeField] private string keySecondaryValue;
+    [SerializeField] private string primaryValue; 
+    [SerializeField] private string secondaryValue;
     [SerializeField] private RectTransform rectTransform;
     // public GameObject RelatedFinger; 
 
     // Properties
     public static float GetDefaultKeyWidth { get => defaultKeyWidth; set => defaultKeyWidth = value; }
-    public string KeyPrimaryValue { get => keyPrimaryValue; set => keyPrimaryValue = value; }
-    public string KeySecondaryValue { get => keySecondaryValue; set => keySecondaryValue = value; }
+    public string PrimaryValue { get => primaryValue; set => primaryValue = value; }
+    public string SecondaryValue { get => secondaryValue; set => secondaryValue = value; }
     public Text TextComponent { get => textComponent; set => textComponent = value; }
 
     // Methods
@@ -38,14 +38,14 @@ public class Key : MonoBehaviour
     public void CloneKey(Key cloneKey)
     {
         this.textComponent.text = cloneKey.textComponent.text;
-        this.keyPrimaryValue = cloneKey.keyPrimaryValue;
-        this.keySecondaryValue = cloneKey.keySecondaryValue;
+        this.primaryValue = cloneKey.primaryValue;
+        this.secondaryValue = cloneKey.secondaryValue;
         this.indexInRefLayout = cloneKey.indexInRefLayout;
     }
     public void MakeEmpty()
     {
         this.textComponent.text = string.Empty;
-        this.keyPrimaryValue = string.Empty;
-        this.keySecondaryValue = string.Empty;
+        this.primaryValue = string.Empty;
+        this.secondaryValue = string.Empty;
     }
 }

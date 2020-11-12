@@ -38,7 +38,7 @@ public class KeyboardGenerator : MonoBehaviour
         GameObject newKey = GameObject.Instantiate(keyGameObject) as GameObject;
         newKey.name = keyboard.GetDefaultKeyList[keyIndex];
         newKey.transform.parent = targetRow.transform;
-        newKey.GetComponent<Key>().KeyPrimaryValue = keyboard.GetDefaultKeyList[keyIndex];
+        newKey.GetComponent<Key>().PrimaryValue = keyboard.GetDefaultKeyList[keyIndex];
         StyleKey(newKey , keyIndex);
     }
     private void StyleKey(GameObject thisKey , int keyIndex)

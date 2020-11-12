@@ -29,7 +29,7 @@ public class WindowsPortable3 : WindowsPortable1
         UpdateKey("Win", 1f);
         UpdateKey("Fn", 1f);
         UpdateKey("Alt", 1f);
-        UpdateKey("Space", 5.8f);
+        UpdateKey(" ", 5.8f);
         UpdateKey("AltGr", 1f);
         UpdateKey("Prnt Scr", 1f);
         UpdateKey(" Ctrl", 1.8f);

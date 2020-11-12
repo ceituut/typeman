@@ -32,7 +32,7 @@ public class WindowsPocket1 : WindowsPortable1
         UpdateKey("Fn", 1f);
         UpdateKey("Win", 1f);
         UpdateKey("Alt", 1.3f);
-        UpdateKey("Space", 5.1f);
+        UpdateKey(" ", 5.1f);
         UpdateKey("AltGr", 1.1f);
         UpdateKey("Prnt Scr", 1f);
         UpdateKey(" Ctrl", 1.8f);

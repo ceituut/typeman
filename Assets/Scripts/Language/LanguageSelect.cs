@@ -8,13 +8,26 @@ using static KeyboardDefinition;
 
 public class LanguageSelect : MonoBehaviour
 {
-    [SerializeField] private LanguageUpdate languageUpdate;
-    private KeyboardLanguage currentLanguage;
+    [SerializeField] private LanguageContainer languageContainer;
+    private Dictionary<KeyboardLanguage,Language> languageDic;
     private Dropdown dropdownComponent;
+    [SerializeField] private KeyboardLanguageChange keyboardLanguageChanger;
+    private LanguageCheck languageChecker;
+    [SerializeField] private LessonLanguageChange lessonLanguageChanger;
 
     private void Start() 
     {
+        languageChecker = new LanguageCheck();
         InitializeDropdown();
+        InitializeLanguageDic();
+        //////////////////////////// Initialize keyboard language here or select default option
+    }
+    private void InitializeLanguageDic()
+    {
+        int numberOfLanguages = languageContainer.KeyboardLanguageList.Count;
+        languageDic = new Dictionary<KeyboardLanguage, Language>();
+        for (int index = 0; index < numberOfLanguages ; index++)
+            languageDic.Add(languageContainer.KeyboardLanguageList[index] , languageContainer.LanguageList[index]);
     }
     private void InitializeDropdown()
     {
@@ -30,7 +43,7 @@ public class LanguageSelect : MonoBehaviour
         }
         dropdownComponent.onValueChanged.AddListener( delegate { OnLanguageChanged(); } );
     }
-    private KeyboardLanguage GetLanguageOfOption(string languageName)
+    private Language GetLanguageOfOption(string languageName)
     {
         KeyboardLanguage relatedLanguage = 0;
         KeyboardLanguage language = 0;
@@ -38,12 +51,14 @@ public class LanguageSelect : MonoBehaviour
         for (int index = 0; index < numberOfLanguages; index++ , language++)
             if ( language.ToString() == languageName )
                 relatedLanguage = language;
-        return relatedLanguage;
+        return languageDic[language];
     }
     private void OnLanguageChanged()
     {
         Dropdown.OptionData currentOption = dropdownComponent.options[dropdownComponent.value];
-        currentLanguage = GetLanguageOfOption(currentOption.text);
-        languageUpdate.UpdateKeyboardLanguage(currentLanguage);
+        Language currentLanguage = GetLanguageOfOption(currentOption.text);
+        keyboardLanguageChanger.ChangeKeyboardLanguage(currentLanguage);
+        languageChecker.UpdateKeyCheckers(currentLanguage);
+        lessonLanguageChanger.ChangeLessonLanguage(currentLanguage);
     }
 }

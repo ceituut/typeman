@@ -23,7 +23,7 @@ public class MacPortable : MacDesktop
             "tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "caps lock","a","s","d","f","g","h","j","k","l",";","'","return",
             "shift","z","x","c","v","b","n","m",",",".","/"," shift",
-            "fn","control","option","command","space"," command"," option"
+            "fn","control","option","command"," "," command"," option"
         };
         InitializeEndStringInRows();
         InitializeEndIndexInRows();
@@ -51,7 +51,7 @@ public class MacPortable : MacDesktop
         UpdateKey("control", 1f);
         UpdateKey("option", 1f);
         UpdateKey("command", 1.4f);
-        UpdateKey("space", 5.8f);
+        UpdateKey(" ", 5.8f);
         UpdateKey(" command", 1.4f);
         UpdateKey(" option", 1f);
     }

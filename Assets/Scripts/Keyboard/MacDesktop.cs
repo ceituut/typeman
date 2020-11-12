@@ -23,7 +23,7 @@ public class MacDesktop : KeyboardLayout
             "tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "caps lock","a","s","d","f","g","h","j","k","l",";","'","return",
             "shift","z","x","c","v","b","n","m",",",".","/"," shift",
-            "control","option","command","space"," command"," option"," control"
+            "control","option","command"," "," command"," option"," control"
         };
         InitializeEndStringInRows();
         InitializeEndIndexInRows();
@@ -50,7 +50,7 @@ public class MacDesktop : KeyboardLayout
         UpdateKey("control", 1.5f);
         UpdateKey("option", 1.4f);
         UpdateKey("command", 1.6f);
-        UpdateKey("space", 7.6f);
+        UpdateKey(" ", 7.6f);
         UpdateKey(" command", 1.6f);
         UpdateKey(" option", 1.4f);
         UpdateKey(" control", 1.5f);

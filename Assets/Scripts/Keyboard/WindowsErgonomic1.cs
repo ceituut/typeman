@@ -21,7 +21,7 @@ public class WindowsErgonomic1 : WindowsDesktop
             "Tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "Caps Lock","a","s","d","f","g","h","j","k","l",";","'","Enter",
             "Shift","z","x","c","v","b","n","m",",",".","/"," Shift",
-            "Ctrl","Win","Alt","Space","AltGr","Menu"," Ctrl"
+            "Ctrl","Win","Alt"," ","AltGr","Menu"," Ctrl"
         };
         InitializeEndStringInRows();
         InitializeEndIndexInRows();
@@ -48,7 +48,7 @@ public class WindowsErgonomic1 : WindowsDesktop
         UpdateKey("Ctrl", 1.5f);
         UpdateKey("Win", 2f);
         UpdateKey("Alt", 1.7f);
-        UpdateKey("Space", 7.5f);
+        UpdateKey(" ", 7.5f);
         UpdateKey("AltGr", 2.1f);
         UpdateKey("Menu", 2.3f);
         UpdateKey(" Ctrl", 2.2f);

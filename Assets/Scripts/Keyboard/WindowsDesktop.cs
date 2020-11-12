@@ -21,7 +21,7 @@ public class WindowsDesktop : KeyboardLayout
             "Tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "Caps Lock","a","s","d","f","g","h","j","k","l",";","'","Enter",
             "Shift","z","x","c","v","b","n","m",",",".","/"," Shift",
-            "Ctrl","Win","Alt","Space","AltGr"," Win","Menu"," Ctrl"
+            "Ctrl","Win","Alt"," ","AltGr"," Win","Menu"," Ctrl"
         };
         InitializeEndStringInRows();
         InitializeEndIndexInRows();
@@ -48,7 +48,7 @@ public class WindowsDesktop : KeyboardLayout
         UpdateKey("Ctrl", 1.5f);
         UpdateKey("Win", 0.9f);
         UpdateKey("Alt", 1.4f);
-        UpdateKey("Space", 7.5f);
+        UpdateKey(" ", 7.5f);
         UpdateKey("AltGr", 1.4f);
         UpdateKey(" Win", .9f);
         UpdateKey("Menu", 1f);

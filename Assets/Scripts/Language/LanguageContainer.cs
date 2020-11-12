@@ -5,8 +5,8 @@ using UnityEngine;
 using static KeyboardDefinition;
 
 
-[CreateAssetMenu(fileName="LanguageContainer",
-menuName="TypeMan/KeyboardLanguage/LanguageContainer")]
+[CreateAssetMenu(fileName="languageContainer",
+menuName="TypeMan/KeyboardLanguage/languageContainer")]
 public class LanguageContainer : ScriptableObject
 {
     public List<KeyboardLanguage> KeyboardLanguageList;

@@ -21,14 +21,14 @@ public class Language : ScriptableObject
             "`","1","2","3","4","5","6","7","8","9","0","-","=",
             "q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "a","s","d","f","g","h","j","k","l",";","'",
-            "z","x","c","v","b","n","m",",",".","/"
+            "z","x","c","v","b","n","m",",",".","/"," "
         };
         secondaryKeyList = new List<string>
         {
             "~","!","@","#","$","%","^","&","*","(",")","_","+",
             "Q","W","E","R","T","Y","U","I","O","P","{","}","|",
             "A","S","D","F","G","H","J","K","L",":","\"",
-            "Z","X","C","V","B","N","M","<",">","?"
+            "Z","X","C","V","B","N","M","<",">","?"," "
         };
     }
 }
@@ -42,14 +42,14 @@ public class LanguageEditor : Editor {
         EditorGUILayout.Foldout(false , "Primary Keys" , true);
         for(int index = 0 ; index < script.primaryKeyList.Count ; index++)
             script.primaryKeyList[index] = 
-            EditorGUILayout.TextField(primaryLiteralKeys[index],script.primaryKeyList[index]);
+            EditorGUILayout.TextField(primaryLetters[index],script.primaryKeyList[index]);
         EditorGUILayout.EndVertical();
            
         EditorGUILayout.BeginVertical();
         EditorGUILayout.Foldout(false , "Secondary Keys" , true);
         for(int index = 0 ; index < script.primaryKeyList.Count ; index++)
             script.secondaryKeyList[index] = 
-            EditorGUILayout.TextField(secondaryLiteralKeys[index],script.secondaryKeyList[index]);
+            EditorGUILayout.TextField(secondaryLetters[index],script.secondaryKeyList[index]);
         EditorGUILayout.EndVertical();
     }
 }

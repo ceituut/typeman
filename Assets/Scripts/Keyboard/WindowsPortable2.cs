@@ -22,7 +22,7 @@ public class WindowsPortable2 : WindowsDesktop
             "Tab","q","w","e","r","t","y","u","i","o","p","[","]","\\",
             "Caps Lock","a","s","d","f","g","h","j","k","l",";","'","Enter",
             "Shift","z","x","c","v","b","n","m",",",".","/"," Shift",
-            "Ctrl","Fn","Win","Alt","Space","AltGr"," Ctrl"
+            "Ctrl","Fn","Win","Alt"," ","AltGr"," Ctrl"
         };
         InitializeEndStringInRows();
         InitializeEndIndexInRows();
@@ -45,7 +45,7 @@ public class WindowsPortable2 : WindowsDesktop
         UpdateKey("Fn", 1f);
         UpdateKey("Win", 1f);
         UpdateKey("Alt", 1.3f);
-        UpdateKey("Space", 5.6f);
+        UpdateKey(" ", 5.6f);
         UpdateKey("AltGr", 1.1f);
         UpdateKey(" Ctrl", 1f);
     }

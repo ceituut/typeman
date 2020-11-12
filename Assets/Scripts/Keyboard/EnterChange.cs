@@ -49,7 +49,7 @@ public class EnterChange : MonoBehaviour
         Enter.SetHeightScale(1f);
         UpperHiddenKey.gameObject.SetActive(false);
         LowerHiddenKey.gameObject.SetActive(false);
-        keyboard.GetLanguageUpdator.UpdateSingleKey(Backslash.indexInRefLayout);     
+        keyboard.GetKeyboardLanguageChanger.UpdateSingleKey(keyboard.KeyboardLanguage , Backslash.indexInRefLayout);     
     }
     private void MakeEnterHigh()
     {
@@ -59,7 +59,7 @@ public class EnterChange : MonoBehaviour
         Enter.SetHeightScale(1.4f);
         UpperHiddenKey.gameObject.SetActive(false);
         LowerHiddenKey.gameObject.SetActive(true);
-        keyboard.GetLanguageUpdator.UpdateSingleKey(Backslash.indexInRefLayout);     
+        keyboard.GetKeyboardLanguageChanger.UpdateSingleKey(keyboard.KeyboardLanguage , Backslash.indexInRefLayout);     
         LowerHiddenKey.CloneKey(Backslash);
         Backslash.MakeEmpty();
     }
@@ -71,7 +71,7 @@ public class EnterChange : MonoBehaviour
         Enter.SetHeightScale(1f);
         UpperHiddenKey.gameObject.SetActive(true);
         LowerHiddenKey.gameObject.SetActive(false);
-        keyboard.GetLanguageUpdator.UpdateSingleKey(Backslash.indexInRefLayout);     
+        keyboard.GetKeyboardLanguageChanger.UpdateSingleKey(keyboard.KeyboardLanguage , Backslash.indexInRefLayout);     
         UpperHiddenKey.CloneKey(Backslash);
         Backslash.MakeEmpty();
     }
