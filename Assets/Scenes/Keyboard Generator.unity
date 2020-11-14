@@ -719,6 +719,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 804346196}
   - {fileID: 1610245983}
   - {fileID: 753529873}
   - {fileID: 436637608}
@@ -805,8 +806,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 486774718}
-  keyPrimaryValue: /
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &324520621
 MonoBehaviour:
@@ -1040,7 +1041,7 @@ RectTransform:
   - {fileID: 55508666}
   - {fileID: 1700230468}
   m_Father: {fileID: 231483442}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1464,7 +1465,7 @@ RectTransform:
   - {fileID: 848594060}
   - {fileID: 181292386}
   m_Father: {fileID: 231483442}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1725,6 +1726,99 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803773701}
   m_CullTransparentMesh: 0
+--- !u!1 &804346192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 804346196}
+  - component: {fileID: 804346195}
+  - component: {fileID: 804346194}
+  - component: {fileID: 804346193}
+  m_Layer: 5
+  m_Name: Lesson
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &804346193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804346192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d57342af33aba2418a32e707fd1ccba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lessonContainer: {fileID: 11400000, guid: 1193584a95008c54381eefa4e763f245, type: 2}
+  targetText: {fileID: 804346194}
+--- !u!114 &804346194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804346192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: aaa
+--- !u!222 &804346195
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804346192}
+  m_CullTransparentMesh: 0
+--- !u!224 &804346196
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804346192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 231483442}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 29}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &810354602
 GameObject:
   m_ObjectHideFlags: 0
@@ -2642,8 +2736,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 1729673582}
-  keyPrimaryValue: \
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &1342225560
 MonoBehaviour:
@@ -2916,7 +3010,7 @@ GameObject:
   - component: {fileID: 1610245984}
   - component: {fileID: 1610245987}
   m_Layer: 5
-  m_Name: Language
+  m_Name: Language Selector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2937,7 +3031,7 @@ RectTransform:
   - {fileID: 2080223720}
   - {fileID: 1719537542}
   m_Father: {fileID: 231483442}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3045,7 +3139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ff3dffc30babe48adf9b895aa4ecf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  languageUpdate: {fileID: 8067683422452772369}
+  languageContainer: {fileID: 11400000, guid: aa4cb7346b48dee4dba4a5dd515ba4e9, type: 2}
+  keyboardLanguageChanger: {fileID: 8067683422452772369}
+  lessonLanguageChanger: {fileID: 804346193}
 --- !u!1 &1674288601
 GameObject:
   m_ObjectHideFlags: 0
@@ -3806,8 +3902,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 1801278024}
-  keyPrimaryValue: '  '
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &1790457371
 MonoBehaviour:
@@ -4322,8 +4418,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 803773703}
-  keyPrimaryValue: \
-  keySecondaryValue: '|'
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &2129277286
 MonoBehaviour:
@@ -4459,8 +4555,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 5655401551482881714}
-  keyPrimaryValue: 9
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &115970182959073447
 MonoBehaviour:
@@ -4558,8 +4654,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 7070724145969275575}
-  keyPrimaryValue: f
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!1 &190304391457594157
 GameObject:
@@ -4624,8 +4720,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 2900057296684003618}
-  keyPrimaryValue: l
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &251750782459351181
 MonoBehaviour:
@@ -4810,8 +4906,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 3224417934050581032}
-  keyPrimaryValue: Menu
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!1 &393994870540124341
 GameObject:
@@ -5020,8 +5116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 7495496297744659900}
-  keyPrimaryValue: d
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &504692317306895960
 MonoBehaviour:
@@ -5126,8 +5222,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 8821310803652341178}
-  keyPrimaryValue: 7
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &623937870101596967
 MonoBehaviour:
@@ -5335,8 +5431,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 6581138531668616397}
-  keyPrimaryValue: x
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &716629973143041267
 MonoBehaviour:
@@ -5352,8 +5448,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 994115172498933413}
-  keyPrimaryValue: ' Ctrl'
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &716759141927769607
 MonoBehaviour:
@@ -5612,8 +5708,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 2382137054608483879}
-  keyPrimaryValue: m
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &910368380751762170
 MonoBehaviour:
@@ -5763,8 +5859,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 6606528872473724221}
-  keyPrimaryValue: ' Win'
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &994115172498933413
 MonoBehaviour:
@@ -5963,8 +6059,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 6941975944575394927}
-  keyPrimaryValue: ''''
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!1 &1149097108416060736
 GameObject:
@@ -6051,8 +6147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 8060456670081514456}
-  keyPrimaryValue: p
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!1 &1206808529895095828
 GameObject:
@@ -6277,8 +6373,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 744050406256706428}
-  keyPrimaryValue: \
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &1301826834323183455
 MonoBehaviour:
@@ -6327,8 +6423,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 7268635012931304730}
-  keyPrimaryValue: =
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!224 &1350731943768062097
 RectTransform:
@@ -6363,8 +6459,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 623937870101596967}
-  keyPrimaryValue: 0
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!224 &1383058584978406867
 RectTransform:
@@ -6659,8 +6755,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 4272159167790472614}
-  keyPrimaryValue: Shift
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &1615167465269445034
 MonoBehaviour:
@@ -6918,8 +7014,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 423241124927492668}
-  keyPrimaryValue: Enter
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!222 &1822946588543575823
 CanvasRenderer:
@@ -6962,8 +7058,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 2538232389018930016}
-  keyPrimaryValue: ' Shift'
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &1940327793042617586
 MonoBehaviour:
@@ -7306,8 +7402,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 7647084772621890146}
-  keyPrimaryValue: 2
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!1 &2313893281724015850
 GameObject:
@@ -7823,8 +7919,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 5206313365931540607}
-  keyPrimaryValue: .
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!1 &2775739491656976769
 GameObject:
@@ -7893,8 +7989,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 2798345871794597913}
-  keyPrimaryValue: s
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!222 &2820254344380175124
 CanvasRenderer:
@@ -7966,8 +8062,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 504692317306895960}
-  keyPrimaryValue: j
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!224 &2895846021153115268
 RectTransform:
@@ -8139,8 +8235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 1538933557210181715}
-  keyPrimaryValue: 6
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &2975023339312088714
 MonoBehaviour:
@@ -9030,8 +9126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 4533895793166190345}
-  keyPrimaryValue: g
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!222 &3608932441421590645
 CanvasRenderer:
@@ -9242,8 +9338,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 2742436995988407114}
-  keyPrimaryValue: r
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &3742078942148037181
 MonoBehaviour:
@@ -9259,8 +9355,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 7638429554422991403}
-  keyPrimaryValue: '`'
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &3743494465704659351
 MonoBehaviour:
@@ -9383,8 +9479,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 1208212440677854051}
-  keyPrimaryValue: u
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!1 &3922023115787956964
 GameObject:
@@ -9462,7 +9558,7 @@ RectTransform:
   - {fileID: 7136869581291849957}
   - {fileID: 6294348501543445731}
   m_Father: {fileID: 231483442}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9503,8 +9599,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 6970722837540576837}
-  keyPrimaryValue: n
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &3985360731387919856
 MonoBehaviour:
@@ -9572,8 +9668,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 6675956382715668570}
-  keyPrimaryValue: 1
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &4018834372114956483
 MonoBehaviour:
@@ -9630,8 +9726,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 936323691422281337}
-  keyPrimaryValue: b
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &4031793156905507350
 MonoBehaviour:
@@ -9647,8 +9743,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 8136212856577450694}
-  keyPrimaryValue: Ctrl
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!224 &4047358602591501902
 RectTransform:
@@ -9764,8 +9860,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 4018834372114956483}
-  keyPrimaryValue: a
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!222 &4137314791062481893
 CanvasRenderer:
@@ -9926,8 +10022,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 4766670270410153765}
-  keyPrimaryValue: v
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!224 &4263532896021370125
 RectTransform:
@@ -11559,8 +11655,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 2053393071840192866}
-  keyPrimaryValue: k
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &5527255720158952803
 MonoBehaviour:
@@ -11605,8 +11701,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 8112273578582258453}
-  keyPrimaryValue: q
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!222 &5546164432403043225
 CanvasRenderer:
@@ -11791,8 +11887,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 4703217216054034214}
-  keyPrimaryValue: c
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!1 &5682249922448443298
 GameObject:
@@ -11987,8 +12083,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 2632620877411427111}
-  keyPrimaryValue: AltGr
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!222 &5840110573688853063
 CanvasRenderer:
@@ -12053,8 +12149,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 1716964898612764681}
-  keyPrimaryValue: 5
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!224 &5900157305061487170
 RectTransform:
@@ -12204,8 +12300,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 8973604002385630294}
-  keyPrimaryValue: 3
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &6142225307339563733
 MonoBehaviour:
@@ -13032,8 +13128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 5218889159904107646}
-  keyPrimaryValue: Tab
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &6706683613690070474
 MonoBehaviour:
@@ -13210,8 +13306,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 1173406771512772208}
-  keyPrimaryValue: e
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!224 &6812001482209852203
 RectTransform:
@@ -13274,8 +13370,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 4543538869937233205}
-  keyPrimaryValue: Space
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &6873183787378631065
 MonoBehaviour:
@@ -13406,8 +13502,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 6957650488105004966}
-  keyPrimaryValue: ','
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!224 &6913687462309071778
 RectTransform:
@@ -13509,8 +13605,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 5706507606758687444}
-  keyPrimaryValue: Backspace
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &6957650488105004966
 MonoBehaviour:
@@ -13741,8 +13837,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 1250804297249137441}
-  keyPrimaryValue: ;
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &7050914281180611584
 MonoBehaviour:
@@ -14190,8 +14286,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 251750782459351181}
-  keyPrimaryValue: o
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &7360081584015416313
 MonoBehaviour:
@@ -14453,8 +14549,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 5861574768422671894}
-  keyPrimaryValue: '['
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!224 &7557802161699597292
 RectTransform:
@@ -14715,8 +14811,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 341385026255283923}
-  keyPrimaryValue: /
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &7665341311463254562
 MonoBehaviour:
@@ -14818,8 +14914,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 3175568538708228855}
-  keyPrimaryValue: 8
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &7737482652370239849
 MonoBehaviour:
@@ -14935,8 +15031,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 6890661297252242052}
-  keyPrimaryValue: z
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &7878956822752708829
 MonoBehaviour:
@@ -14952,8 +15048,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 1810069475782171907}
-  keyPrimaryValue: y
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!1 &7881692223732973344
 GameObject:
@@ -15047,8 +15143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 6920912862748337348}
-  keyPrimaryValue: h
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!224 &7991275016763595073
 RectTransform:
@@ -15232,7 +15328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyboardLayout: {fileID: 11400000, guid: 6d8ff9e9b2de1c145a458c7bb1be6140, type: 2}
-  languageUpdator: {fileID: 8067683422452772369}
+  KeyboardLanguageChanger: {fileID: 8067683422452772369}
 --- !u!114 &8067683422452772367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15279,7 +15375,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyboard: {fileID: 8067683422452772366}
-  LanguageContainer: {fileID: 11400000, guid: aa4cb7346b48dee4dba4a5dd515ba4e9, type: 2}
 --- !u!114 &8067733364502656070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15392,8 +15487,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 6491284418406794815}
-  keyPrimaryValue: '-'
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &8136212856577450694
 MonoBehaviour:
@@ -15486,8 +15581,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 3985360731387919856}
-  keyPrimaryValue: w
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!1 &8192203234693560934
 GameObject:
@@ -15558,8 +15653,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 6279807207546240433}
-  keyPrimaryValue: Win
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &8230126949272014485
 MonoBehaviour:
@@ -15575,8 +15670,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 7188495362661710168}
-  keyPrimaryValue: i
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!224 &8231391122891723059
 RectTransform:
@@ -16028,8 +16123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 7002155666865415630}
-  keyPrimaryValue: Caps Lock
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!222 &8699217194675512242
 CanvasRenderer:
@@ -16089,8 +16184,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 629519543057405810}
-  keyPrimaryValue: t
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &8821310803652341178
 MonoBehaviour:
@@ -16157,8 +16252,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 1301826834323183455}
-  keyPrimaryValue: ']'
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!114 &8904648403530305044
 MonoBehaviour:
@@ -16174,8 +16269,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 7737482652370239849}
-  keyPrimaryValue: Alt
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}
 --- !u!224 &8907211542511066841
 RectTransform:
@@ -16572,6 +16667,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexInRefLayout: 0
   textComponent: {fileID: 6894680307300756717}
-  keyPrimaryValue: 4
-  keySecondaryValue: 
+  primaryValue: 
+  secondaryValue: 
   rectTransform: {fileID: 0}

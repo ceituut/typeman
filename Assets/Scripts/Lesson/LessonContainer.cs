@@ -37,8 +37,9 @@ public class LessonContainerEditor : Editor {
         InitializePrimaryLetterDic();
         InitializeSecondaryLetterDic();
         base.DrawDefaultInspector();
-        foreach(Lesson lesson in script.LessonList)
-            lesson.CrossLanguageLetters = GetLetterList(lesson);
+        if(GUILayout.Button("Calculate Cross-Language Letters"))
+            foreach(Lesson lesson in script.LessonList)
+                lesson.CrossLanguageLetters = GetLetterList(lesson);
     }
     private void InitializePrimaryLetterDic()
     {
@@ -55,11 +56,12 @@ public class LessonContainerEditor : Editor {
     private List<Letter> GetLetterList(Lesson lesson)
     {
         bool isLetterInPrimary = false;
-        Letter letter = new Letter();
+        Letter letter;
         int letterIndex , charIndex = 0;
         lesson.CrossLanguageLetters = new List<Letter>();
         foreach(char thisChar in lesson.LessonText)
         {
+            letter = new Letter();
             isLetterInPrimary = primaryLetterToIndexMap.TryGetValue(thisChar.ToString() , out letterIndex);
             if (isLetterInPrimary)
             {

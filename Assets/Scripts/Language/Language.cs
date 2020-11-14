@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static KeyboardDefinition;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 
+/* Attension !
+        When inserting letters In the inspector for a specific language , 
+        if a secondary key value not defined for that language ,
+        simply remove it's string and make it empty string(Not space character !).
+*/
 [CreateAssetMenu(fileName="English",
 menuName="TypeMan/KeyboardLanguage/New Langugae")]
 public class Language : ScriptableObject
@@ -33,6 +39,7 @@ public class Language : ScriptableObject
     }
 }
 
+
 #if UNITY_EDITOR
 [CustomEditor(typeof(Language))]
 public class LanguageEditor : Editor {
@@ -40,16 +47,14 @@ public class LanguageEditor : Editor {
         var script = target as Language;
         EditorGUILayout.BeginVertical();
         EditorGUILayout.Foldout(false , "Primary Keys" , true);
-        for(int index = 0 ; index < script.primaryKeyList.Count ; index++)
-            script.primaryKeyList[index] = 
-            EditorGUILayout.TextField(primaryLetters[index],script.primaryKeyList[index]);
+        for(int index = 0 ; index < primaryLetters.Count ; index++)
+            script.primaryKeyList[index] = EditorGUILayout.TextField(primaryLetters[index],script.primaryKeyList[index]);
         EditorGUILayout.EndVertical();
            
         EditorGUILayout.BeginVertical();
         EditorGUILayout.Foldout(false , "Secondary Keys" , true);
-        for(int index = 0 ; index < script.primaryKeyList.Count ; index++)
-            script.secondaryKeyList[index] = 
-            EditorGUILayout.TextField(secondaryLetters[index],script.secondaryKeyList[index]);
+        for(int index = 0 ; index < secondaryLetters.Count ; index++)
+            script.secondaryKeyList[index] = EditorGUILayout.TextField(secondaryLetters[index],script.secondaryKeyList[index]);
         EditorGUILayout.EndVertical();
     }
 }

@@ -10,14 +10,24 @@ public class Lesson
     public string name;
     [SerializeField] private int lessonNumber;
     [SerializeField] private string lessonText;
-    private List<Letter> crossLanguageLetters;
+    [SerializeField] private List<Letter> crossLanguageLetters;
 
     // Properties
     public int LessonNumber { get => lessonNumber; set => lessonNumber = value; }
     public string LessonText { get => lessonText;  set => lessonText = value; }
     public List<Letter> CrossLanguageLetters { get => crossLanguageLetters; set => crossLanguageLetters = value; }
+
+    // Constructor
+    public Lesson()
+    {
+        name = string.Empty;
+        lessonNumber = 0;
+        lessonText = string.Empty;
+        crossLanguageLetters = new List<Letter>();
+    }
 }
 
+[Serializable]
 public struct Letter
 {
     public bool IsPrimary;

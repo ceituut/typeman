@@ -18,8 +18,8 @@ public class LanguageSelect : MonoBehaviour
     private void Start() 
     {
         languageChecker = new LanguageCheck();
-        InitializeDropdown();
         InitializeLanguageDic();
+        InitializeDropdown();
         //////////////////////////// Initialize keyboard language here or select default option
     }
     private void InitializeLanguageDic()
@@ -42,16 +42,23 @@ public class LanguageSelect : MonoBehaviour
             language ++;
         }
         dropdownComponent.onValueChanged.AddListener( delegate { OnLanguageChanged(); } );
+        // dropdownComponent.value = 0;
     }
     private Language GetLanguageOfOption(string languageName)
     {
         KeyboardLanguage relatedLanguage = 0;
-        KeyboardLanguage language = 0;
+        KeyboardLanguage languagePointer = 0;
         int numberOfLanguages = Enum.GetNames(typeof(KeyboardLanguage)).Length;
-        for (int index = 0; index < numberOfLanguages; index++ , language++)
-            if ( language.ToString() == languageName )
-                relatedLanguage = language;
-        return languageDic[language];
+        for (int index = 0; index < numberOfLanguages; index++ , languagePointer++)
+        {
+            if ( languagePointer.ToString() == languageName )
+            {
+                relatedLanguage = languagePointer;
+                break;
+            }
+
+        }
+        return languageDic[relatedLanguage];
     }
     private void OnLanguageChanged()
     {
