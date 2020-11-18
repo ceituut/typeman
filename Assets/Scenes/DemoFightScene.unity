@@ -329,7 +329,7 @@ Transform:
   - {fileID: 1101784824263880104}
   - {fileID: 856043626888802521}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &53994443
 MonoBehaviour:
@@ -680,7 +680,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88201570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 95}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 150729438}
@@ -978,7 +978,7 @@ RectTransform:
   - {fileID: 905776276}
   - {fileID: 2078019167}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3701,7 +3701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 503142032}
   - component: {fileID: 503142033}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Row0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5067,6 +5067,7 @@ GameObject:
   - component: {fileID: 694136321}
   - component: {fileID: 694136320}
   - component: {fileID: 694136323}
+  - component: {fileID: 694136324}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -5082,7 +5083,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694136319}
-  m_Text: Mahdi Naderi - Mohammad Ostadi - Amir Goodarzi
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -5162,6 +5163,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typedSection: {fileID: 2138867889}
+--- !u!114 &694136324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694136319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d57342af33aba2418a32e707fd1ccba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lessonContainer: {fileID: 11400000, guid: 1193584a95008c54381eefa4e763f245, type: 2}
+  targetText: {fileID: 0}
 --- !u!1 &713220954
 GameObject:
   m_ObjectHideFlags: 0
@@ -5402,7 +5417,7 @@ GameObject:
   - component: {fileID: 9068453514331171158}
   - component: {fileID: 4604796200827865558}
   - component: {fileID: 727553635}
-  - component: {fileID: 727553636}
+  - component: {fileID: 727553633}
   - component: {fileID: 727553632}
   m_Layer: 0
   m_Name: Warrior
@@ -5422,8 +5437,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5507,6 +5522,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &727553633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727553631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a339f5ecc9d76cf4e8e75f1307fa2b23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundContainer: {fileID: 11400000, guid: 3ea977e1496e1f849a4c4a68b59e22f6, type: 2}
 --- !u!4 &727553634
 Transform:
   m_ObjectHideFlags: 0
@@ -5523,7 +5551,7 @@ Transform:
   - {fileID: 476273712}
   - {fileID: 9068453515389372114}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &727553635
 MonoBehaviour:
@@ -5538,18 +5566,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warriorAmimator: {fileID: 0}
---- !u!114 &727553636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 727553631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24fc23429e6b7354f8404b32ecc16ceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &727738692
 GameObject:
   m_ObjectHideFlags: 0
@@ -10370,7 +10386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1321433882}
   - component: {fileID: 1321433883}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Row3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10445,7 +10461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1324770229}
   - component: {fileID: 1324770230}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Row1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10976,7 +10992,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1422473913}
   - component: {fileID: 1422473914}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Row2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11580,7 +11596,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 228e33fe0ac22bf45b7545035716c1d1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 228e33fe0ac22bf45b7545035716c1d1,
         type: 3}
@@ -15391,7 +15407,7 @@ GameObject:
   - component: {fileID: 2078019170}
   - component: {fileID: 2078019169}
   - component: {fileID: 2078019168}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WindowsDesktop
   m_TagString: Keyboard
   m_Icon: {fileID: 0}
@@ -15517,7 +15533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2080873917}
   - component: {fileID: 2080873918}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Row4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17700,6 +17716,7 @@ GameObject:
   - component: {fileID: 5510204335603953613}
   - component: {fileID: 5510204335603953612}
   - component: {fileID: 5510204335603953615}
+  - component: {fileID: 5510204335603952692}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -17707,6 +17724,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5510204335603952692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5510204335603952691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d57342af33aba2418a32e707fd1ccba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lessonContainer: {fileID: 11400000, guid: 1193584a95008c54381eefa4e763f245, type: 2}
+  targetText: {fileID: 0}
 --- !u!102 &5510204335603953612
 TextMesh:
   serializedVersion: 3
@@ -17715,7 +17746,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5510204335603952691}
-  m_Text: 'Awsome ! Awsome ! Awsome ! Awsome ! '
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -18185,7 +18216,7 @@ Transform:
   - {fileID: 4842071998291520612}
   - {fileID: 5159271957171253525}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5510204335966249479
 MonoBehaviour:
@@ -18462,6 +18493,7 @@ GameObject:
   - component: {fileID: 5510204336367452842}
   - component: {fileID: 5510204336367452843}
   - component: {fileID: 5510204336367452840}
+  - component: {fileID: 5510204336367452501}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -18469,6 +18501,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5510204336367452501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5510204336367452500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d57342af33aba2418a32e707fd1ccba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lessonContainer: {fileID: 11400000, guid: 1193584a95008c54381eefa4e763f245, type: 2}
+  targetText: {fileID: 0}
 --- !u!114 &5510204336367452840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18543,7 +18589,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5510204336367452500}
-  m_Text: Mahdi Naderi - Mohammad Ostadi - Amir Goodarzi
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -18871,7 +18917,7 @@ Transform:
   - {fileID: 4842071996907536643}
   - {fileID: 5159271957951274098}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5510204336796831596
 GameObject:
@@ -20300,6 +20346,7 @@ GameObject:
   - component: {fileID: 9068453515389372114}
   - component: {fileID: 9068453515389372117}
   - component: {fileID: 9068453515389372116}
+  - component: {fileID: 9068453515389372120}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -20307,6 +20354,102 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!82 &9068453515389372120
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068453515389372119}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b180902b3b652b34e8b03154a4b2330c, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &9133292893835268950
 GameObject:
   m_ObjectHideFlags: 0

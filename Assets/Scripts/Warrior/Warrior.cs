@@ -66,6 +66,7 @@ public class Warrior : MonoBehaviour
     public void Attack()
     {
         warriorAmimator.SetTrigger("OnSimpleAttack");
+        gameObject.GetComponent<SoundManager>().PlaySound();
     }
     public void BonusAttack(int continuousCorrects)
     {
