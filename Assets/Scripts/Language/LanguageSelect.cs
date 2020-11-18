@@ -42,7 +42,6 @@ public class LanguageSelect : MonoBehaviour
             language ++;
         }
         dropdownComponent.onValueChanged.AddListener( delegate { OnLanguageChanged(); } );
-        // dropdownComponent.value = 0;
     }
     private Language GetLanguageOfOption(string languageName)
     {

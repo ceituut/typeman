@@ -21,7 +21,7 @@ public class LessonLanguageChange : MonoBehaviour
             editString = lesson.LessonText;
             for(int charIndex = 0; charIndex < lesson.LessonText.Length; charIndex++)
                 editString = editString.Replace(lesson.LessonText[charIndex] , GetAlternativeChar(lesson , targetLanguage , charIndex));;
-            targetText.text = editString;
+            targetText.text = editString;///////////////////////////////////////////////
         }
     }
     private char GetAlternativeChar(Lesson lesson , Language language , int charIndex)
