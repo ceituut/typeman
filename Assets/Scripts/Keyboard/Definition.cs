@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-public static class KeyboardDefinition
+public static class Definition
 {
     public enum KeyboardLanguage { English , Persian , Arabic , Turkish ,French , German , Italian , 
     Russsion , Japanese , Chinese , Korean , Espanian };
@@ -21,4 +21,9 @@ public static class KeyboardDefinition
         "A","S","D","F","G","H","J","K","L",":","\"",
         "Z","X","C","V","B","N","M","<",">","?"," "
     };
+    public enum FingerTypes
+    {
+        RightHandFinger1,RightHandFinger2,RightHandFinger3,RightHandFinger4,RightHandFinger5,
+        LeftHandFinger1,LeftHandFinger2,LeftHandFinger3,LeftHandFinger4,LeftHandFinger5,
+    }
 }

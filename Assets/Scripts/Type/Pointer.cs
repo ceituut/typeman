@@ -80,11 +80,13 @@ public class Pointer : MonoBehaviour
     {
         if (!IsTextEnd())
         {
-            GetLastInputChar();
             GetNeededChar();
+            //HandManager.instance.MoveRelatedFinger(neededChar);/////////////
+            GetLastInputChar();
             CheckInput();
             BonusCorrectsCheck();
             ResetInput();
+            //HandManager.instance.ResetAllFingers();//////////////
         }
         else
             DontAllowCheck();

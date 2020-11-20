@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static KeyboardDefinition;
+using static Definition;
 
 
 public class KeyboardLanguageChange : MonoBehaviour
@@ -16,7 +16,7 @@ public class KeyboardLanguageChange : MonoBehaviour
     public Keyboard SetKeyboard {set => keyboard = value; }
 
     // Methods
-    private void Start()
+    private void Awake()
     {
         InitializeLayoutToLiteralMapDic();
     }

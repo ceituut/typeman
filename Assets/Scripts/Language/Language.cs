@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static KeyboardDefinition;
+using static Definition;
 
 #if UNITY_EDITOR
 using UnityEditor;

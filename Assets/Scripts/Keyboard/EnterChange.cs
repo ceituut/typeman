@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static KeyboardDefinition;
+using static Definition;
 
 
 public class EnterChange : MonoBehaviour

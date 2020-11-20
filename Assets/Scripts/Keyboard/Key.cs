@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Definition;
 
 public class Key : MonoBehaviour
 {
@@ -12,13 +13,14 @@ public class Key : MonoBehaviour
     [SerializeField] private string primaryValue; 
     [SerializeField] private string secondaryValue;
     [SerializeField] private RectTransform rectTransform;
-    // public GameObject RelatedFinger; 
+    [SerializeField] private FingerTypes fingerType;
 
     // Properties
     public static float GetDefaultKeyWidth { get => defaultKeyWidth; set => defaultKeyWidth = value; }
     public string PrimaryValue { get => primaryValue; set => primaryValue = value; }
     public string SecondaryValue { get => secondaryValue; set => secondaryValue = value; }
     public Text TextComponent { get => textComponent; set => textComponent = value; }
+    public FingerTypes GetFingerType { get => fingerType;}
 
     // Methods
     private void Awake() 
@@ -47,5 +49,16 @@ public class Key : MonoBehaviour
         this.textComponent.text = string.Empty;
         this.primaryValue = string.Empty;
         this.secondaryValue = string.Empty;
+    }
+    public Vector3 GetActualPosition()
+    {
+        Transform parent = gameObject.GetComponent<RectTransform>().parent;
+        Vector3 actualPos = new Vector3();
+        actualPos = gameObject.GetComponent<RectTransform>().localPosition;
+        while(parent != null)
+        {
+            actualPos += parent.localPosition;
+        }
+        return actualPos;
     }
 }

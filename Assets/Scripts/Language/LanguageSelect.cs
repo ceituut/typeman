@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static KeyboardDefinition;
+using static Definition;
 
 
 public class LanguageSelect : MonoBehaviour
 {
     [SerializeField] private LanguageContainer languageContainer;
     private Dictionary<KeyboardLanguage,Language> languageDic;
+    [SerializeField] private Language currentTestLanguage;//////////////////
     private Dropdown dropdownComponent;
     [SerializeField] private KeyboardLanguageChange keyboardLanguageChanger;
     private LanguageCheck languageChecker;
@@ -19,7 +20,9 @@ public class LanguageSelect : MonoBehaviour
     {
         languageChecker = new LanguageCheck();
         InitializeLanguageDic();
-        InitializeDropdown();
+        ChangeLanguageTest();
+        HandManager.instance.SetDic();
+        // InitializeDropdown();////////////////
         //////////////////////////// Initialize keyboard language here or select default option
     }
     private void InitializeLanguageDic()
@@ -65,6 +68,11 @@ public class LanguageSelect : MonoBehaviour
         Language currentLanguage = GetLanguageOfOption(currentOption.text);
         keyboardLanguageChanger.ChangeKeyboardLanguage(currentLanguage);
         languageChecker.UpdateKeyCheckers(currentLanguage);
-        lessonLanguageChanger.ChangeLessonLanguage(currentLanguage);
+        // lessonLanguageChanger.ChangeLessonLanguage(currentLanguage);
+    }
+    private void ChangeLanguageTest()
+    {
+        keyboardLanguageChanger.ChangeKeyboardLanguage(currentTestLanguage);
+        // languageChecker.UpdateKeyCheckers(currentTestLanguage);
     }
 }

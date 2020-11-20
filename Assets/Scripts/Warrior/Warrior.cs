@@ -70,6 +70,28 @@ public class Warrior : MonoBehaviour
     }
     public void BonusAttack(int continuousCorrects)
     {
-
+        switch(continuousCorrects)
+        {
+            case 3 :
+            {
+                warriorAmimator.SetTrigger("OnBonusAttack1");
+                gameObject.GetComponent<SoundManager>().PlaySound();
+                break;
+            }
+            case 5 :
+            {
+                warriorAmimator.SetTrigger("OnBonusAttack2");
+                gameObject.GetComponent<SoundManager>().PlaySound();
+                break;
+            }
+            case 7 :
+            {
+                warriorAmimator.SetTrigger("OnBonusAttack3");
+                gameObject.GetComponent<SoundManager>().PlaySound();
+                break;
+            }
+            default :
+            break;
+        }
     }
 }
