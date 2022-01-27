@@ -4,7 +4,9 @@ Type for your Lives ! An action game that player fights by typing in keyboard. I
 
 ## Contributers
 Game Designer : Mohammad Ostadi
+
 Gameplay Programer : Alireza Naderi, Amir Goodarzi
+
 Artist : Amir Goodarzi
 
 ## Note
